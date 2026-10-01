@@ -1,12 +1,13 @@
 const dadosPark = {
     reserva: {
-        bounds: [[-23.6165, -46.9725], [-23.6265, -46.9640]], // [[sul, oeste], [norte, leste]]
+        // Ajuste fino dos limites geográficos para esticar e cobrir toda a área do parque perfeitamente
+        bounds: [[-23.6150, -46.9750], [-23.6280, -46.9620]], 
         imagem: "mapa.zoo.png",
         legenda: [
             { img: "icons/estacionamento.png", texto: "Estacionamentos" },
-            { img: "icons/wc.png", texto: "Banheiros" },
-            { img: "icons/ambulatorio.png", texto: "Ambulatório" },
-            { img: "icons/recepçao.png", texto: "Recepção" },
+            { img: "icons/wc.png", texto: "Banheiros (Comum / Acessível)" },
+            { img: "icons/ambulatorio.png", texto: "Ambulatório / Primeiros Socorros" },
+            { img: "icons/recepçao.png", texto: "Recepção / Atendimento" },
             { img: "icons/Aviario.png", texto: "Aviário" },
             { img: "icons/fazenda.png", texto: "Fazendinha" },
             { img: "icons/rest.central.png", texto: "Restaurante Central" },
@@ -19,12 +20,12 @@ const dadosPark = {
         pontos: [
             { id: "AMBULATÓRIO", nome: "🚑 AMBULATÓRIO", area: "Ambulatório / Bombeiros Animália", desc: "Localizado na Vila Animália.", icone: "icons/ambulatorio.png", lat: -23.6210, lng: -46.9680 },
             { id: "quiosque-leao", nome: "QUIOSQUE LEÃO", area: "🍿 Café, Salgados e pipocas", desc: "Logo após o recinto do Leão.", icone: "icons/quiosque.png", lat: -23.6225, lng: -46.9685 },
-            { id: "VILA ANIMALIA", nome: "VILA ANIMÁLIA", area: "Ambiente aconchegante", desc: "Banheiro e Restaurantes disponíveis.", icone: "icons/vila.png", lat: -23.6200, lng: -46.9680 },
-            { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Entrada e Saída", desc: "SAV e Atendimento.", icone: "icons/recepçao.png", lat: -23.6205, lng: -46.9685 }
+            { id: "VILA ANIMALIA", nome: "VILA ANIMÁLIA", area: "Ambiente aconchegante para refeições", desc: "🚻Banheiro (Comum e Acessível)<br>🥩Restaurante Savana<br>", icone: "icons/vila.png", lat: -23.6200, lng: -46.9680 },
+            { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Onde tudo começa!", desc: "🔁Entrada/Saída<br>🚻Banheiro<br>", icone: "icons/recepçao.png", lat: -23.6205, lng: -46.9685 }
         ]
     },
     diversao: {
-        bounds: [[-23.6165, -46.9705], [-23.6265, -46.9640]],
+        bounds: [[-23.6150, -46.9750], [-23.6280, -46.9620]],
         imagem: "mapa.diversao.png",
         legenda: [
             { img: "icons/local.png", texto: "Entrada Diversão"},
@@ -33,7 +34,7 @@ const dadosPark = {
             { img: "icons/div.png", texto: "Atrações" }
         ],
         pontos: [
-            { id: "animalia diversão", nome: "🎡ANIMALIA DIVERSÃO", area: "Atrações Mágicas", desc: "Brinquedos e diversão.", icone: "icons/div.png", lat: -23.6215, lng: -46.9675 }
+            { id: "animalia diversão", nome: "🎡 ANIMALIA DIVERSÃO", area: "Atrações Mágicas", desc: "Brinquedos e diversão.", icone: "icons/div.png", lat: -23.6215, lng: -46.9675 }
         ]
     }
 };
@@ -41,21 +42,23 @@ const dadosPark = {
 let map;
 let currentOverlay = null;
 let currentMarkers = [];
+let userMarker = null;
+let watchId = null;
 let categoriaAtual = 'reserva';
 
-// Inicializa o mapa assim que a página abre
 document.addEventListener("DOMContentLoaded", () => {
     map = L.map('mapa', {
         attributionControl: false,
         zoomControl: false
     }).setView([-23.6215, -46.9680], 17);
 
-    // Camada de Satélite de fundo gratuita (Esri World Imagery)
+    // Camada de Satélite de fundo
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         maxZoom: 19
     }).addTo(map);
 
     carregarCategoriaMapa(categoriaAtual);
+    iniciarGeolocalizacao();
 });
 
 function trocarMapa(categoria, botaoClicado) {
@@ -75,7 +78,7 @@ function carregarCategoriaMapa(categoria) {
         map.removeLayer(currentOverlay);
     }
 
-    currentOverlay = L.imageOverlay(mapaInfo.imagem, mapaInfo.bounds, { opacity: 0.90 });
+    currentOverlay = L.imageOverlay(mapaInfo.imagem, mapaInfo.bounds, { opacity: 0.95 });
     currentOverlay.addTo(map);
 
     currentMarkers.forEach(marker => map.removeLayer(marker));
@@ -109,7 +112,6 @@ function atualizarLegenda(itensLegenda) {
 }
 
 function abrirLocal(ponto) {
-    document.getElementById("nomeLocalinnerText") = ponto.nome;
     document.getElementById("nomeLocal").innerText = ponto.nome;
     document.getElementById("areaLocal").innerText = ponto.area;
     document.getElementById("descricaoLocal").innerHTML = ponto.desc;
@@ -121,5 +123,46 @@ function fecharLocal() {
 }
 
 function fecharAoClicarFora(e) {
-    // Mantém fechamento se necessário
+    if (e.target.id === "janelaLocal") {
+        fecharLocal();
+    }
+}
+
+// Controles de Zoom
+function zoomIn() { map.zoomIn(); }
+function zoomOut() { map.zoomOut(); }
+function resetZoom() { map.setView([-23.6215, -46.9680], 17); }
+
+// Geolocalização
+function iniciarGeolocalizacao() {
+    if (!("geolocation" in navigator)) return;
+
+    watchId = navigator.geolocation.watchPosition(
+        (position) => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            const userLatLng = [lat, lng];
+
+            if (!userMarker) {
+                const blueIcon = L.icon({
+                    iconUrl: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 16]
+                });
+                userMarker = L.marker(userLatLng, { icon: blueIcon }).addTo(map);
+            } else {
+                userMarker.setLatLng(userLatLng);
+            }
+        },
+        (error) => { console.warn("Erro GPS: ", error.message); },
+        { enableHighAccuracy: true }
+    );
+}
+
+function centralizarNoUsuario() {
+    if (userMarker) {
+        map.setView(userMarker.getLatLng(), 18);
+    } else {
+        alert("Aguardando sinal de GPS...");
+    }
 }
