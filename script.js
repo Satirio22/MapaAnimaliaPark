@@ -90,7 +90,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById("mapa"), {
         zoom: 17,
         center: centroInicial,
-        mapTypeId: "roadmap",
+        mapTypeId: "satellite",
         disableDefaultUI: true,
         zoomControl: false
     });
