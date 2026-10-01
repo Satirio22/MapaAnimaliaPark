@@ -32,6 +32,20 @@
     z-index: 1000;
 }
 
+/* Container do Logo (Centralizado e proporcional) */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.logo-central {
+    height: 45px; /* Controla a altura do logo para ficar pequeno e bonito */
+    width: auto;  /* Mantém a proporção correta da imagem */
+    object-fit: contain;
+}
+
 .filtros {
     display: flex;
     gap: 8px;
@@ -105,7 +119,6 @@
     border: none;
     border-radius: 50%;
     font-size: 18px;
-    box-brilho: 0 2px 5px rgba(0,0,0,0.3);
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
