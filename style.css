@@ -122,7 +122,6 @@ html, body {
 #camadaPontos .ponto,
 .ponto {
     position: absolute;
-    /* Anula a escala do zoom do mapa para manter tamanho constante */
     transform: translate(-50%, -50%) scale(calc(1 / var(--map-scale, 1)));
     transform-origin: center center;
 
@@ -173,6 +172,41 @@ html, body {
     font-size: 22px !important;
     line-height: 1;
     pointer-events: none;
+}
+
+/* ESTILO DO MARCADOR DE GEOLOCALIZAÇÃO DO USUÁRIO */
+.user-marker {
+    position: absolute;
+    transform: translate(-50%, -50%) scale(calc(1 / var(--map-scale, 1)));
+    transform-origin: center center;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.user-marker .pulsar {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(140, 27, 146, 0.35);
+    border-radius: 50%;
+    animation: pulsarAnimacao 1.5s infinite;
+}
+
+@keyframes pulsarAnimacao {
+    0% {
+        transform: scale(0.4);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
 }
 
 /* BOTÕES CONTROLE ZOOM */
