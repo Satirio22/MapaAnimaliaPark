@@ -67,6 +67,16 @@ let isDragging = false;
 let startDistance = 0;
 let watchId = null;
 
+// ==========================================
+// CONFIGURAÇÃO DE REFERÊNCIA GPS PARA O MAPA
+// ==========================================
+// Aqui definimos dois pontos do parque para traduzir a Latitude/Longitude real 
+// nas porcentagens (top e left) da sua imagem ilustrativa.
+const referenciaGPS = {
+    ponto1: { lat: -23.6000, lng: -46.9000, top: 27, left: 48 }, // Ex: Recepção
+    ponto2: { lat: -23.6100, lng: -46.9100, top: 80, left: 80 }  // Ex: Ponto no fundo do parque
+};
+
 function atualizarTransformacao() {
     const mapa = document.getElementById("mapa");
     if (!mapa) return;
@@ -129,7 +139,6 @@ function resetZoom() {
     const scaleX = containerWidth / realWidth;
     const scaleY = containerHeight / realHeight;
     
-    // Retornado para Math.min para garantir que a imagem caiba inteira sem sumir
     scale = Math.min(scaleX, scaleY);
 
     pointX = (containerWidth - realWidth * scale) / 2;
@@ -197,7 +206,7 @@ function zoomOut() {
 }
 
 // ==========================================
-// GEOLOCALIZAÇÃO SEGURA
+// GEOLOCALIZAÇÃO COM CÁLCULO PROPORCIONAL
 // ==========================================
 
 function iniciarGeolocalizacao() {
@@ -214,14 +223,35 @@ function iniciarGeolocalizacao() {
 
     watchId = navigator.geolocation.watchPosition(
         (position) => {
-            // Posiciona o marcador de forma segura no centro do mapa inicialmente
-            atualizarPosicaoUsuarioNoMapa(50, 50);
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            
+            // Converte a coordenada real do GPS para a porcentagem proporcional da imagem
+            const posMapa = converterGPStoMapa(lat, lng);
+            atualizarPosicaoUsuarioNoMapa(posMapa.top, posMapa.left);
         },
         (error) => {
             console.warn(`Erro de geolocalização (${error.code}): ${error.message}`);
         },
         options
     );
+}
+
+function converterGPStoMapa(lat, lng) {
+    const latMin = referenciaGPS.ponto1.lat;
+    const latMax = referenciaGPS.ponto2.lat;
+    const lngMin = referenciaGPS.ponto1.lng;
+    const lngMax = referenciaGPS.ponto2.lng;
+
+    // Cálculo proporcional (Regra de três linear)
+    const topPercent = referenciaGPS.ponto1.top + ((lat - latMin) / (latMax - latMin)) * (referenciaGPS.ponto2.top - referenciaGPS.ponto1.top);
+    const leftPercent = referenciaGPS.ponto1.left + ((lng - lngMin) / (lngMax - lngMin)) * (referenciaGPS.ponto2.left - referenciaGPS.ponto1.left);
+
+    // Se estiver fora da área mapeada, trava nos limites (0% a 100%) para não sumir da tela
+    return { 
+        top: Math.max(5, Math.min(95, topPercent)), 
+        left: Math.max(5, Math.min(95, leftPercent)) 
+    };
 }
 
 function atualizarPosicaoUsuarioNoMapa(top, left) {
