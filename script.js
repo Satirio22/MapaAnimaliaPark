@@ -4,10 +4,10 @@
 const dadosPark = {
     reserva: {
         bounds: {
-            north: -23.6165,  // Topo do parque
-            south: -23.6265,  // Fundo/Base do parque
-            east: -46.9640,   // Lado direito
-            west: -46.9725    // Lado esquerdo
+            north: -23.6165,  
+            south: -23.6265,  
+            east: -46.9640,   
+            west: -46.9725    
         },
         imagem: "mapa.zoo.png",
         legenda: [
@@ -81,7 +81,7 @@ let watchId = null;
 let categoriaAtual = 'reserva';
 
 // ==========================================
-// INICIALIZAÇÃO DO GOOGLE MAPS (MODO SATÉLITE)
+// INICIALIZAÇÃO DO GOOGLE MAPS
 // ==========================================
 function initMap() {
     const centroInicial = { lat: -23.6215, lng: -46.9680 };
@@ -112,10 +112,12 @@ function carregarCategoriaMapa(categoria) {
     const mapaInfo = dadosPark[categoria];
     if (!mapaInfo) return;
 
+    // Remove overlay anterior com segurança
     if (currentOverlay) {
         currentOverlay.setMap(null);
     }
 
+    // Adiciona a imagem personalizada por cima do satélite
     currentOverlay = new google.maps.GroundOverlay(
         mapaInfo.imagem,
         mapaInfo.bounds,
@@ -123,9 +125,11 @@ function carregarCategoriaMapa(categoria) {
     );
     currentOverlay.setMap(map);
 
+    // Limpa marcadores antigos
     currentMarkers.forEach(marker => marker.setMap(null));
     currentMarkers = [];
 
+    // Adiciona os marcadores (pins) com os ícones personalizados
     mapaInfo.pontos.forEach(ponto => {
         const marker = new google.maps.Marker({
             position: { lat: ponto.lat, lng: ponto.lng },
@@ -144,6 +148,7 @@ function carregarCategoriaMapa(categoria) {
         currentMarkers.push(marker);
     });
 
+    // Atualiza a legenda lateral corretamente renderizando as imagens dos ícones
     if (mapaInfo.legenda) {
         atualizarLegenda(mapaInfo.legenda);
     }
