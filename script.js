@@ -16,10 +16,10 @@ const dadosPark = {
             { img: "icons/quiosque.png", texto: "Quiosques Reserva" }
         ],
         pontos: [
-            { id: "ambulatorio", nome: "🚑 AMBULATÓRIO", area: "Ambulatório / Bombeiros Animália", desc: "Localizado na Vila Animália para primeiros socorros.", icone: "icons/ambulatorio.png", x: 48, y: 52 },
-            { id: "quiosque-leao", nome: "QUIOSQUE LEÃO", area: "Café, Salgados e Pipocas", desc: "Localizado logo após o recinto do Leão.", icone: "icons/quiosque.png", x: 55, y: 45 },
-            { id: "vila-animalia", nome: "VILA ANIMÁLIA", area: "Área de Refeições e Lojas", desc: "Conta com banheiros (comum e acessível) e Restaurante Savana.", icone: "icons/vila.png", x: 42, y: 60 },
-            { id: "recepcao", nome: "RECEPÇÃO", area: "Entrada e Atendimento Principal", desc: "Ponto de entrada, saída e informações do parque.", icone: "icons/recepçao.png", x: 50, y: 38 }
+            { id: "ambulatorio", nome: "🚑 AMBULATÓRIO", area: "Ambulatório / Bombeiros Animália", desc: "Localizado na Vila Animália.", icone: "icons/ambulatorio.png", x: 48, y: 52 },
+            { id: "quiosque-leao", nome: "QUIOSQUE LEÃO", area: "Café, Salgados e pipocas", desc: "Logo após o recinto do Leão.", icone: "icons/quiosque.png", x: 55, y: 45 },
+            { id: "vila-animalia", nome: "VILA ANIMÁLIA", area: "Ambiente aconchegante para refeições", desc: "🚻 Banheiro (Comum e Acessível)<br>🥩 Restaurante Savana", icone: "icons/vila.png", x: 42, y: 60 },
+            { id: "recepcao", nome: "RECEPÇÃO", area: "Onde tudo começa!", desc: "🔁 Entrada/Saída<br>🚻 Banheiro", icone: "icons/recepçao.png", x: 50, y: 38 }
         ]
     },
     diversao: {
@@ -31,7 +31,7 @@ const dadosPark = {
             { img: "icons/div.png", texto: "Atrações" }
         ],
         pontos: [
-            { id: "animalia-div", nome: "🎡 ANIMALIA DIVERSÃO", area: "Parque de Diversões", desc: "Área de brinquedos e atrações radicais e familiares.", icone: "icons/div.png", x: 50, y: 50 }
+            { id: "animalia-diversao", nome: "🎡 ANIMALIA DIVERSÃO", area: "Atrações Mágicas", desc: "Brinquedos e diversão para toda a família.", icone: "icons/div.png", x: 50, y: 50 }
         ]
     }
 };
@@ -57,16 +57,13 @@ function carregarCategoriaMapa(categoria) {
     const mapaInfo = dadosPark[categoria];
     if (!mapaInfo) return;
 
-    // Define a imagem correta do parque
+    // Carrega a imagem do mapa da categoria
     const imgElement = document.getElementById("imgParque");
     if (imgElement) {
         imgElement.src = mapaInfo.imagem;
     }
 
-    // Atualiza a legenda lateral
     atualizarLegenda(mapaInfo.legenda);
-
-    // Renderiza os pontos interativos sobre o mapa
     renderizarMarcadores(mapaInfo.pontos);
 }
 
@@ -91,10 +88,9 @@ function renderizarMarcadores(pontos) {
     pontos.forEach(ponto => {
         const div = document.createElement("div");
         div.className = "ponto-marcador";
-        // Posicionamento percentual (%) para se ajustar perfeitamente a qualquer tamanho de tela
         div.style.left = `${ponto.x}%`;
         div.style.top = `${ponto.y}%`;
-        div.style.pointerEvents = "auto"; // Reativa o clique apenas nos ícones
+        div.style.pointerEvents = "auto";
 
         div.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}">`;
         
