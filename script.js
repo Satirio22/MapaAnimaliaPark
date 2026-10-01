@@ -1,7 +1,12 @@
 const dadosPark = {
     reserva: {
-        // Ajuste fino dos limites geográficos para esticar e cobrir toda a área do parque perfeitamente
-        bounds: [[-23.6150, -46.9750], [-23.6280, -46.9620]], 
+        // Limites expandidos para a imagem cobrir perfeitamente a área do parque
+        bounds: {
+            north: -23.6120,  
+            south: -23.6300,  
+            east: -46.9600,   
+            west: -46.9760    
+        },
         imagem: "mapa.zoo.png",
         legenda: [
             { img: "icons/estacionamento.png", texto: "Estacionamentos" },
@@ -25,7 +30,12 @@ const dadosPark = {
         ]
     },
     diversao: {
-        bounds: [[-23.6150, -46.9750], [-23.6280, -46.9620]],
+        bounds: {
+            north: -23.6120,  
+            south: -23.6300,  
+            east: -46.9600,   
+            west: -46.9760    
+        },
         imagem: "mapa.diversao.png",
         legenda: [
             { img: "icons/local.png", texto: "Entrada Diversão"},
@@ -46,26 +56,28 @@ let userMarker = null;
 let watchId = null;
 let categoriaAtual = 'reserva';
 
-document.addEventListener("DOMContentLoaded", () => {
-    map = L.map('mapa', {
-        attributionControl: false,
-        zoomControl: false
-    }).setView([-23.6215, -46.9680], 17);
+// Função chamada pelo Google Maps assim que ele carrega
+function carregarGoogleMapsPronto() {
+    const centroInicial = { lat: -23.6215, lng: -46.9680 };
 
-    // Camada de Satélite de fundo
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        maxZoom: 19
-    }).addTo(map);
+    map = new google.maps.Map(document.getElementById("mapa"), {
+        zoom: 16,
+        center: centroInicial,
+        mapTypeId: "satellite",
+        disableDefaultUI: true,
+        zoomControl: false
+    });
 
     carregarCategoriaMapa(categoriaAtual);
     iniciarGeolocalizacao();
-});
+}
 
 function trocarMapa(categoria, botaoClicado) {
     if (botaoClicado) {
         document.querySelectorAll('header button').forEach(btn => btn.classList.remove('active'));
         botaoClicado.classList.add('active');
     }
+
     categoriaAtual = categoria;
     carregarCategoriaMapa(categoria);
 }
@@ -75,28 +87,46 @@ function carregarCategoriaMapa(categoria) {
     if (!mapaInfo) return;
 
     if (currentOverlay) {
-        map.removeLayer(currentOverlay);
+        currentOverlay.setMap(null);
     }
 
-    currentOverlay = L.imageOverlay(mapaInfo.imagem, mapaInfo.bounds, { opacity: 0.95 });
-    currentOverlay.addTo(map);
+    // Cria a sobreposição da imagem esticada exatamente nos limites definidos
+    const imageBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(mapaInfo.bounds.south, mapaInfo.bounds.west),
+        new google.maps.LatLng(mapaInfo.bounds.north, mapaInfo.bounds.east)
+    );
 
-    currentMarkers.forEach(marker => map.removeLayer(marker));
+    currentOverlay = new google.maps.GroundOverlay(
+        mapaInfo.imagem,
+        imageBounds,
+        { opacity: 0.95 }
+    );
+    currentOverlay.setMap(map);
+
+    currentMarkers.forEach(marker => marker.setMap(null));
     currentMarkers = [];
 
     mapaInfo.pontos.forEach(ponto => {
-        const customIcon = L.icon({
-            iconUrl: ponto.icone,
-            iconSize: [32, 32],
-            iconAnchor: [16, 16]
+        const marker = new google.maps.Marker({
+            position: { lat: ponto.lat, lng: ponto.lng },
+            map: map,
+            title: ponto.nome,
+            icon: {
+                url: ponto.icone,
+                scaledSize: new google.maps.Size(32, 32)
+            }
         });
 
-        const marker = L.marker([ponto.lat, ponto.lng], { icon: customIcon }).addTo(map);
-        marker.on('click', () => abrirLocal(ponto));
+        marker.addListener("click", () => {
+            abrirLocal(ponto);
+        });
+
         currentMarkers.push(marker);
     });
 
-    atualizarLegenda(mapaInfo.legenda);
+    if (mapaInfo.legenda) {
+        atualizarLegenda(mapaInfo.legenda);
+    }
 }
 
 function atualizarLegenda(itensLegenda) {
@@ -106,7 +136,11 @@ function atualizarLegenda(itensLegenda) {
     lista.innerHTML = "";
     itensLegenda.forEach(item => {
         const li = document.createElement("li");
-        li.innerHTML = `<img src="${item.img}" alt=""> <span>${item.texto}</span>`;
+        if (item.img) {
+            li.innerHTML = `<img src="${item.img}" alt=""> <span>${item.texto}</span>`;
+        } else {
+            li.innerHTML = `<span>${item.texto}</span>`;
+        }
         lista.appendChild(li);
     });
 }
@@ -128,12 +162,6 @@ function fecharAoClicarFora(e) {
     }
 }
 
-// Controles de Zoom
-function zoomIn() { map.zoomIn(); }
-function zoomOut() { map.zoomOut(); }
-function resetZoom() { map.setView([-23.6215, -46.9680], 17); }
-
-// Geolocalização
 function iniciarGeolocalizacao() {
     if (!("geolocation" in navigator)) return;
 
@@ -141,28 +169,22 @@ function iniciarGeolocalizacao() {
         (position) => {
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
-            const userLatLng = [lat, lng];
+            const userLatLong = { lat: lat, lng: lng };
 
             if (!userMarker) {
-                const blueIcon = L.icon({
-                    iconUrl: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                    iconSize: [32, 32],
-                    iconAnchor: [16, 16]
+                userMarker = new google.maps.Marker({
+                    position: userLatLong,
+                    map: map,
+                    title: "Você está aqui",
+                    icon: {
+                        url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                    }
                 });
-                userMarker = L.marker(userLatLng, { icon: blueIcon }).addTo(map);
             } else {
-                userMarker.setLatLng(userLatLng);
+                userMarker.setPosition(userLatLong);
             }
         },
         (error) => { console.warn("Erro GPS: ", error.message); },
         { enableHighAccuracy: true }
     );
-}
-
-function centralizarNoUsuario() {
-    if (userMarker) {
-        map.setView(userMarker.getLatLng(), 18);
-    } else {
-        alert("Aguardando sinal de GPS...");
-    }
 }
