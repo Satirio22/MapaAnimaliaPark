@@ -7,8 +7,8 @@ const dadosPark = {
     // Coordenadas geográficas aproximadas para encaixar a imagem de cima do Animália Park em Cotia/SP
     bounds: {
         north: -23.593000,
-        south: -23.620000,
-        west: -46.920000,
+        south: -23.615000,
+        west: -46.915000,
         east: -46.895000
     },
     legenda: [
