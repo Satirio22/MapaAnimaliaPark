@@ -2,69 +2,55 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa Animália Park</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <!-- CABEÇALHO ROXO FIXO NO TOPO -->
-    <header class="header-animalia">
-        <div class="logo-container">
-            <img src="logo-animalia.png" alt="Animália Park Logo" class="logo-central">
-        </div>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { display: flex; flex-direction: column; height: 100vh; background: #121212; color: #fff; }
+        header { background: #6a0dad; padding: 10px; display: flex; justify-content: center; gap: 10px; }
+        header button { padding: 10px 20px; border: none; background: #fff; color: #6a0dad; font-weight: bold; cursor: pointer; border-radius: 5px; }
+        header button.active { background: #ffcc00; color: #000; }
+        .main-container { display: flex; flex: 1; position: relative; }
+        #mapa { flex: 1; height: 100%; background: #000; }
+        aside { width: 300px; background: #1e1e1e; padding: 15px; overflow-y: auto; border-left: 2px solid #333; }
+        aside h3 { margin-bottom: 10px; color: #ffcc00; }
+        aside ul { list-style: none; }
+        aside li { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 14px; }
+        aside li img { width: 24px; height: 24px; object-fit: contain; }
         
-        <nav class="filtros">
-            <button class="btn-filtro active" onclick="trocarMapa('reserva', this)">Animália Reserva</button>
-            <button class="btn-filtro" onclick="trocarMapa('diversao', this)">Animália Diversão</button>
-        </nav>
+        /* Modal / Bottom Sheet */
+        #janelaLocal { position: fixed; bottom: -100%; left: 0; width: 100%; background: #222; padding: 20px; transition: bottom 0.3s ease; border-top-left-radius: 15px; border-top-right-radius: 15px; z-index: 1000; }
+        #janelaLocal.ativa { bottom: 0; }
+        #janelaLocal h2 { color: #ffcc00; margin-bottom: 5px; }
+        #janelaLocal button { background: #ff4444; color: #fff; border: none; padding: 5px 15px; margin-top: 10px; cursor: pointer; border-radius: 4px; }
+    </style>
+</head>
+<body onclick="fecharAoClicarFora(event)">
+
+    <header class="filtros">
+        <button class="active" onclick="trocarMapa('reserva', this)">ANIMÁLIA RESERVA</button>
+        <button onclick="trocarMapa('diversao', this)">ANIMÁLIA DIVERSÃO</button>
     </header>
 
-    <!-- LAYOUT PRINCIPAL (MAPA + LEGENDA) -->
-    <main class="layout-principal">
-        <!-- ÁREA DO MAPA -->
-        <div id="mapaContainer" class="mapa-container">
-            <!-- A div 'mapa' agora será o container onde o Google Maps vai rodar -->
-            <div id="mapa" class="mapa"></div>
-
-            <!-- CONTROLES FLUTUANTES DE ZOOM E LOCALIZAÇÃO PARA CELULAR -->
-            <div class="zoom-controls">
-                <button onclick="centralizarNoUsuario()" aria-label="Minha Localização" style="background: #8C1B92; color: #fff;">📍</button>
-                <button onclick="zoomIn()" aria-label="Aumentar Zoom">+</button>
-                <button onclick="zoomOut()" aria-label="Diminuir Zoom">−</button>
-                <button onclick="resetZoom()" aria-label="Resetar Zoom">⟲</button>
-            </div>
-        </div>
-
-        <!-- PAINEL DE LEGENDA LATERAL/INFERIOR -->
-        <aside class="legenda-container">
-            <h3>Legenda</h3>
-            <ul id="legendaLista" class="legenda-lista">
-                <!-- Preenchido via Javascript -->
-            </ul>
+    <div class="main-container">
+        <div id="mapa"></div>
+        <aside>
+            <h3>LEGENDA</h3>
+            <ul id="legendaLista"></ul>
         </aside>
-    </main>
-
-    <!-- MODAL INFERIOR (BOTTOM SHEET) -->
-    <div id="janelaLocal" class="janela" onclick="fecharAoClicarFora(event)">
-        <div class="conteudo">
-            <div class="barra-arraste"></div>
-            <button class="fechar" onclick="fecharLocal()" aria-label="Fechar">&times;</button>
-            <h2 id="nomeLocal"></h2>
-            <h3 id="areaLocal"></h3>
-            <p id="descricaoLocal"></p>
-        </div>
     </div>
 
-<!-- Script da API do Google Maps corrigido -->
-    <script>
-      (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="ib",r=`inline`,b=window,f=b[c]||(b[c]={}),data=f.maps||(f.maps={}),r=new Set,e=new URLSearchParams,u=`https://maps.${c}apis.com/maps/api/js?`,v=`v=weekly&callback=initMap&key=AIzaSyBDlUwfqHC77m26VmJYAUpnjcHnu-SaRnI`;
-      let a0=[v,...h];f.loaderVersion="v";f.load=function(o){return h=h||new Promise(async(s,n)=>{await (a=document.createElement("script"));a.src=`${u}${o.join("&")}`;e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`${u}&`+e;a.onerror=()=>n(new Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)});};})({
-        key: "AIzaSyBDlUwfqHC77m26VmJYAUpnjcHnu-SaRnI",
-        v: "weekly"
-      });
-    </script>
+    <div id="janelaLocal" onclick="event.stopPropagation()">
+        <h2 id="nomeLocal"></h2>
+        <p id="areaLocal" style="color: #aaa; margin-bottom: 10px;"></p>
+        <div id="descricaoLocal"></div>
+        <button onclick="fecharLocal()">Fechar</button>
+    </div>
 
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
