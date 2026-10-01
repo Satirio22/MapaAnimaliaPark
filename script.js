@@ -2,15 +2,15 @@
 // DADOS DO ANIMÁLIA PARK & FILTROS
 // ==========================================
 const dadosPark = {
-    nome: "Animália Park",
     imagem: "mapa.zoo.png",
-    // Coordenadas calibradas para cobrir exatamente a área do Animália Park na Estrada do Furquim
     bounds: {
-        north: -23.605200, // Limite superior (Norte)
-        south: -23.613800, // Limite inferior (Sul)
-        west: -46.912500,  // Limite esquerdo (Oeste)
-        east: -46.901500   // Limite direito (Leste)
+        north: -23.6250, // Ajuste o limite superior
+        south: -23.6360, // Ajuste o limite inferior
+        west: -47.0200,  // Ajuste o limite esquerdo
+        east: -47.0050   // Ajuste o limite direito
     },
+    // ... restante do código
+};
     legenda: [
         { img: "icons/estacionamento.png", texto: "Estacionamentos" },
         { img: "icons/wc.png", texto: "Banheiros (Comum / Acessível)" },
