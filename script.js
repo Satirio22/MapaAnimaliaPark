@@ -86,7 +86,8 @@ let marcadoresAtivos = [];
 // ==========================================
 function initMap() {
     // CENTRO EXATO: Posiciona o mapa direto em cima do Animália Park (Estrada do Furquim)
-    const centroParque = { lat: -23.6305, lng: -47.0125 };
+    const centroParque = { lat: -23.623352, lng:  -46.969407 };
+
 
     map = new google.maps.Map(document.getElementById("mapaGoogle"), {
         center: centroParque,
