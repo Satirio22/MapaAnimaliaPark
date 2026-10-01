@@ -1,3 +1,4 @@
+// DADOS DOS MAPAS, SEUS PONTOS E LEGENDAS
 const dadosPark = {
     reserva: {
         imagem: "mapa.zoo.png",
@@ -49,7 +50,7 @@ const dadosPark = {
         pontos: [
             { id: "quiosque-splash", nome: "QUIÓSQUE SPLASH", area: "🍿 Café, Salgados e pipocas", desc: "Localizado próximo ao vulcão.", icone: "icons/quiosque.png", top: 41, left: 15 },
             { id: "quiosque-viking", nome: "QUIÓSQUE VIKING", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na entrada do Outdoor.", icone: "icons/quiosque.png", top: 40, left: 35 },
-            { id: "animalia diversão", nome: "🎡ANIMALIA DIVERSÃO", area: "Atrações Magicas e divertidas!", desc: "🚻Banheiro (Comum e Acessivel)<br> 🐸Vitoria Regia<br>🛩️Eagle Flight (Aviãozinho)<br>🎈Balão Mexicano<br>👒Forte Apache (Trenzinho)<br>🦘Kanguroo Joy<br>🦒Giraffe Cool<br>🎠Bella Giostra (Carrosel)<br>🩻Joe Caveira<br>🧗Kite Dragon<br>🍭Mundo Doce<br>⛵Rise of Rome<br>🥶Bear Mountain<br>🏎️Big Chock (bate-bate)<br>🧩Cantinho do Silencio (Para Pessoas neurodivergentes)<br>", icone: "icons/div.png", top: 48, left: 45 },
+            { id: "animalia diversão", nome: "🎡ANIMALIA DIVERSÃO", area: "Atrações Magicas e divertidas!", desc: "🚻Banheiro (Comum e Acessivel)<br> 🐸Vitoria Regia<br>🛩️️Eagle Flight (Aviãozinho)<br>🎈Balão Mexicano<br>👒Forte Apache (Trenzinho)<br>🦘Kanguroo Joy<br>🦒Giraffe Cool<br>🎠Bella Giostra (Carrosel)<br>🩻Joe Caveira<br>🧗Kite Dragon<br>🍭Mundo Doce<br>⛵Rise of Rome<br>🥶Bear Mountain<br>🏎️Big Chock (bate-bate)<br>🧩Cantinho do Silencio (Para Pessoas neurodivergentes)<br>", icone: "icons/div.png", top: 48, left: 45 },
             { id: "DIVERSAO AVENTURA", nome: "🎢 ANIMALIA AVENTURA", area: "Atrações Radicaaaaais!", desc: "🚻Banheiro (Comum e Acessivel)<br> ⛵Barco Viking (Aqui tem que gritar)<br>💧Splash (Aguaaaa)<br>🥶Cyber Hawk (De ponta cabeça)<br>🎢Cyclone (Intensidade e aventura)<br>🐀Big Air Coaster (Essa é leve)<br>🔫Aqua Combat (Combate aquatico)<br>", icone: "icons/div.png", top: 30, left: 25 },
             { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "🔁Entrada/Saida<br>🚻Banheiro (Comum e Acessivel)<br>🧑‍💻SAV (Serviço de Atendimento ao Visitante)<br>☕Cafeteria (Cafés e salgados)<br>🧸Animalia Adventure (Souvenier)<br>📸Fotografica (Retirada de Fotos)<br>", icone: "icons/recepçao.png", top: 11, left: 53 },
             { id: "VILA ANIMALIA", nome: "VILA ANIMÁLIA", area: "Ambiente aconchegante para uma refeições e garantir uma lembrança", desc: "🚻Banheiro (Comum e Acessivel)<br>🧸Vila Adventure (Souvenier)<br>🧸Baby Zoo (Souvenier)<br>🥩Restaurante Savana (Carnes nobres)<br>🥤Shake do Bin (Sorvetes e Shakes)<br>☕Vila Cafeteria (Cafés e salgados)<br>🍔Hamburgueria da Vila (Burgues e bebidas)<br>🍕Selva de Sabores (Pizzas e Crespes)<br>🍝Vila Tratoria (Massas e Carnes)<br>🌭Hot Dog do Kiran (Hot Dog's)<br>🍨Cantinho da Girafa (Sorvetes e massas)<br>🚑Ambulatório (Saude e Bombeiros)<br>🚠Vila Estação. (Teleférico)<br>", icone: "icons/vila.png", top: 5, left: 42 },
@@ -66,13 +67,20 @@ let startY = 0;
 let isDragging = false;
 let startDistance = 0;
 
+// Variáveis para geolocalização
+let watchId = null;
+
+// Pontos de referência para calibrar o GPS com o mapa ilustrativo (Ajustaremos depois com base em localizações reais)
+const referenciaGPS = {
+    ponto1: { lat: -23.6000, lng: -46.9000, top: 27, left: 48 }, 
+    ponto2: { lat: -23.6100, lng: -46.9100, top: 80, left: 80 }  
+};
+
 function atualizarTransformacao() {
     const mapa = document.getElementById("mapa");
     if (!mapa) return;
     
-    // Atualiza a variável CSS usada para contrabalançar o tamanho dos botões
     mapa.style.setProperty("--map-scale", scale);
-    
     mapa.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
 }
 
@@ -195,6 +203,84 @@ function zoomOut() {
     atualizarTransformacao();
 }
 
+// ==========================================
+// FUNÇÕES DE GEOLOCALIZAÇÃO
+// ==========================================
+
+function iniciarGeolocalizacao() {
+    if (!("geolocation" in navigator)) {
+        console.warn("Geolocalização não suportada por este navegador.");
+        return;
+    }
+
+    const options = {
+        enableHighAccuracy: true,
+        timeout: 15000,
+        maximumAge: 0
+    };
+
+    watchId = navigator.geolocation.watchPosition(
+        (position) => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            
+            const posMapa = converterGPStoMapa(lat, lng);
+            atualizarPosicaoUsuarioNoMapa(posMapa.top, posMapa.left);
+        },
+        (error) => {
+            console.warn(`Erro de geolocalização (${error.code}): ${error.message}`);
+        },
+        options
+    );
+}
+
+function converterGPStoMapa(lat, lng) {
+    const latMin = referenciaGPS.ponto1.lat;
+    const latMax = referenciaGPS.ponto2.lat;
+    const lngMin = referenciaGPS.ponto1.lng;
+    const lngMax = referenciaGPS.ponto2.lng;
+
+    const topPercent = referenciaGPS.ponto1.top + ((lat - latMin) / (latMax - latMin)) * (referenciaGPS.ponto2.top - referenciaGPS.ponto1.top);
+    const leftPercent = referenciaGPS.ponto1.left + ((lng - lngMin) / (lngMax - lngMin)) * (referenciaGPS.ponto2.left - referenciaGPS.ponto1.left);
+
+    return { top: topPercent, left: leftPercent };
+}
+
+function atualizarPosicaoUsuarioNoMapa(top, left) {
+    const userMarker = document.getElementById("userLocation");
+    if (!userMarker) return;
+
+    userMarker.style.top = top + "%";
+    userMarker.style.left = left + "%";
+    userMarker.style.display = "flex";
+}
+
+function centralizarNoUsuario() {
+    const userMarker = document.getElementById("userLocation");
+    if (!userMarker || userMarker.style.display === "none") {
+        alert("Aguardando sinal de GPS ou permissão de localização...");
+        return;
+    }
+
+    const container = document.getElementById("mapaContainer");
+    const imgMapa = document.getElementById("imagemMapa");
+    
+    const topPct = parseFloat(userMarker.style.top) / 100;
+    const leftPct = parseFloat(userMarker.style.left) / 100;
+
+    const realWidth = imgMapa.naturalWidth * scale;
+    const realHeight = imgMapa.naturalHeight * scale;
+
+    pointX = (container.clientWidth / 2) - (realWidth * leftPct);
+    pointY = (container.clientHeight / 2) - (realHeight * topPct);
+
+    atualizarTransformacao();
+}
+
+// ==========================================
+// GESTOS E INICIALIZAÇÃO
+// ==========================================
+
 function inicializarGestos() {
     const container = document.getElementById("mapaContainer");
     if (!container) return;
@@ -257,4 +343,5 @@ function inicializarGestos() {
 document.addEventListener("DOMContentLoaded", () => {
     trocarMapa('reserva');
     inicializarGestos();
+    iniciarGeolocalizacao(); // Inicia o rastreamento GPS ao carregar
 });
