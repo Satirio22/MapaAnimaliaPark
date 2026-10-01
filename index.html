@@ -3,86 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Interativo - Animália Park</title>
+    <title>Mapa Animália Park</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { display: flex; flex-direction: column; height: 100vh; background: #0f0f0f; color: #fff; overflow: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { display: flex; flex-direction: column; height: 100vh; background: #121212; color: #fff; overflow: hidden; }
         
-        /* Cabeçalho Profissional em tons de Roxo */
-        header { background: linear-gradient(135deg, #4a148c, #7b1fa2); padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; z-index: 1001; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
-        .logo-area { font-size: 18px; font-weight: bold; color: #ffeb3b; letter-spacing: 1px; }
-        .filtros { display: flex; gap: 12px; }
-        header button { padding: 8px 20px; border: none; background: rgba(255,255,255,0.15); color: #fff; font-weight: bold; cursor: pointer; border-radius: 8px; font-size: 14px; transition: all 0.3s ease; }
-        header button:hover { background: rgba(255,255,255,0.25); }
-        header button.active { background: #ffeb3b; color: #121212; box-shadow: 0 2px 8px rgba(255,235,59,0.4); }
+        /* Cabeçalho roxo idêntico ao da imagem, com o logo ao centro e botões */
+        header { background: #4a148c; padding: 10px 15px; display: flex; flex-direction: column; align-items: center; gap: 10px; z-index: 1001; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+        .logo-container img { height: 35px; object-fit: contain; }
         
-        .main-container { display: flex; flex: 1; position: relative; overflow: hidden; }
+        .botoes-topo { display: flex; gap: 10px; width: 100%; justify-content: center; }
+        header button { padding: 8px 18px; border: none; background: #fff; color: #4a148c; font-weight: bold; cursor: pointer; border-radius: 20px; font-size: 13px; text-transform: uppercase; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        header button.active { background: #fff; color: #4a148c; border: 2px solid #ffeb3b; }
+        
+        .main-container { display: flex; flex: 1; position: relative; overflow: hidden; flex-direction: column; }
         
         /* Área do Mapa */
-        #mapa { flex: 1; height: 100%; background: #1a1a1a; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        
-        #imgParque {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            user-select: none;
-        }
+        #mapa { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; background: #1a1a1a; overflow: hidden; }
+        #imgParque { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        /* Legenda Lateral Estilizada */
-        aside { width: 300px; background: #181818; padding: 20px; overflow-y: auto; border-left: 1px solid #333; z-index: 1001; box-shadow: -4px 0 15px rgba(0,0,0,0.3); }
-        aside h3 { margin-bottom: 15px; color: #ffeb3b; font-size: 15px; border-bottom: 2px solid #333; padding-bottom: 8px; letter-spacing: 0.5px; }
-        aside ul { list-style: none; }
-        aside li { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 13px; color: #ccc; }
-        aside li img { width: 26px; height: 26px; object-fit: contain; }
+        /* Legenda Inferior estilo painel exato da imagem */
+        aside { background: #fff; color: #000; padding: 15px; border-top: 3px solid #4a148c; max-height: 200px; overflow-y: auto; z-index: 1001; }
+        aside h3 { margin-bottom: 8px; color: #4a148c; font-size: 14px; border-bottom: 2px solid #4a148c; padding-bottom: 4px; font-weight: bold; }
+        
+        .legenda-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 15px; }
+        .legenda-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #333; font-weight: 500; }
+        .legenda-item img { width: 20px; height: 20px; object-fit: contain; }
 
         /* Marcadores no Mapa */
         .ponto-marcador {
             position: absolute;
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             transform: translate(-50%, -50%);
             cursor: pointer;
             z-index: 10;
-            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .ponto-marcador:hover {
-            transform: translate(-50%, -50%) scale(1.25);
         }
         .ponto-marcador img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.8));
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
         }
 
-        /* Janela de Detalhes Dinâmica (Bottom Sheet) */
+        /* Janela Dinâmica ao Clicar */
         #janelaLocal {
             position: fixed;
             bottom: -100%;
             left: 0;
-            width: calc(100% - 300px);
+            width: 100%;
             background: #222;
-            padding: 25px;
-            transition: bottom 0.35s cubic-bezier(0.1, 0.9, 0.2, 1);
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
+            padding: 20px;
+            transition: bottom 0.3s ease-in-out;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
             z-index: 2000;
-            border-top: 4px solid #7b1fa2;
-            box-shadow: 0 -8px 25px rgba(0,0,0,0.6);
+            border-top: 3px solid #4a148c;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+            color: #fff;
         }
         #janelaLocal.ativa { bottom: 0; }
-        #janelaLocal h2 { color: #ffeb3b; margin-bottom: 6px; font-size: 20px; }
-        #janelaLocal p { color: #aaa; margin-bottom: 10px; font-size: 13px; font-weight: bold; text-transform: uppercase; }
-        #janelaLocal .descricao-local { color: #e0e0e0; font-size: 14px; margin-bottom: 15px; background: #2a2a2a; padding: 12px; border-radius: 8px; border-left: 3px solid #ffeb3b; line-height: 1.4; }
-        #janelaLocal button { background: #d32f2f; color: #fff; border: none; padding: 8px 22px; cursor: pointer; border-radius: 6px; font-weight: bold; font-size: 13px; transition: background 0.2s; }
-        #janelaLocal button:hover { background: #b71c1c; }
+        #janelaLocal h2 { color: #ffeb3b; margin-bottom: 5px; font-size: 16px; }
+        #janelaLocal p { color: #aaa; margin-bottom: 8px; font-size: 12px; }
+        #janelaLocal .descricao-local { color: #fff; font-size: 13px; margin-bottom: 12px; background: #2a2a2a; padding: 8px; border-radius: 6px; }
+        #janelaLocal button { background: #d32f2f; color: #fff; border: none; padding: 6px 16px; cursor: pointer; border-radius: 4px; font-weight: bold; font-size: 12px; }
     </style>
 </head>
 <body onclick="fecharAoClicarFora(event)">
 
+    <!-- Cabeçalho Exato com Logo e Botões -->
     <header>
-        <div class="logo-area">🐾 ANIMÁLIA PARK</div>
-        <div class="filtros">
+        <div class="logo-container">
+            <img src="icons/logo.png" alt="Animália Park">
+        </div>
+        <div class="botoes-topo">
             <button class="active" onclick="trocarMapa('reserva', this)">ANIMÁLIA RESERVA</button>
             <button onclick="trocarMapa('diversao', this)">ANIMÁLIA DIVERSÃO</button>
         </div>
@@ -94,17 +88,19 @@
             <div id="camadaMarcadores" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></div>
         </div>
         
-        <aside>
-            <h3>LEGENDA DO MAPA</h3>
-            <ul id="legendaLista"></ul>
+        <!-- Legenda Inferior idêntica à imagem -->
+        <aside onclick="event.stopPropagation()">
+            <h3>LEGENDA</h3>
+            <div id="legendaLista" class="legenda-grid"></div>
         </aside>
     </div>
 
+    <!-- Janela de Detalhes -->
     <div id="janelaLocal" onclick="event.stopPropagation()">
         <h2 id="nomeLocal"></h2>
         <p id="areaLocal"></p>
         <div id="descricaoLocal" class="descricao-local"></div>
-        <button onclick="fecharLocal()">Fechar Painel</button>
+        <button onclick="fecharLocal()">Fechar</button>
     </div>
 
     <script src="script.js"></script>
