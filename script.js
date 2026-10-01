@@ -110,7 +110,7 @@ function initMap() {
     groundOverlay = new google.maps.GroundOverlay(
         dadosPark.imagem,
         imageBounds,
-        { opacity: 0.7 }
+        { opacity: 0.0 }
     );
     groundOverlay.setMap(map);
 
