@@ -68,21 +68,13 @@ let startDistance = 0;
 let watchId = null;
 
 // ==========================================
-// CONFIGURAÇÃO DOS PONTOS REAIS DO PARQUE
+// REFERÊNCIA DE NORTE E SUL BASEADA NO GOOGLE MAPS
 // ==========================================
 const referenciaGPS = {
-    ponto1: { 
-        lat: -23.623376, 
-        lng: -46.969457, 
-        top: 27,   // Posição da Portaria no mapa ilustrativo
-        left: 48 
-    }, 
-    ponto2: { 
-        lat: -23.620848, 
-        lng: -46.965659, 
-        top: 80,   // Posição do ponto ao sul no mapa ilustrativo
-        left: 80 
-    }  
+    norte: { lat: -23.619842, lng: -46.967718, top: 0 },   // Topo da imagem (Norte)
+    sul:   { lat: -23.626357, lng: -46.967240, top: 100 }, // Fundo da imagem (Sul)
+    oeste: { lng: -46.9700 },                              // Limite Lado Esquerdo (0%)
+    leste: { lng: -46.9650 }                               // Limite Lado Direito (100%)
 };
 
 function atualizarTransformacao() {
@@ -214,7 +206,7 @@ function zoomOut() {
 }
 
 // ==========================================
-// GEOLOCALIZAÇÃO REAL PROPORCIONAL
+// CONVERSÃO DE GPS NORTE/SUL PARA O MAPA
 // ==========================================
 
 function iniciarGeolocalizacao() {
@@ -234,7 +226,6 @@ function iniciarGeolocalizacao() {
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
             
-            // Converte a coordenada real do GPS para a porcentagem proporcional da imagem
             const posMapa = converterGPStoMapa(lat, lng);
             atualizarPosicaoUsuarioNoMapa(posMapa.top, posMapa.left);
         },
@@ -246,16 +237,13 @@ function iniciarGeolocalizacao() {
 }
 
 function converterGPStoMapa(lat, lng) {
-    const latMin = referenciaGPS.ponto1.lat;
-    const latMax = referenciaGPS.ponto2.lat;
-    const lngMin = referenciaGPS.ponto1.lng;
-    const lngMax = referenciaGPS.ponto2.lng;
+    // Eixo Y: Posição vertical de Norte (0%) a Sul (100%)
+    const topPercent = ((lat - referenciaGPS.norte.lat) / (referenciaGPS.sul.lat - referenciaGPS.norte.lat)) * 100;
 
-    // Cálculo proporcional (Regra de três linear baseada nos pontos reais)
-    const topPercent = referenciaGPS.ponto1.top + ((lat - latMin) / (latMax - latMin)) * (referenciaGPS.ponto2.top - referenciaGPS.ponto1.top);
-    const leftPercent = referenciaGPS.ponto1.left + ((lng - lngMin) / (lngMax - lngMin)) * (referenciaGPS.ponto2.left - referenciaGPS.ponto1.left);
+    // Eixo X: Posição horizontal de Oeste (0%) a Leste (100%)
+    const leftPercent = ((lng - referenciaGPS.oeste.lng) / (referenciaGPS.leste.lng - referenciaGPS.oeste.lng)) * 100;
 
-    // Mantém o marcador dentro dos limites visíveis da imagem (0% a 100%)
+    // Garante que o marcador fica dentro dos limites do ecrã
     return { 
         top: Math.max(0, Math.min(100, topPercent)), 
         left: Math.max(0, Math.min(100, leftPercent)) 
