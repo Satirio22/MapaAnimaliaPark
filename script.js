@@ -19,7 +19,7 @@ const dadosPark = {
             { id: "AMBULATÓRIO", nome: "🚑 AMBULATÓRIO", area: "Ambulatório / Bombeiros Animália", desc: "Localizado na Vila Animália.", icone: "icons/ambulatorio.png", top: 26, left: 53 },
             { id: "quiosque-leao", nome: "QUIOSQUE LEÃO", area: "🍿 Café, Salgados e pipocas", desc: "Logo após o recinto do Leão.", icone: "icons/quiosque.png", top: 49, left: 41 },
             { id: "quiosque-sucuarana", nome: "QUIOSQUE SUÇUARANA", area: "🍿 Salgados e pipocas", desc: "Em frente ao recinto Suçuarana.", icone: "icons/quiosque.png", top: 64, left: 43 },
-            { id: "quiosque-tamandua", nome: "QUIOSQUE TAMANDUÁ", area: "🍿 Café, Salgados e pipocas", desc: "Localizado em frente ao recinto tamanduá.", icone: "icons/quiosque.png", top: 60, left: 56 },
+            { id: "quiosque-tamandua", nome: "QUIOSQUE TAMANDUÁ", area: "🍿 Café, Salgados e pipocas", desc: "Localizado in frente ao recinto tamanduá.", icone: "icons/quiosque.png", top: 60, left: 56 },
             { id: "quiosque-lobo-marinho", nome: "QUIOSQUE LOBO MARINHO", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", top: 80, left: 80 },
             { id: "quiosque-canguru", nome: "QUIOSQUE CANGURU", area: "🍿 Café, Salgados e pipocas.", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", top: 40, left: 74.5 },
             { id: "VILA ANIMALIA", nome: "VILA ANIMÁLIA", area: "Ambiente aconchegante para uma refeições e garantir uma lembrança", desc: "🚻Banheiro (Comum e Acessivel)<br>🧸Vila Adventure (Souvenier)<br>🧸Baby Zoo (Souvenier)<br>🥩Restaurante Savana (Carnes nobres)<br>🥤Shake do Bin (Sorvetes e Shakes)<br>☕Vila Cafeteria (Cafés e salgados)<br>🍔Hamburgueria da Vila (Burgues e bebidas)<br>🍕Selva de Sabores (Pizzas e Crespes)<br>🍝Vila Tratoria (Massas e Carnes)<br>🌭Hot Dog do Kiran (Hot Dog's)<br>🍨Cantinho da Girafa (Sorvetes e massas)<br>🚑Ambulatório (Saude e Bombeiros)<br>🚠Vila Estação. (Teleférico)<br>", icone: "icons/vila.png", top: 20, left: 53 },
@@ -68,13 +68,13 @@ let startDistance = 0;
 let watchId = null;
 
 // ==========================================
-// REFERÊNCIA DE NORTE E SUL BASEADA NO GOOGLE MAPS
+// CALIBRAÇÃO DIRETA COM OS PONTOS DO MAPAS
 // ==========================================
 const referenciaGPS = {
-    norte: { lat: -23.619842, lng: -46.967718, top: 0 },   // Topo da imagem (Norte)
-    sul:   { lat: -23.626357, lng: -46.967240, top: 100 }, // Fundo da imagem (Sul)
-    oeste: { lng: -46.9700 },                              // Limite Lado Esquerdo (0%)
-    leste: { lng: -46.9650 }                               // Limite Lado Direito (100%)
+    gpsNorte: { lat: -23.619842, lng: -46.967718 }, 
+    gpsSul:   { lat: -23.626357, lng: -46.967240 },
+    offsetTop: 0,
+    offsetLeft: 0
 };
 
 function atualizarTransformacao() {
@@ -206,7 +206,7 @@ function zoomOut() {
 }
 
 // ==========================================
-// CONVERSÃO DE GPS NORTE/SUL PARA O MAPA
+// GEOLOCALIZAÇÃO COM CORREÇÃO DE POSIÇÃO
 // ==========================================
 
 function iniciarGeolocalizacao() {
@@ -237,16 +237,22 @@ function iniciarGeolocalizacao() {
 }
 
 function converterGPStoMapa(lat, lng) {
-    // Eixo Y: Posição vertical de Norte (0%) a Sul (100%)
-    const topPercent = ((lat - referenciaGPS.norte.lat) / (referenciaGPS.sul.lat - referenciaGPS.norte.lat)) * 100;
+    const latNorte = referenciaGPS.gpsNorte.lat;
+    const latSul = referenciaGPS.gpsSul.lat;
+    const lngCentro = referenciaGPS.gpsNorte.lng;
 
-    // Eixo X: Posição horizontal de Oeste (0%) a Leste (100%)
-    const leftPercent = ((lng - referenciaGPS.oeste.lng) / (referenciaGPS.leste.lng - referenciaGPS.oeste.lng)) * 100;
+    // Alinhamento proporcional vertical (Norte a Sul)
+    let topPercent = ((lat - latNorte) / (latSul - latNorte)) * 100;
+    
+    // Alinhamento horizontal considerando o eixo central da imagem
+    let leftPercent = 50 + ((lng - lngCentro) * 3500); 
 
-    // Garante que o marcador fica dentro dos limites do ecrã
+    topPercent += referenciaGPS.offsetTop;
+    leftPercent += referenciaGPS.offsetLeft;
+
     return { 
-        top: Math.max(0, Math.min(100, topPercent)), 
-        left: Math.max(0, Math.min(100, leftPercent)) 
+        top: Math.max(2, Math.min(98, topPercent)), 
+        left: Math.max(2, Math.min(98, leftPercent)) 
     };
 }
 
