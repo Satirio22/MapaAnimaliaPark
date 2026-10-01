@@ -91,11 +91,10 @@ function initMap() {
         zoom: 17,
         center: centroInicial,
         mapTypeId: "roadmap",
-        disableDefaultUI: true, // Remove controles padrão para manter o seu design limpo
+        disableDefaultUI: true,
         zoomControl: false
     });
 
-    // Carrega o primeiro mapa (Reserva)
     carregarCategoriaMapa(categoriaAtual);
     iniciarGeolocalizacao();
 }
@@ -114,12 +113,10 @@ function carregarCategoriaMapa(categoria) {
     const mapaInfo = dadosPark[categoria];
     if (!mapaInfo) return;
 
-    // 1. Remove o overlay de imagem anterior se existir
     if (currentOverlay) {
         currentOverlay.setMap(null);
     }
 
-    // 2. Adiciona a nova imagem personalizada por cima do Google Maps
     currentOverlay = new google.maps.GroundOverlay(
         mapaInfo.imagem,
         mapaInfo.bounds,
@@ -127,11 +124,9 @@ function carregarCategoriaMapa(categoria) {
     );
     currentOverlay.setMap(map);
 
-    // 3. Limpa os marcadores antigos do mapa
     currentMarkers.forEach(marker => marker.setMap(null));
     currentMarkers = [];
 
-    // 4. Cria os novos marcadores (pins) da categoria
     mapaInfo.pontos.forEach(ponto => {
         const marker = new google.maps.Marker({
             position: { lat: ponto.lat, lng: ponto.lng },
@@ -139,7 +134,7 @@ function carregarCategoriaMapa(categoria) {
             title: ponto.nome,
             icon: {
                 url: ponto.icone,
-                scaledSize: new google.maps.Size(32, 32) // Padroniza o tamanho do ícone
+                scaledSize: new google.maps.Size(32, 32)
             }
         });
 
@@ -150,7 +145,6 @@ function carregarCategoriaMapa(categoria) {
         currentMarkers.push(marker);
     });
 
-    // 5. Atualiza a legenda lateral
     if (mapaInfo.legenda) {
         atualizarLegenda(mapaInfo.legenda);
     }
@@ -237,13 +231,12 @@ function iniciarGeolocalizacao() {
             const userLatLong = { lat: lat, lng: lng };
 
             if (!userMarker) {
-                // Cria o marcador de posição do usuário se não existir
                 userMarker = new google.maps.Marker({
                     position: userLatLong,
                     map: map,
                     title: "Você está aqui",
                     icon: {
-                        url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" // Marcador azul padrão do Google para o usuário
+                        url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
                     }
                 });
             } else {
