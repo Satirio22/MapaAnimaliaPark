@@ -2,16 +2,14 @@
 // DADOS DO ANIMÁLIA PARK & FILTROS
 // ==========================================
 const dadosPark = {
+    nome: "Animália Park",
     imagem: "mapa.zoo.png",
     bounds: {
-        north: -23.619567, // Ajuste o limite superior
-        south: -23.626406, // Ajuste o limite inferior
-        west: -46.970697,  // Ajuste o limite esquerdo
-        east: -46.961794    // Ajuste o limite direito
-    },  
-
-    // ... restante do código
-};
+        north: -23.619567, // Topo correto
+        south: -23.626406, // Base correta
+        west: -46.970697,  // Esquerda correta
+        east: -46.961794   // Direita correta
+    },
     legenda: [
         { img: "icons/estacionamento.png", texto: "Estacionamentos" },
         { img: "icons/wc.png", texto: "Banheiros (Comum / Acessível)" },
@@ -86,12 +84,15 @@ let marcadoresAtivos = [];
 // INICIALIZAÇÃO DO GOOGLE MAPS + OVERLAY
 // ==========================================
 function initMap() {
-    // CENTRO EXATO: Posiciona o mapa direto em cima do Animália Park (Estrada do Furquim)
-    const centroParque = { lat: -23.6305, lng: -47.0125 };
+    // CENTRO EXATO: Calculado exatamente no meio dos seus 4 limites para abrir direto no parque
+    const centroParque = { 
+        lat: (dadosPark.bounds.north + dadosPark.bounds.south) / 2, 
+        lng: (dadosPark.bounds.west + dadosPark.bounds.east) / 2 
+    };
  
     map = new google.maps.Map(document.getElementById("mapaGoogle"), {
         center: centroParque,
-        zoom: 16, // Zoom ideal para ver o parque inteiro detalhado
+        zoom: 16, 
         mapTypeId: 'hybrid',
         disableDefaultUI: true,
         zoomControl: false,
@@ -106,8 +107,6 @@ function initMap() {
         east: dadosPark.bounds.east
     };
 
-    // OPACIDADE EM 0.6: Mantém semi-transparente para você conferir se os prédios encaixaram.
-    // Assim que estiver perfeito, mude de 0.6 para 0.95 ou 1.
     groundOverlay = new google.maps.GroundOverlay(
         dadosPark.imagem,
         imageBounds,
@@ -203,7 +202,11 @@ function zoomOut() {
 }
 
 function resetZoom() {
-    map.setCenter({ lat: -23.609500, lng: -46.907000 });
+    const centroParque = { 
+        lat: (dadosPark.bounds.north + dadosPark.bounds.south) / 2, 
+        lng: (dadosPark.bounds.west + dadosPark.bounds.east) / 2 
+    };
+    map.setCenter(centroParque);
     map.setZoom(16);
 }
 
