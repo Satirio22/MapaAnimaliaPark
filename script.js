@@ -1,4 +1,3 @@
-// DADOS DOS MAPAS, SEUS PONTOS E LEGENDAS
 const dadosPark = {
     reserva: {
         imagem: "mapa.zoo.png",
@@ -24,7 +23,7 @@ const dadosPark = {
             { id: "quiosque-lobo-marinho", nome: "QUIOSQUE LOBO MARINHO", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", top: 80, left: 80 },
             { id: "quiosque-canguru", nome: "QUIOSQUE CANGURU", area: "🍿 Café, Salgados e pipocas.", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", top: 40, left: 74.5 },
             { id: "VILA ANIMALIA", nome: "VILA ANIMÁLIA", area: "Ambiente aconchegante para uma refeições e garantir uma lembrança", desc: "🚻Banheiro (Comum e Acessivel)<br>🧸Vila Adventure (Souvenier)<br>🧸Baby Zoo (Souvenier)<br>🥩Restaurante Savana (Carnes nobres)<br>🥤Shake do Bin (Sorvetes e Shakes)<br>☕Vila Cafeteria (Cafés e salgados)<br>🍔Hamburgueria da Vila (Burgues e bebidas)<br>🍕Selva de Sabores (Pizzas e Crespes)<br>🍝Vila Tratoria (Massas e Carnes)<br>🌭Hot Dog do Kiran (Hot Dog's)<br>🍨Cantinho da Girafa (Sorvetes e massas)<br>🚑Ambulatório (Saude e Bombeiros)<br>🚠Vila Estação. (Teleférico)<br>", icone: "icons/vila.png", top: 20, left: 53 },
-            { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "🔁Entrada/Saida<br>🚻Banheiro (Comum e Acessivel)<br>🧑‍‍💻SAV (Serviço de Atendimento ao Visitante)<br>☕Cafeteria (Cafés e salgados)<br>🧸Animalia Adventure (Souvenier)<br>📸Fotografica (Retirada de Fotos)<br>", icone: "icons/recepçao.png", top: 27, left: 48 },
+            { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "🔁Entrada/Saida<br>🚻Banheiro (Comum e Acessivel)<br>🧑‍💻SAV (Serviço de Atendimento ao Visitante)<br>☕Cafeteria (Cafés e salgados)<br>🧸Animalia Adventure (Souvenier)<br>📸Fotografica (Retirada de Fotos)<br>", icone: "icons/recepçao.png", top: 27, left: 48 },
             { id: "FOOD PARK", nome: "FOOD PARK", area: "Natureza e uma boa alimentação", desc: "🚻Banheiro (Comum e Acessivel)<br>🍖Espetaria/Linguiçaria<br>🍗Chicken & Fries<br>🥟Pastelaria<br>🍜Yakissoba<br>", icone: "icons/food-park.png", top: 60.5, left: 70.5 },
             { id: "AVIÁRIO", nome: "AVIÁRIO", area: "Um dos Maiores Aviarios da America Latina", desc: "🚻Banheiro (Comum e Acessivel)<br>☕Cafá Caverna (Cafés e salgados)<br>🪿Aviário (Passaros e Natureza)<br>", icone: "icons/Aviario.png", top: 60, left: 33 },
             { id: "RESTAURANTE CENTRAL", nome: "RESTAURANTE CENTRAL", area: "Buffet a Vontade", desc: "🚻Banheiro (Comum e Acessivel)<br> 🍽️Restaurante Baboá (Buffet por Pessoa)<br> 🦋Jardim das Borboletas (Area de Descanso)<br>", icone: "icons/rest.central.png", top: 45.5, left: 55.5 },
@@ -129,8 +128,9 @@ function resetZoom() {
 
     const scaleX = containerWidth / realWidth;
     const scaleY = containerHeight / realHeight;
-    // Usa Math.max para preencher todo o container sem sobras escuras laterais desproporcionais
-    scale = Math.max(scaleX, scaleY);
+    
+    // Retornado para Math.min para garantir que a imagem caiba inteira sem sumir
+    scale = Math.min(scaleX, scaleY);
 
     pointX = (containerWidth - realWidth * scale) / 2;
     pointY = (containerHeight - realHeight * scale) / 2;
@@ -197,7 +197,7 @@ function zoomOut() {
 }
 
 // ==========================================
-// GEOLOCALIZAÇÃO SEGURA (CENTRALIZADA NO MAPA)
+// GEOLOCALIZAÇÃO SEGURA
 // ==========================================
 
 function iniciarGeolocalizacao() {
@@ -214,13 +214,8 @@ function iniciarGeolocalizacao() {
 
     watchId = navigator.geolocation.watchPosition(
         (position) => {
-            // Como as coordenadas reais de GPS precisam de calibração fina com a imagem ilustrativa,
-            // garantimos inicialmente que o marcador fique visível e centrado no meio do mapa (ex: 50%, 50%)
-            // até que você insira os pontos reais de referência do parque.
-            const topPercent = 50; 
-            const leftPercent = 50;
-            
-            atualizarPosicaoUsuarioNoMapa(topPercent, leftPercent);
+            // Posiciona o marcador de forma segura no centro do mapa inicialmente
+            atualizarPosicaoUsuarioNoMapa(50, 50);
         },
         (error) => {
             console.warn(`Erro de geolocalização (${error.code}): ${error.message}`);
@@ -322,14 +317,6 @@ function inicializarGestos() {
         isDragging = false;
     });
 
-    window.addEventListener("resize", resetZoom);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    trocarMapa('reserva');
-    inicializarGestos();
-    iniciarGeolocalizacao();
-});
     window.addEventListener("resize", resetZoom);
 }
 
