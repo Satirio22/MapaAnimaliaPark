@@ -50,7 +50,7 @@ const dadosPark = {
         pontos: [
             { id: "quiosque-splash", nome: "QUIÓSQUE SPLASH", area: "🍿 Café, Salgados e pipocas", desc: "Localizado próximo ao vulcão.", icone: "icons/quiosque.png", top: 41, left: 15 },
             { id: "quiosque-viking", nome: "QUIÓSQUE VIKING", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na entrada do Outdoor.", icone: "icons/quiosque.png", top: 40, left: 35 },
-            { id: "animalia diversão", nome: "🎡ANIMALIA DIVERSÃO", area: "Atrações Magicas e divertidas!", desc: "🚻Banheiro (Comum e Acessivel)<br> 🐸Vitoria Regia<br>🛩️️Eagle Flight (Aviãozinho)<br>🎈Balão Mexicano<br>👒Forte Apache (Trenzinho)<br>🦘Kanguroo Joy<br>🦒Giraffe Cool<br>🎠Bella Giostra (Carrosel)<br>🩻Joe Caveira<br>🧗Kite Dragon<br>🍭Mundo Doce<br>⛵Rise of Rome<br>🥶Bear Mountain<br>🏎️Big Chock (bate-bate)<br>🧩Cantinho do Silencio (Para Pessoas neurodivergentes)<br>", icone: "icons/div.png", top: 48, left: 45 },
+            { id: "animalia diversão", nome: "🎡ANIMALIA DIVERSÃO", area: "Atrações Magicas e divertidas!", desc: "🚻Banheiro (Comum e Acessivel)<br> 🐸Vitoria Regia<br>🛩️Eagle Flight (Aviãozinho)<br>🎈Balão Mexicano<br>👒Forte Apache (Trenzinho)<br>🦘Kanguroo Joy<br>🦒Giraffe Cool<br>🎠Bella Giostra (Carrosel)<br>🩻Joe Caveira<br>🧗Kite Dragon<br>🍭Mundo Doce<br>⛵Rise of Rome<br>🥶Bear Mountain<br>🏎️Big Chock (bate-bate)<br>🧩Cantinho do Silencio (Para Pessoas neurodivergentes)<br>", icone: "icons/div.png", top: 48, left: 45 },
             { id: "DIVERSAO AVENTURA", nome: "🎢 ANIMALIA AVENTURA", area: "Atrações Radicaaaaais!", desc: "🚻Banheiro (Comum e Acessivel)<br> ⛵Barco Viking (Aqui tem que gritar)<br>💧Splash (Aguaaaa)<br>🥶Cyber Hawk (De ponta cabeça)<br>🎢Cyclone (Intensidade e aventura)<br>🐀Big Air Coaster (Essa é leve)<br>🔫Aqua Combat (Combate aquatico)<br>", icone: "icons/div.png", top: 30, left: 25 },
             { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "🔁Entrada/Saida<br>🚻Banheiro (Comum e Acessivel)<br>🧑‍💻SAV (Serviço de Atendimento ao Visitante)<br>☕Cafeteria (Cafés e salgados)<br>🧸Animalia Adventure (Souvenier)<br>📸Fotografica (Retirada de Fotos)<br>", icone: "icons/recepçao.png", top: 11, left: 53 },
             { id: "VILA ANIMALIA", nome: "VILA ANIMÁLIA", area: "Ambiente aconchegante para uma refeições e garantir uma lembrança", desc: "🚻Banheiro (Comum e Acessivel)<br>🧸Vila Adventure (Souvenier)<br>🧸Baby Zoo (Souvenier)<br>🥩Restaurante Savana (Carnes nobres)<br>🥤Shake do Bin (Sorvetes e Shakes)<br>☕Vila Cafeteria (Cafés e salgados)<br>🍔Hamburgueria da Vila (Burgues e bebidas)<br>🍕Selva de Sabores (Pizzas e Crespes)<br>🍝Vila Tratoria (Massas e Carnes)<br>🌭Hot Dog do Kiran (Hot Dog's)<br>🍨Cantinho da Girafa (Sorvetes e massas)<br>🚑Ambulatório (Saude e Bombeiros)<br>🚠Vila Estação. (Teleférico)<br>", icone: "icons/vila.png", top: 5, left: 42 },
@@ -67,10 +67,9 @@ let startY = 0;
 let isDragging = false;
 let startDistance = 0;
 
-// Variáveis para geolocalização
 let watchId = null;
 
-// Pontos de referência para calibrar o GPS com o mapa ilustrativo (Ajustaremos depois com base em localizações reais)
+// Pontos de referência para conversão de GPS para o mapa
 const referenciaGPS = {
     ponto1: { lat: -23.6000, lng: -46.9000, top: 27, left: 48 }, 
     ponto2: { lat: -23.6100, lng: -46.9100, top: 80, left: 80 }  
@@ -204,12 +203,12 @@ function zoomOut() {
 }
 
 // ==========================================
-// FUNÇÕES DE GEOLOCALIZAÇÃO
+// GEOLOCALIZAÇÃO CORRIGIDA
 // ==========================================
 
 function iniciarGeolocalizacao() {
     if (!("geolocation" in navigator)) {
-        console.warn("Geolocalização não suportada por este navegador.");
+        console.warn("Geolocalização não suportada.");
         return;
     }
 
@@ -243,7 +242,11 @@ function converterGPStoMapa(lat, lng) {
     const topPercent = referenciaGPS.ponto1.top + ((lat - latMin) / (latMax - latMin)) * (referenciaGPS.ponto2.top - referenciaGPS.ponto1.top);
     const leftPercent = referenciaGPS.ponto1.left + ((lng - lngMin) / (lngMax - lngMin)) * (referenciaGPS.ponto2.left - referenciaGPS.ponto1.left);
 
-    return { top: topPercent, left: leftPercent };
+    // Garante limites seguros dentro do mapa (0% a 100%)
+    return { 
+        top: Math.max(0, Math.min(100, topPercent)), 
+        left: Math.max(0, Math.min(100, leftPercent)) 
+    };
 }
 
 function atualizarPosicaoUsuarioNoMapa(top, left) {
@@ -265,6 +268,8 @@ function centralizarNoUsuario() {
     const container = document.getElementById("mapaContainer");
     const imgMapa = document.getElementById("imagemMapa");
     
+    if (!imgMapa || imgMapa.naturalWidth === 0) return;
+
     const topPct = parseFloat(userMarker.style.top) / 100;
     const leftPct = parseFloat(userMarker.style.left) / 100;
 
@@ -343,5 +348,5 @@ function inicializarGestos() {
 document.addEventListener("DOMContentLoaded", () => {
     trocarMapa('reserva');
     inicializarGestos();
-    iniciarGeolocalizacao(); // Inicia o rastreamento GPS ao carregar
+    iniciarGeolocalizacao();
 });
