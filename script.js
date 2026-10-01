@@ -8,7 +8,7 @@ const dadosPark = {
     bounds: {
         north: -23.593000,
         south: -23.620000,
-        west: -46.915000,
+        west: -46.920000,
         east: -46.895000
     },
     legenda: [
