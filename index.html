@@ -8,31 +8,30 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
         body { display: flex; flex-direction: column; height: 100vh; background: #121212; color: #fff; overflow: hidden; }
         
-        /* Cabeçalho com as cores corretas */
-        header { background: #512da8; padding: 12px; display: flex; justify-content: center; gap: 15px; z-index: 1001; border-bottom: 2px solid #311b92; }
-        header button { padding: 8px 25px; border: none; background: #fff; color: #512da8; font-weight: bold; cursor: pointer; border-radius: 6px; font-size: 14px; transition: 0.2s; }
-        header button.active { background: #ffeb3b; color: #000; }
+        /* Cabeçalho original roxo com os botões das abas */
+        header { background: #6a0dad; padding: 12px; display: flex; justify-content: center; gap: 15px; z-index: 1001; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        header button { padding: 8px 22px; border: none; background: #fff; color: #6a0dad; font-weight: bold; cursor: pointer; border-radius: 6px; font-size: 14px; }
+        header button.active { background: #ffcc00; color: #000; }
         
         .main-container { display: flex; flex: 1; position: relative; overflow: hidden; }
         
-        /* Área do Mapa limpa, focada exclusivamente na imagem correta do parque */
-        #mapa { flex: 1; height: 100%; background: #000; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        /* Área do mapa central */
+        #mapa { flex: 1; height: 100%; background: #000; position: relative; display: flex; align-items: center; justify-content: center; }
         
         #imgParque {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            cursor: grab;
         }
 
-        /* Legenda lateral */
-        aside { width: 300px; background: #1e1e1e; padding: 15px; overflow-y: auto; border-left: 2px solid #333; z-index: 1001; }
-        aside h3 { margin-bottom: 12px; color: #ffeb3b; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        /* Legenda Lateral */
+        aside { width: 280px; background: #1e1e1e; padding: 15px; overflow-y: auto; border-left: 2px solid #333; z-index: 1001; }
+        aside h3 { margin-bottom: 12px; color: #ffcc00; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 6px; }
         aside ul { list-style: none; }
         aside li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; }
-        aside li img { width: 24px; height: 24px; object-fit: contain; }
+        aside li img { width: 22px; height: 22px; object-fit: contain; }
 
-        /* Marcadores interativos sobre a imagem do mapa */
+        /* Camada de marcadores interativos sobre o mapa */
         .ponto-marcador {
             position: absolute;
             width: 32px;
@@ -40,43 +39,40 @@
             transform: translate(-50%, -50%);
             cursor: pointer;
             z-index: 10;
-            transition: transform 0.2s;
-        }
-        .ponto-marcador:hover {
-            transform: translate(-50%, -50%) scale(1.2);
         }
         .ponto-marcador img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.8));
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.7));
         }
 
-        /* Layout Dinâmico (Painel / Janela de Informações) */
+        /* Janela / Bottom Sheet Dinâmica original */
         #janelaLocal {
             position: fixed;
             bottom: -100%;
             left: 0;
-            width: calc(100% - 300px);
-            background: #212121;
-            padding: 25px;
+            width: calc(100% - 280px);
+            background: #222;
+            padding: 20px;
             transition: bottom 0.3s ease-in-out;
-            border-top-left-radius: 16px;
-            border-top-right-radius: 16px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
             z-index: 2000;
-            border-top: 3px solid #512da8;
-            box-shadow: 0px -5px 20px rgba(0,0,0,0.5);
+            border-top: 2px solid #6a0dad;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
         }
         #janelaLocal.ativa { bottom: 0; }
-        #janelaLocal h2 { color: #ffeb3b; margin-bottom: 8px; font-size: 20px; }
-        #janelaLocal p { color: #ccc; font-size: 14px; margin-bottom: 8px; }
-        #janelaLocal .descricao { color: #fff; font-size: 15px; margin-bottom: 15px; background: #2c2c2c; padding: 10px; border-radius: 6px; }
-        #janelaLocal button { background: #e53935; color: #fff; border: none; padding: 8px 20px; cursor: pointer; border-radius: 4px; font-weight: bold; }
-        #janelaLocal button:hover { background: #c62828; }
+        #janelaLocal h2 { color: #ffcc00; margin-bottom: 5px; font-size: 18px; }
+        #janelaLocal p { color: #aaa; margin-bottom: 8px; font-size: 13px; }
+        #janelaLocal .descricao-local { color: #fff; font-size: 14px; margin-bottom: 12px; background: #2a2a2a; padding: 10px; border-radius: 6px; }
+        #janelaLocal button { background: #ff4444; color: #fff; border: none; padding: 6px 16px; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        #janelaLocal button:hover { background: #cc0000; }
     </style>
 </head>
 <body onclick="fecharAoClicarFora(event)">
 
+    <!-- Cabeçalho Roxo Original com as Abas -->
     <header class="filtros">
         <button class="active" onclick="trocarMapa('reserva', this)">ANIMÁLIA RESERVA</button>
         <button onclick="trocarMapa('diversao', this)">ANIMÁLIA DIVERSÃO</button>
@@ -84,22 +80,23 @@
 
     <div class="main-container">
         <div id="mapa" onclick="event.stopPropagation()">
-            <!-- Imagem e pontos gerados dinamicamente via script -->
+            <!-- Imagem do mapa do parque -->
             <img id="imgParque" src="" alt="Mapa do Parque">
             <div id="camadaMarcadores" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></div>
         </div>
         
+        <!-- Legenda Lateral Original -->
         <aside>
             <h3>LEGENDA</h3>
             <ul id="legendaLista"></ul>
         </aside>
     </div>
 
-    <!-- Layout dinâmico inferior para abrir os detalhes -->
+    <!-- Janela Dinâmica Inferior Original -->
     <div id="janelaLocal" onclick="event.stopPropagation()">
         <h2 id="nomeLocal"></h2>
         <p id="areaLocal"></p>
-        <div id="descricaoLocal" class="descricao"></div>
+        <div id="descricaoLocal" class="descricao-local"></div>
         <button onclick="fecharLocal()">Fechar</button>
     </div>
 
