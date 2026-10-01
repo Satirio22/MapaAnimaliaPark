@@ -68,13 +68,21 @@ let startDistance = 0;
 let watchId = null;
 
 // ==========================================
-// CONFIGURAÇÃO DE REFERÊNCIA GPS PARA O MAPA
+// CONFIGURAÇÃO DOS PONTOS REAIS DO PARQUE
 // ==========================================
-// Aqui definimos dois pontos do parque para traduzir a Latitude/Longitude real 
-// nas porcentagens (top e left) da sua imagem ilustrativa.
 const referenciaGPS = {
-    ponto1: { lat: -23.6000, lng: -46.9000, top: 27, left: 48 }, // Ex: Recepção
-    ponto2: { lat: -23.6100, lng: -46.9100, top: 80, left: 80 }  // Ex: Ponto no fundo do parque
+    ponto1: { 
+        lat: -23.623376, 
+        lng: -46.969457, 
+        top: 27,   // Posição da Portaria no mapa ilustrativo
+        left: 48 
+    }, 
+    ponto2: { 
+        lat: -23.620848, 
+        lng: -46.965659, 
+        top: 80,   // Posição do ponto ao sul no mapa ilustrativo
+        left: 80 
+    }  
 };
 
 function atualizarTransformacao() {
@@ -206,7 +214,7 @@ function zoomOut() {
 }
 
 // ==========================================
-// GEOLOCALIZAÇÃO COM CÁLCULO PROPORCIONAL
+// GEOLOCALIZAÇÃO REAL PROPORCIONAL
 // ==========================================
 
 function iniciarGeolocalizacao() {
@@ -243,14 +251,14 @@ function converterGPStoMapa(lat, lng) {
     const lngMin = referenciaGPS.ponto1.lng;
     const lngMax = referenciaGPS.ponto2.lng;
 
-    // Cálculo proporcional (Regra de três linear)
+    // Cálculo proporcional (Regra de três linear baseada nos pontos reais)
     const topPercent = referenciaGPS.ponto1.top + ((lat - latMin) / (latMax - latMin)) * (referenciaGPS.ponto2.top - referenciaGPS.ponto1.top);
     const leftPercent = referenciaGPS.ponto1.left + ((lng - lngMin) / (lngMax - lngMin)) * (referenciaGPS.ponto2.left - referenciaGPS.ponto1.left);
 
-    // Se estiver fora da área mapeada, trava nos limites (0% a 100%) para não sumir da tela
+    // Mantém o marcador dentro dos limites visíveis da imagem (0% a 100%)
     return { 
-        top: Math.max(5, Math.min(95, topPercent)), 
-        left: Math.max(5, Math.min(95, leftPercent)) 
+        top: Math.max(0, Math.min(100, topPercent)), 
+        left: Math.max(0, Math.min(100, leftPercent)) 
     };
 }
 
