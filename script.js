@@ -4,13 +4,15 @@
 const dadosPark = {
     nome: "Animália Park",
     imagem: "mapa.zoo.png",
-// Coordenadas ajustadas e calibradas para o Animália Park
+    // Coordenadas ajustadas para expandir o tamanho e encaixar perfeitamente no satélite
     bounds: {
-        north: -23.618000,
-        south: -23.626500,
-        west: -46.973000,
-        east: -46.963500
+        north: -23.611500, // Topo do parque
+        south: -23.623500, // Base do parque
+        west: -46.974000,  // Limite esquerdo
+        east: -46.960500   // Limite direito
     },
+    // ... (o restante da legenda e pontos continua igual embaixo)
+};
     legenda: [
         { img: "icons/estacionamento.png", texto: "Estacionamentos" },
         { img: "icons/wc.png", texto: "Banheiros (Comum / Acessível)" },
@@ -85,21 +87,18 @@ let marcadoresAtivos = [];
 // INICIALIZAÇÃO DO GOOGLE MAPS + OVERLAY
 // ==========================================
 function initMap() {
-    // 1. Centro aproximado do parque em Cotia/SP
-    const centroParque = { lat: -23.6025, lng: -46.9050 };
+    const centroParque = { lat: -23.617500, lng: -46.967200 };
 
-    // 2. Cria o mapa do Google Maps em modo Satélite/Híbrido
     map = new google.maps.Map(document.getElementById("mapaGoogle"), {
         center: centroParque,
         zoom: 16,
-        mapTypeId: 'hybrid', // Híbrido mostra estradas/satélite base
-        disableDefaultUI: true, // Remove controles padrão para manter limpo
+        mapTypeId: 'hybrid',
+        disableDefaultUI: true,
         zoomControl: false,
         streetViewControl: false,
         mapTypeControl: false
     });
 
-    // 3. Sobrepõe a imagem personalizada do Animália Park (GroundOverlay)
     const imageBounds = {
         north: dadosPark.bounds.north,
         south: dadosPark.bounds.south,
@@ -107,17 +106,17 @@ function initMap() {
         east: dadosPark.bounds.east
     };
 
+    // OPACIDADE EM 0.6: Deixa a imagem semi-transparente para você ajustar o encaixe
+    // Quando estiver perfeito, você pode mudar para 0.95 ou 1.
     groundOverlay = new google.maps.GroundOverlay(
         dadosPark.imagem,
         imageBounds,
-        { opacity: 0.95 } // Transparência leve para fundir com o satélite se necessário
+        { opacity: 0.6 } 
     );
     groundOverlay.setMap(map);
 
-    // 4. Carrega todos os pontos inicialmente
     carregarPontosNoMapa();
     atualizarLegenda(dadosPark.legenda);
-}
 
 // ==========================================
 // GERENCIAMENTO DE PONTOS E FILTROS
