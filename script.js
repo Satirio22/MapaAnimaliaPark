@@ -4,11 +4,12 @@
 const dadosPark = {
     imagem: "mapa.zoo.png",
     bounds: {
-        north: -23.6250, // Ajuste o limite superior
-        south: -23.6360, // Ajuste o limite inferior
-        west: -47.0200,  // Ajuste o limite esquerdo
-        east: -47.0050   // Ajuste o limite direito
-    },
+        north: -23.619567, // Ajuste o limite superior
+        south: -23.626406, // Ajuste o limite inferior
+        west: -46.970697,  // Ajuste o limite esquerdo
+        east: -46.961794    // Ajuste o limite direito
+    },  
+
     // ... restante do código
 };
     legenda: [
