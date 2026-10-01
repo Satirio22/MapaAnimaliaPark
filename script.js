@@ -68,13 +68,11 @@ let startDistance = 0;
 let watchId = null;
 
 // ==========================================
-// CALIBRAÇÃO DIRETA COM OS PONTOS DO MAPAS
+// CALIBRAÇÃO AFIM DINÂMICA (ACOMPANHAMENTO EM TEMPO REAL)
 // ==========================================
 const referenciaGPS = {
-    gpsNorte: { lat: -23.619842, lng: -46.967718 }, 
-    gpsSul:   { lat: -23.626357, lng: -46.967240 },
-    offsetTop: 0,
-    offsetLeft: 0
+    norte: { lat: -23.619842, lng: -46.967718, top: 0, left: 48 },   // Ponto exato da portaria no mapa
+    sul:   { lat: -23.626357, lng: -46.967240, top: 100, left: 46 }  // Ponto exato do fundo no mapa
 };
 
 function atualizarTransformacao() {
@@ -206,7 +204,7 @@ function zoomOut() {
 }
 
 // ==========================================
-// GEOLOCALIZAÇÃO COM CORREÇÃO DE POSIÇÃO
+// RASTREAMENTO GPS DINÂMICO EM TEMPO REAL
 // ==========================================
 
 function iniciarGeolocalizacao() {
@@ -237,22 +235,19 @@ function iniciarGeolocalizacao() {
 }
 
 function converterGPStoMapa(lat, lng) {
-    const latNorte = referenciaGPS.gpsNorte.lat;
-    const latSul = referenciaGPS.gpsSul.lat;
-    const lngCentro = referenciaGPS.gpsNorte.lng;
-
-    // Alinhamento proporcional vertical (Norte a Sul)
-    let topPercent = ((lat - latNorte) / (latSul - latNorte)) * 100;
+    const dLatTotal = referenciaGPS.sul.lat - referenciaGPS.norte.lat;
+    const dTopTotal = referenciaGPS.sul.top - referenciaGPS.norte.top;
     
-    // Alinhamento horizontal considerando o eixo central da imagem
-    let leftPercent = 50 + ((lng - lngCentro) * 3500); 
+    // Proporção de movimento vertical (andando para frente/trás no parque)
+    let topPercent = referenciaGPS.norte.top + ((lat - referenciaGPS.norte.lat) / dLatTotal) * dTopTotal;
 
-    topPercent += referenciaGPS.offsetTop;
-    leftPercent += referenciaGPS.offsetLeft;
+    // Proporção de movimento horizontal integrada com correção de desvio lateral dinâmico
+    const dLngTotal = -0.0005; // Fator de ajuste para a largura real do terreno no Maps
+    let leftPercent = referenciaGPS.norte.left + ((lng - referenciaGPS.norte.lng) / dLngTotal) * 15;
 
     return { 
-        top: Math.max(2, Math.min(98, topPercent)), 
-        left: Math.max(2, Math.min(98, leftPercent)) 
+        top: Math.max(0, Math.min(100, topPercent)), 
+        left: Math.max(0, Math.min(100, leftPercent)) 
     };
 }
 
