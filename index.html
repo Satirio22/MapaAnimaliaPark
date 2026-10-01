@@ -2,105 +2,66 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mapa Animália Park</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-        body { display: flex; flex-direction: column; height: 100vh; background: #121212; color: #fff; overflow: hidden; }
-        
-        /* Cabeçalho roxo idêntico ao da imagem, com o logo ao centro e botões */
-        header { background: #4a148c; padding: 10px 15px; display: flex; flex-direction: column; align-items: center; gap: 10px; z-index: 1001; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
-        .logo-container img { height: 35px; object-fit: contain; }
-        
-        .botoes-topo { display: flex; gap: 10px; width: 100%; justify-content: center; }
-        header button { padding: 8px 18px; border: none; background: #fff; color: #4a148c; font-weight: bold; cursor: pointer; border-radius: 20px; font-size: 13px; text-transform: uppercase; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-        header button.active { background: #fff; color: #4a148c; border: 2px solid #ffeb3b; }
-        
-        .main-container { display: flex; flex: 1; position: relative; overflow: hidden; flex-direction: column; }
-        
-        /* Área do Mapa */
-        #mapa { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; background: #1a1a1a; overflow: hidden; }
-        #imgParque { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-        /* Legenda Inferior estilo painel exato da imagem */
-        aside { background: #fff; color: #000; padding: 15px; border-top: 3px solid #4a148c; max-height: 200px; overflow-y: auto; z-index: 1001; }
-        aside h3 { margin-bottom: 8px; color: #4a148c; font-size: 14px; border-bottom: 2px solid #4a148c; padding-bottom: 4px; font-weight: bold; }
-        
-        .legenda-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 15px; }
-        .legenda-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #333; font-weight: 500; }
-        .legenda-item img { width: 20px; height: 20px; object-fit: contain; }
-
-        /* Marcadores no Mapa */
-        .ponto-marcador {
-            position: absolute;
-            width: 34px;
-            height: 34px;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            z-index: 10;
-        }
-        .ponto-marcador img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
-        }
-
-        /* Janela Dinâmica ao Clicar */
-        #janelaLocal {
-            position: fixed;
-            bottom: -100%;
-            left: 0;
-            width: 100%;
-            background: #222;
-            padding: 20px;
-            transition: bottom 0.3s ease-in-out;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            z-index: 2000;
-            border-top: 3px solid #4a148c;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
-            color: #fff;
-        }
-        #janelaLocal.ativa { bottom: 0; }
-        #janelaLocal h2 { color: #ffeb3b; margin-bottom: 5px; font-size: 16px; }
-        #janelaLocal p { color: #aaa; margin-bottom: 8px; font-size: 12px; }
-        #janelaLocal .descricao-local { color: #fff; font-size: 13px; margin-bottom: 12px; background: #2a2a2a; padding: 8px; border-radius: 6px; }
-        #janelaLocal button { background: #d32f2f; color: #fff; border: none; padding: 6px 16px; cursor: pointer; border-radius: 4px; font-weight: bold; font-size: 12px; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body onclick="fecharAoClicarFora(event)">
+<body>
 
-    <!-- Cabeçalho Exato com Logo e Botões -->
-    <header>
+    <!-- CABEÇALHO ROXO FIXO NO TOPO -->
+    <header class="header-animalia">
         <div class="logo-container">
-            <img src="icons/logo.png" alt="Animália Park">
+            <img src="logo-animalia.png" alt="Animália Park Logo" class="logo-central">
         </div>
-        <div class="botoes-topo">
-            <button class="active" onclick="trocarMapa('reserva', this)">ANIMÁLIA RESERVA</button>
-            <button onclick="trocarMapa('diversao', this)">ANIMÁLIA DIVERSÃO</button>
-        </div>
+        
+        <nav class="filtros">
+            <button class="btn-filtro active" onclick="trocarMapa('reserva', this)">Animália Reserva</button>
+            <button class="btn-filtro" onclick="trocarMapa('diversao', this)">Animália Diversão</button>
+        </nav>
     </header>
 
-    <div class="main-container">
-        <div id="mapa" onclick="event.stopPropagation()">
-            <img id="imgParque" src="" alt="Mapa do Parque">
-            <div id="camadaMarcadores" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></div>
-        </div>
-        
-        <!-- Legenda Inferior idêntica à imagem -->
-        <aside onclick="event.stopPropagation()">
-            <h3>LEGENDA</h3>
-            <div id="legendaLista" class="legenda-grid"></div>
-        </aside>
-    </div>
+    <!-- LAYOUT PRINCIPAL (MAPA + LEGENDA) -->
+    <main class="layout-principal">
+        <!-- ÁREA DO MAPA -->
+        <div id="mapaContainer" class="mapa-container">
+            <div id="mapa" class="mapa">
+                <img id="imagemMapa" src="mapa.zoo.png" alt="Mapa do Parque">
+                <div id="camadaPontos"></div>
+                
+                <!-- ÍCONE DA POSIÇÃO DO USUÁRIO -->
+                <div id="userLocation" class="user-marker" style="display: none;">
+                    <div class="pulsar"></div>
+                    📍
+                </div>
+            </div>
 
-    <!-- Janela de Detalhes -->
-    <div id="janelaLocal" onclick="event.stopPropagation()">
-        <h2 id="nomeLocal"></h2>
-        <p id="areaLocal"></p>
-        <div id="descricaoLocal" class="descricao-local"></div>
-        <button onclick="fecharLocal()">Fechar</button>
+            <!-- CONTROLES FLUTUANTES DE ZOOM E LOCALIZAÇÃO PARA CELULAR -->
+            <div class="zoom-controls">
+                <button onclick="centralizarNoUsuario()" aria-label="Minha Localização" style="background: #8C1B92; color: #fff;">📍</button>
+                <button onclick="zoomIn()" aria-label="Aumentar Zoom">+</button>
+                <button onclick="zoomOut()" aria-label="Diminuir Zoom">−</button>
+                <button onclick="resetZoom()" aria-label="Resetar Zoom">⟲</button>
+            </div>
+        </div>
+
+        <!-- PAINEL DE LEGENDA LATERAL/INFERIOR -->
+        <aside class="legenda-container">
+            <h3>Legenda</h3>
+            <ul id="legendaLista" class="legenda-lista">
+                <!-- Preenchido via Javascript -->
+            </ul>
+        </aside>
+    </main>
+
+    <!-- MODAL INFERIOR (BOTTOM SHEET) -->
+    <div id="janelaLocal" class="janela" onclick="fecharAoClicarFora(event)">
+        <div class="conteudo">
+            <div class="barra-arraste"></div>
+            <button class="fechar" onclick="fecharLocal()" aria-label="Fechar">&times;</button>
+            <h2 id="nomeLocal"></h2>
+            <h3 id="areaLocal"></h3>
+            <p id="descricaoLocal"></p>
+        </div>
     </div>
 
     <script src="script.js"></script>
