@@ -19,7 +19,7 @@ html, body {
 .header-animalia {
     background-color: #4A154B;
     width: 100%;
-    height: 80px;
+    height: 70px;
     position: relative;
     z-index: 100;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -27,14 +27,14 @@ html, body {
 
 .logo-container {
     position: absolute;
-    top: 6px;
+    top: 4px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
 }
 
 .logo-central {
-    height: 40px;
+    height: 35px;
     width: auto;
     filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.3));
 }
@@ -59,8 +59,8 @@ html, body {
     font-size: 11px;
     font-weight: 700;
     cursor: pointer;
-    height: 32px;
-    border-radius: 16px;
+    height: 28px;
+    border-radius: 14px;
     transition: background 0.2s ease, color 0.2s ease;
     text-transform: uppercase;
 }
@@ -75,8 +75,8 @@ html, body {
     display: flex;
     flex-direction: row;
     width: 100vw;
-    height: calc(100vh - 80px);
-    height: calc(100dvh - 80px);
+    height: calc(100vh - 70px);
+    height: calc(100dvh - 70px);
 }
 
 .mapa-container {
@@ -224,13 +224,13 @@ html, body {
 }
 
 .zoom-controls button {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     border: none;
     background: #ffffff;
     color: #8C1B92;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     box-shadow: 0 3px 10px rgba(0,0,0,0.3);
     cursor: pointer;
@@ -250,7 +250,7 @@ html, body {
 .legenda-container h3 {
     margin: 0 0 10px 0;
     color: #8C1B92;
-    font-size: 14px;
+    font-size: 13px;
     text-transform: uppercase;
     border-bottom: 2px solid #8C1B92;
     padding-bottom: 4px;
@@ -269,13 +269,13 @@ html, body {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 12px;
+    font-size: 11px;
     color: #444;
 }
 
 .legenda-lista img {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     object-fit: contain;
 }
 
@@ -358,23 +358,21 @@ html, body {
     color: #333333;
 }
 
-/* RESPONSIVO MOBILE */
+/* RESPONSIVO MOBILE CORRIGIDO */
 @media (max-width: 768px) {
     .layout-principal {
         flex-direction: column;
     }
 
     .mapa-container {
-        height: 65vh;
-        height: 65dvh;
+        height: 60%; /* 60% da tela para o mapa interativo */
     }
 
     .legenda-container {
         width: 100%;
-        height: 35vh;
-        height: 35dvh;
+        height: 40%; /* 40% da tela para a legenda rolável */
         border-left: none;
-        border-top: 2px solid #eeeegg;
+        border-top: 2px solid #eeeeee;
     }
 
     .legenda-lista {
