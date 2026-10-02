@@ -5,7 +5,7 @@ const dadosPark = {
     nome: "Animália Park",
     imagem: "mapa.zoo.png",
     bounds: {
-        north: -23.618500, // Topo
+        north: -23.619558, // Topo
         south: -23.626200, // Base (aumenta um pouco a altura para esticar na vertical)
         west: -46.971200, // Esquerda 
         east: -46.960500   // Direita (mantém a proporção correta de largura)
