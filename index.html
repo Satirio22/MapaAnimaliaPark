@@ -14,14 +14,22 @@
             <img src="logo-animalia.png" alt="Animália Park Logo" class="logo-central">
         </div>
         
-        <nav class="filtros">
-            <button class="btn-filtro active" style="flex: 1;">Mapa Interativo Animália Park</button>
-        </nav>
+        <!-- CAIXA DE TEXTO NORMAL (NÃO É BOTÃO) -->
+        <div class="titulo-caixa-texto">
+            MAPA INTERATIVO ANIMÁLIA PARK
+        </div>
     </header>
 
-    <!-- LAYOUT PRINCIPAL (MAPA + LEGENDA) -->
+    <!-- BARRA DE FILTROS SUPERIOR -->
+    <div class="filtros-superior-container">
+        <h3>Filtros por Categoria</h3>
+        <ul id="legendaLista" class="legenda-lista-horizontal">
+            <!-- Preenchido via Javascript -->
+        </ul>
+    </div>
+
+    <!-- LAYOUT PRINCIPAL (APENAS O MAPA) -->
     <main class="layout-principal">
-        <!-- ÁREA DO MAPA -->
         <div id="mapaContainer" class="mapa-container">
             <div id="mapa" class="mapa">
                 <img id="imagemMapa" src="mapa.zoo.png" alt="Mapa do Parque">
@@ -34,7 +42,7 @@
                 </div>
             </div>
 
-            <!-- CONTROLES FLUTUANTES DE ZOOM E LOCALIZAÇÃO PARA CELULAR -->
+            <!-- CONTROLES FLUTUANTES DE ZOOM E LOCALIZAÇÃO -->
             <div class="zoom-controls">
                 <button onclick="centralizarNoUsuario()" aria-label="Minha Localização" style="background: #8C1B92; color: #fff;">🔵</button>
                 <button onclick="zoomIn()" aria-label="Aumentar Zoom">+</button>
@@ -42,14 +50,6 @@
                 <button onclick="resetZoom()" aria-label="Resetar Zoom">⟲</button>
             </div>
         </div>
-
-        <!-- PAINEL DE LEGENDA LATERAL/INFERIOR -->
-        <aside class="legenda-container">
-            <h3>Filtros por Categoria</h3>
-            <ul id="legendaLista" class="legenda-lista">
-                <!-- Preenchido via Javascript com botões interativos -->
-            </ul>
-        </aside>
     </main>
 
     <!-- MODAL INFERIOR (BOTTOM SHEET) -->
