@@ -16,7 +16,7 @@ body, html {
 /* Cabeçalho roxo escuro idêntico à referência */
 .header-animalia {
     height: 75px;
-    background-color: #2e1038; /* Roxo bem escuro de fundo superior */
+    background-color: #4A154B; /* Roxo bem escuro de fundo superior */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,7 +48,7 @@ body, html {
 /* Barra de filtros superior com a faixa roxa e botões em pílula */
 .filtros-superior-container {
     height: 60px;
-    background-color: #7b1fa2; /* Tom de roxo vibrante da referência */
+    background-color: #8C1B91; /* Tom de roxo vibrante da referência */
     border-bottom: 1px solid #5d1279;
     display: flex;
     align-items: center;
