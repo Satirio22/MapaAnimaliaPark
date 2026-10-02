@@ -3,11 +3,11 @@ const dadosPark = {
     reserva: {
         imagem: "mapa.zoo.png",
         categoriasLegenda: [
-            { id: 'todos', texto: 'Ver Todos', img: 'icons/vila.png' },
-            { id: 'alimentacao', texto: 'Pontos Alimentação', img: 'icons/food-park.png' },
-            { id: 'banheiros', texto: 'Banheiros', img: 'icons/wc.png' },
-            { id: 'animais', texto: 'Animais & Recintos', img: 'icons/Aviario.png' },
-            { id: 'outros', texto: 'Outros / Serviços', img: 'icons/recepçao.png' }
+            { id: 'Todos', texto: 'Ver Todos', img: 'icons/vila.png' },
+            { id: 'Alimentacao', texto: 'Alimentação', img: 'icons/food-park.png' },
+            { id: 'Banheiros', texto: 'Banheiros', img: 'icons/wc.png' },
+            { id: 'Zoo', texto: 'Zoo', img: 'icons/Aviario.png' },
+            { id: 'Outros', texto: 'Outros / Serviços', img: 'icons/recepçao.png' }
         ],
         pontos: [
             { id: "AMBULATÓRIO", nome: "🚑 AMBULATÓRIO", area: "Ambulatório / Bombeiros Animália", desc: "Localizado na Vila Animália.", icone: "icons/ambulatorio.png", categoria: "outros", top: 26, left: 53 },
