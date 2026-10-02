@@ -92,7 +92,7 @@ function initMap() {
  
     map = new google.maps.Map(document.getElementById("mapaGoogle"), {
         center: centroParque,
-        zoom: 10, 
+        zoom: 30, 
         mapTypeId: 'hybrid',
         disableDefaultUI: true,
         zoomControl: false,
