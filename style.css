@@ -13,10 +13,10 @@ body, html {
     background-color: #121212;
 }
 
-/* Cabeçalho roxo fixo */
+/* Cabeçalho roxo escuro idêntico à referência */
 .header-animalia {
-    height: 55px;
-    background-color: #6a1b9a;
+    height: 75px;
+    background-color: #2e1038; /* Roxo bem escuro de fundo superior */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,9 +27,12 @@ body, html {
 }
 
 .logo-container {
-    height: 35px;
+    height: 50px;
     display: flex;
     align-items: center;
+    position: absolute;
+    top: 5px;
+    z-index: 10;
 }
 
 .logo-central {
@@ -37,48 +40,32 @@ body, html {
     object-fit: contain;
 }
 
-/* Caixa de texto do título */
+/* Esconde a caixa de texto antiga se não for usada no topo */
 .titulo-caixa-texto {
-    position: absolute;
-    right: 20px;
-    color: #ffffff;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    background: transparent;
-    border: none;
-    cursor: default;
+    display: none;
 }
 
-/* Barra de filtros superior */
+/* Barra de filtros superior com a faixa roxa e botões em pílula */
 .filtros-superior-container {
-    height: 45px;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #ddd;
+    height: 60px;
+    background-color: #7b1fa2; /* Tom de roxo vibrante da referência */
+    border-bottom: 1px solid #5d1279;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 0 15px;
-    gap: 15px;
     z-index: 90;
     overflow-x: auto;
-    white-space: nowrap;
 }
 
 .filtros-superior-container::-webkit-scrollbar {
-    display: none; /* Esconde a barra de rolagem no Chrome/Safari para ficar limpo */
+    display: none;
 }
 
-.filtros-superior-container h3 {
-    font-size: 11px;
-    color: #444;
-    text-transform: uppercase;
-    margin: 0;
-}
-
-/* Lista de filtros na horizontal */
+/* Lista de filtros na horizontal estilo botão/pílula */
 .legenda-lista-horizontal {
     display: flex;
-    gap: 8px;
+    gap: 12px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -88,40 +75,44 @@ body, html {
 .legenda-lista-horizontal .filtro-item {
     display: flex;
     align-items: center;
-    gap: 6px;
-    background: #ffffff;
-    border: 1px solid #ccc;
-    padding: 4px 10px;
-    border-radius: 20px;
+    justify-content: center;
+    gap: 8px;
+    background: transparent; /* Inativo fica transparente na faixa roxa */
+    border: 2px solid transparent;
+    padding: 8px 20px;
+    border-radius: 30px; /* Formato de pílula idêntico à imagem */
     cursor: pointer;
-    font-size: 12px;
-    color: #333;
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff; /* Texto branco quando inativo */
     white-space: nowrap;
+    letter-spacing: 0.5px;
     transition: all 0.2s ease;
 }
 
 .legenda-lista-horizontal .filtro-item:hover {
-    background: #ede7f6;
-    border-color: #8C1B92;
+    background: rgba(255, 255, 255, 0.1);
 }
 
+/* Item Ativo: Fundo totalmente branco com texto e ícone em roxo */
 .legenda-lista-horizontal .filtro-item.active {
-    background: #8C1B92;
-    color: #ffffff;
-    border-color: #8C1B92;
+    background: #ffffff;
+    color: #7b1fa2;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Tamanho controlado para os ícones dos filtros */
+/* Tamanho e adaptação de cor dos ícones nos botões */
 .legenda-lista-horizontal .filtro-item img {
-    width: 16px !important;
-    height: 16px !important;
+    width: 18px !important;
+    height: 18px !important;
     object-fit: contain;
+    /* Faz o ícone acompanhar a cor do texto (opcional, se forem PNGs coloridos mantém original) */
 }
 
-/* Layout principal preenchendo exatamente o resto da tela */
+/* Layout principal preenchendo o resto da tela (ajustado para a nova altura: header 75px + filtros 60px = 135px) */
 .layout-principal {
     width: 100%;
-    height: calc(100vh - 100px); /* Subtrai altura do header (55px) + filtros (45px) */
+    height: calc(100vh - 135px); 
     display: flex;
     flex-direction: column;
     position: relative;
