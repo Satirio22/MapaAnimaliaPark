@@ -4,24 +4,312 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mapa Animália Park</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reset básico */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+        }
+
+        /* Cabeçalho roxo escuro (#4A154B) fixo no topo */
+        .header-animalia {
+            height: 75px;
+            background-color: #4A154B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 100;
+        }
+
+        .logo-container {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .logo-central {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Barra de filtros superior com roxo mais claro (#8C1B91) */
+        .filtros-superior-container {
+            height: 60px;
+            background-color: #8C1B91;
+            border-bottom: 1px solid #5d1279;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            z-index: 90;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .filtros-superior-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Lista de filtros na horizontal sem ícones */
+        .legenda-lista-horizontal {
+            display: flex;
+            gap: 12px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+        }
+
+        .legenda-lista-horizontal .filtro-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: 2px solid transparent;
+            padding: 8px 20px;
+            border-radius: 20px; /* Bordas arredondadas exigidas */
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            color: #ffffff; /* Texto branco quando inativo */
+            transition: all 0.2s ease;
+        }
+
+        .legenda-lista-horizontal .filtro-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Item Ativo: Retângulo com bordas arredondadas branco, texto em roxo claro */
+        .legenda-lista-horizontal .filtro-item.active {
+            background: #ffffff;
+            color: #8C1B91;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Layout principal preenchendo o resto da tela (Header 75px + Filtros 60px = 135px) */
+        .layout-principal {
+            width: 100%;
+            height: calc(100vh - 135px); 
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Área do mapa */
+        .mapa-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            background-color: #1a1a1a;
+            touch-action: none;
+        }
+
+        .mapa {
+            position: absolute;
+            transform-origin: 0 0;
+            will-change: transform;
+        }
+
+        #imagemMapa {
+            display: block;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* Marcadores no mapa */
+        #camadaPontos {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .ponto {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            pointer-events: auto;
+            z-index: 5;
+            transition: transform 0.2s;
+        }
+
+        .ponto:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .icone-marcador {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
+        }
+
+        /* Posição do usuário no mapa */
+        .user-marker {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            z-index: 6;
+            font-size: 20px;
+            pointer-events: none;
+        }
+
+        .pulsar {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 123, 255, 0.4);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulsarAnim 1.5s infinite;
+        }
+
+        @keyframes pulsarAnim {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+        }
+
+        /* Controles Flutuantes de Zoom */
+        .zoom-controls {
+            position: absolute;
+            right: 15px;
+            bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 50;
+        }
+
+        .zoom-controls button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: #ffffff;
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .zoom-controls button:active {
+            background: #e0e0e0;
+        }
+
+        /* Modal Inferior (Bottom Sheet) */
+        .janela {
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            transition: bottom 0.3s ease-in-out;
+            z-index: 1000;
+            visibility: hidden;
+        }
+
+        .janela.ativa {
+            bottom: 0;
+            visibility: visible;
+        }
+
+        .conteudo {
+            width: 100%;
+            max-width: 600px;
+            background: #ffffff;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+            position: relative;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .barra-arraste {
+            width: 40px;
+            height: 4px;
+            background: #ccc;
+            border-radius: 2px;
+            margin: 0 auto 15px auto;
+        }
+
+        .fechar {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .conteudo h2 {
+            font-size: 18px;
+            color: #222;
+            margin-bottom: 5px;
+        }
+
+        .conteudo h3 {
+            font-size: 14px;
+            color: #8C1B91;
+            margin-bottom: 15px;
+        }
+
+        .conteudo p {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- CABEÇALHO ROXO FIXO NO TOPO -->
+    <!-- CABEÇALHO ROXO ESCURO FIXO NO TOPO -->
     <header class="header-animalia">
         <div class="logo-container">
             <img src="logo-animalia.png" alt="Animália Park Logo" class="logo-central">
         </div>
-        
-        <nav class="filtros">
-            <button class="btn-filtro active" style="flex: 1;">Animália Reserva</button>
-        </nav>
     </header>
 
-    <!-- LAYOUT PRINCIPAL (MAPA + LEGENDA) -->
+    <!-- FAIXA DE FILTROS SUPERIOR (ROXO MAIS CLARO) -->
+    <nav class="filtros-superior-container">
+        <ul id="legendaLista" class="legenda-lista-horizontal">
+            <!-- Preenchido dinamicamente via Javascript com texto puro e borda arredondada -->
+        </ul>
+    </nav>
+
+    <!-- LAYOUT PRINCIPAL (MAPA) -->
     <main class="layout-principal">
-        <!-- ÁREA DO MAPA -->
         <div id="mapaContainer" class="mapa-container">
             <div id="mapa" class="mapa">
                 <img id="imagemMapa" src="mapa.zoo.png" alt="Mapa do Parque">
@@ -34,22 +322,14 @@
                 </div>
             </div>
 
-            <!-- CONTROLES FLUTUANTES DE ZOOM E LOCALIZAÇÃO PARA CELULAR -->
+            <!-- CONTROLES FLUTUANTES DE ZOOM E LOCALIZAÇÃO -->
             <div class="zoom-controls">
-                <button onclick="centralizarNoUsuario()" aria-label="Minha Localização" style="background: #8C1B92; color: #fff;">📍</button>
+                <button onclick="centralizarNoUsuario()" aria-label="Minha Localização" style="background: #8C1B91; color: #fff;">📍</button>
                 <button onclick="zoomIn()" aria-label="Aumentar Zoom">+</button>
                 <button onclick="zoomOut()" aria-label="Diminuir Zoom">−</button>
                 <button onclick="resetZoom()" aria-label="Resetar Zoom">⟲</button>
             </div>
         </div>
-
-        <!-- PAINEL DE LEGENDA LATERAL/INFERIOR -->
-        <aside class="legenda-container">
-            <h3>Filtros por Categoria</h3>
-            <ul id="legendaLista" class="legenda-lista">
-                <!-- Preenchido via Javascript com botões interativos -->
-            </ul>
-        </aside>
     </main>
 
     <!-- MODAL INFERIOR (BOTTOM SHEET) -->
@@ -63,6 +343,246 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // DADOS DOS MAPAS, SEUS PONTOS E CATEGORIAS DE LEGENDA
+        const dadosPark = {
+            reserva: {
+                imagem: "mapa.zoo.png",
+                categoriasLegenda: [
+                    { id: 'todos', texto: 'Ver Todos' },
+                    { id: 'alimentacao', texto: 'Pontos Alimentação' },
+                    { id: 'banheiros', texto: 'Banheiros' },
+                    { id: 'animais', texto: 'Animais & Recintos' },
+                    { id: 'outros', texto: 'Outros / Serviços' }
+                ],
+                pontos: [
+                    { id: "AMBULATÓRIO", nome: "🚑 AMBULATÓRIO", area: "Ambulatório / Bombeiros Animália", desc: "Localizado na Vila Animália.", icone: "icons/ambulatorio.png", categoria: "outros", top: 26, left: 53 },
+                    { id: "quiosque-leao", nome: "QUIOSQUE LEÃO", area: "🍿 Café, Salgados e pipocas", desc: "Logo após o recinto do Leão.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 49, left: 41 },
+                    { id: "quiosque-sucuarana", nome: "QUIOSQUE SUÇUARANA", area: "🍿 Salgados e pipocas", desc: "Em frente ao recinto Suçuarana.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 64, left: 43 },
+                    { id: "quiosque-tamandua", nome: "QUIOSQUE TAMANDUÁ", area: "🍿 Café, Salgados e pipocas", desc: "Localizado em frente ao recinto tamanduá.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 60, left: 56 },
+                    { id: "quiosque-lobo-marinho", nome: "QUIOSQUE LOBO MARINHO", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 80, left: 80 },
+                    { id: "quiosque-canguru", nome: "QUIOSQUE CANGURU", area: "🍿 Café, Salgados e pipocas.", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 40, left: 74.5 },
+                    { id: "VILA ANIMALIA", nome: "VILA ANIMÁLIA", area: "Ambiente aconchegante para uma refeições e garantir uma lembrança", desc: "🚻Banheiro (Comum e Acessivel)<br>🧸Vila Adventure (Souvenier)<br>🧸Baby Zoo (Souvenier)<br>🥩Restaurante Savana (Carnes nobres)<br>🥤Shake do Bin (Sorvetes e Shakes)<br>☕Vila Cafeteria (Cafés e salgados)<br>🍔Hamburgueria da Vila (Burgues e bebidas)<br>🍕Selva de Sabores (Pizzas e Crespes)<br>🍝Vila Tratoria (Massas e Carnes)<br>🌭Hot Dog do Kiran (Hot Dog's)<br>🍨Cantinho da Girafa (Sorvetes e massas)<br>🚑Ambulatório (Saude e Bombeiros)<br>🚠Vila Estação. (Teleférico)<br>", icone: "icons/vila.png", categoria: "alimentacao", top: 20, left: 53 },
+                    { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "🔁Entrada/Saida<br>🚻Banheiro (Comum e Acessivel)<br>🧑‍‍💻SAV (Serviço de Atendimento ao Visitante)<br>☕Cafeteria (Cafés e salgados)<br>🧸Animalia Adventure (Souvenier)<br>📸Fotografica (Retirada de Fotos)<br>", icone: "icons/recepçao.png", categoria: "outros", top: 27, left: 48 },
+                    { id: "FOOD PARK", nome: "FOOD PARK", area: "Natureza e uma boa alimentação", desc: "🚻Banheiro (Comum e Acessivel)<br>🍖Espetaria/Linguiçaria<br>🍗Chicken & Fries<br>🥟Pastelaria<br>🍜Yakissoba<br>", icone: "icons/food-park.png", categoria: "alimentacao", top: 60.5, left: 70.5 },
+                    { id: "AVIÁRIO", nome: "AVIÁRIO", area: "Um dos Maiores Aviarios da America Latina", desc: "🚻Banheiro (Comum e Acessivel)<br>☕Café Caverna (Cafés e salgados)<br>🪿Aviário (Passaros e Natureza)<br>", icone: "icons/Aviario.png", categoria: "animais", top: 60, left: 33 },
+                    { id: "RESTAURANTE CENTRAL", nome: "RESTAURANTE CENTRAL", area: "Buffet a Vontade", desc: "🚻Banheiro (Comum e Acessivel)<br> 🍽️️Restaurante Baboá (Buffet por Pessoa)<br> 🦋Jardim das Borboletas (Area de Descanso)<br>", icone: "icons/rest.central.png", categoria: "alimentacao", top: 45.5, left: 55.5 },
+                    { id: "DIVERSÃO INDOOR A&B", nome: "🍟🍔 ANIMALIA ALIMENTAÇÃO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🚻Banheiro (Comum e Acessivel)<br>🍔 Cesta Pic Nic (Burgues e bebidas).<br>☕Carrossel (Porções e Cafés).<br>🥮Mundo Doce (Doces e Bebidas).<br>🍿Carrinho de Doce e Pipoca.(Vai um docinho ai?)", icone: "icons/div-ab.png", categoria: "alimentacao", top: 17, left: 35 },
+                    { id: "DIVERSÃO INDOOR DIV", nome: "🎡 ANIMALIA DIVERSÃO", area: "Atrações Magicas e divertidas!", desc: "🚻Banheiro (Comum e Acessivel)<br> 🐸Vitoria Regia<br>🛩️Eagle Flight (Aviãozinho)<br>🎈Balão Mexicano<br>👒Forte Apache (Trenzinho)<br>🦘Kanguroo Joy<br>🦒Giraffe Cool<br>🎠Bella Giostra (Carrosel)<br>🩻Joe Caveira<br>🧗Kite Dragon<br>🍭Mundo Doce<br>⛵Rise of Rome<br>🥶Bear Mountain<br>🏎️Big Chock (bate-bate)<br>🧩Cantinho do Silencio (Para Pessoas neurodivergentes)<br>🧸Diversão Adventure (Souvenier)<br>", icone: "icons/div.png", categoria: "outros", top: 21, left: 38 },
+                    { id: "DIVERSAO AVENTURA", nome: "🎢 ANIMALIA AVENTURA", area: "Atrações Radicaaaaais!", desc: "🚻Banheiro (Comum e Acessivel)<br> ⛵Barco Viking (Aqui tem que gritar)<br>💧Splash (Aguaaaa)<br>🥶Cyber Hawk (De ponta cabeça)<br>🎢Cyclone (Intensidade e aventura)<br>🐀Big Air Coaster (Essa é leve)<br>🔫Aqua Combat (Combate aquatico)<br>", icone: "icons/div.png", categoria: "outros", top: 10, left: 40 },
+                    { id: "FAZENDINHA", nome: "FAZENDINHA", area: "Ambiente aconchegante para uma refeições e garantir uma lembrança", desc: "🚻Banheiro (Comum e Acessivel)<br>🍿Quiósque Fazendinha (Doces e Bebidas)<br>🧸Estação Souvenier (Ursinhos e lembrancinhas)<br>🍔Hamburgueria Teleférico (Burgues e bebidas)<br>🚠Estação Teleférico (Vai e Vola ou só vai)<br>", icone: "icons/fazenda.png", categoria: "animais", top: 82, left: 65 },
+                    { id: "ESTACIONAMENTO1", nome: "ESTACIONAMENTO", area: "Vaga garantida e seu carro assegurado!", desc: "🚗Vagas Comuns<br>♿Vagas Acessiveis<br>🪫Vagas para Carros Eletrificados<br>", icone: "icons/estacionamento.png", categoria: "outros", top: 40, left: 28 },
+                    { id: "ESTACIONAMENTO2", nome: "ESTACIONAMENTO", area: "Estacionamento seguro e com Transfer", desc: "🚗Vagas Comuns<br>♿Vagas Acessiveis<br>", icone: "icons/estacionamento.png", categoria: "outros", top: 76, left: 46 }
+                ]
+            }
+        };
+
+        let scale = 1;
+        let pointX = 0;
+        let pointY = 0;
+        let startX = 0;
+        let startY = 0;
+        let isDragging = false;
+        let startDistance = 0;
+
+        function atualizarTransformacao() {
+            const mapa = document.getElementById("mapa");
+            if (!mapa) return;
+            mapa.style.setProperty("--map-scale", scale);
+            mapa.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+        }
+
+        function renderizarPontos(categoriaFiltro = 'todos') {
+            const camada = document.getElementById("camadaPontos");
+            if (!camada) return;
+            camada.innerHTML = "";
+            
+            const pontos = dadosPark.reserva.pontos;
+            pontos.forEach(ponto => {
+                if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
+                    const el = document.createElement("div");
+                    el.className = "ponto";
+                    el.style.top = ponto.top + "%";
+                    el.style.left = ponto.left + "%";
+
+                    if (ponto.icone.includes("/") || ponto.icone.endsWith(".png") || ponto.icone.endsWith(".jpg")) {
+                        el.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}" class="icone-marcador">`;
+                    } else {
+                        el.innerHTML = `<span>${ponto.icone}</span>`;
+                    }
+
+                    el.onclick = (e) => {
+                        e.stopPropagation();
+                        abrirLocal(ponto);
+                    };
+                    camada.appendChild(el);
+                }
+            });
+        }
+
+        function atualizarLegenda(categoriaAtiva = 'todos') {
+            const lista = document.getElementById("legendaLista");
+            if (!lista) return;
+
+            lista.innerHTML = "";
+            const categorias = dadosPark.reserva.categoriasLegenda;
+
+            categorias.forEach(cat => {
+                const li = document.createElement("li");
+                li.className = "filtro-item";
+                if (cat.id === categoriaAtiva) {
+                    li.classList.add("active");
+                }
+
+                // Apenas texto puro nos filtros do topo
+                li.textContent = cat.texto;
+
+                li.onclick = () => {
+                    atualizarLegenda(cat.id);
+                    renderizarPontos(cat.id);
+                };
+
+                lista.appendChild(li);
+            });
+        }
+
+        function resetZoom() {
+            const container = document.getElementById("mapaContainer");
+            const imgMapa = document.getElementById("imagemMapa");
+            const mapaWrapper = document.getElementById("mapa");
+
+            if (!container || !imgMapa || imgMapa.naturalWidth === 0) return;
+
+            const realWidth = imgMapa.naturalWidth;
+            const realHeight = imgMapa.naturalHeight;
+
+            mapaWrapper.style.width = realWidth + "px";
+            mapaWrapper.style.height = realHeight + "px";
+
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+
+            const scaleX = containerWidth / realWidth;
+            const scaleY = containerHeight / realHeight;
+            scale = Math.min(scaleX, scaleY);
+
+            pointX = (containerWidth - realWidth * scale) / 2;
+            pointY = (containerHeight - realHeight * scale) / 2;
+
+            atualizarTransformacao();
+        }
+
+        function inicializarMapa() {
+            const imgMapa = document.getElementById("imagemMapa");
+            const mapaInfo = dadosPark.reserva;
+
+            imgMapa.onload = () => {
+                resetZoom();
+                renderizarPontos('todos');
+            };
+
+            imgMapa.src = mapaInfo.imagem;
+
+            if (imgMapa.complete && imgMapa.naturalWidth !== 0) {
+                imgMapa.onload();
+            }
+
+            atualizarLegenda('todos');
+        }
+
+        function abrirLocal(ponto) {
+            document.getElementById("nomeLocal").innerText = ponto.nome;
+            document.getElementById("areaLocal").innerText = ponto.area;
+            document.getElementById("descricaoLocal").innerHTML = ponto.desc;
+            document.getElementById("janelaLocal").classList.add("ativa");
+        }
+
+        function fecharLocal() {
+            document.getElementById("janelaLocal").classList.remove("ativa");
+        }
+
+        function fecharAoClicarFora(e) {
+            if (e.target.id === "janelaLocal") {
+                fecharLocal();
+            }
+        }
+
+        function zoomIn() {
+            scale = Math.min(scale + 0.25, 3.0);
+            atualizarTransformacao();
+        }
+
+        function zoomOut() {
+            scale = Math.max(scale - 0.25, 0.2);
+            atualizarTransformacao();
+        }
+
+        function centralizarNoUsuario() {
+            const userMarker = document.getElementById("userLocation");
+            if (!userMarker || userMarker.style.display === "none") {
+                alert("Aguardando sinal de GPS ou permissão de localização...");
+                return;
+            }
+        }
+
+        function inicializarGestos() {
+            const container = document.getElementById("mapaContainer");
+            if (!container) return;
+
+            container.addEventListener("mousedown", (e) => {
+                isDragging = true;
+                startX = e.clientX - pointX;
+                startY = e.clientY - pointY;
+            });
+
+            window.addEventListener("mousemove", (e) => {
+                if (!isDragging) return;
+                pointX = e.clientX - startX;
+                pointY = e.clientY - startY;
+                atualizarTransformacao();
+            });
+
+            window.addEventListener("mouseup", () => { isDragging = false; });
+
+            container.addEventListener("touchstart", (e) => {
+                if (e.touches.length === 1) {
+                    isDragging = true;
+                    startX = e.touches[0].clientX - pointX;
+                    startY = e.touches[0].clientY - pointY;
+                } else if (e.touches.length === 2) {
+                    isDragging = false;
+                    startDistance = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                }
+            });
+
+            container.addEventListener("touchmove", (e) => {
+                if (isDragging && e.touches.length === 1) {
+                    pointX = e.touches[0].clientX - startX;
+                    pointY = e.touches[0].clientY - startY;
+                    atualizarTransformacao();
+                } else if (e.touches.length === 2) {
+                    const currentDist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                    const factor = currentDist / startDistance;
+                    scale = Math.min(Math.max(scale * factor, 0.2), 3.0);
+                    startDistance = currentDist;
+                    atualizarTransformacao();
+                }
+            }, { passive: true });
+
+            container.addEventListener("touchend", () => { isDragging = false; });
+            window.addEventListener("resize", resetZoom);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            inicializarMapa();
+            inicializarGestos();
+        });
+    </script>
 </body>
 </html>
