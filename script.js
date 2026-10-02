@@ -5,10 +5,10 @@ const dadosPark = {
     nome: "Animália Park",
     imagem: "mapa.zoo.png",
     bounds: {
-        north: -23.619558, // Topo
-        south: -23.626200, // Base (aumenta um pouco a altura para esticar na vertical)
-        west: -46.971200, // Esquerda 
-        east: -46.960500   // Direita (mantém a proporção correta de largura)
+        north: -23.621249, // Topo , 
+        south: -23.624544, // Base (aumenta um pouco a altura para esticar na vertical) 
+        west: -46.968425, // Esquerda 
+        east: -46.964483   // Direita (mantém a proporção correta de largura)
     },
     legenda: [
         { img: "icons/estacionamento.png", texto: "Estacionamentos" },
