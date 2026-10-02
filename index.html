@@ -22,23 +22,29 @@
 
         /* Cabeçalho roxo escuro (#4A154B) fixo no topo */
         .header-animalia {
-            height: 75px;
+            height: 65px;
             background-color: #4A154B;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 0 15px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
             z-index: 100;
         }
 
+        /* Container do logotipo flutuante sobreposto */
         .logo-container {
-            height: 50px;
+            position: absolute;
+            top: 35px; /* Posicionado exatamente na divisa entre o header e a barra de filtros */
+            left: 50%;
+            transform: translateX(-50%);
+            height: 55px;
+            width: 75px;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10;
+            z-index: 110;
+            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.4));
         }
 
         .logo-central {
@@ -100,10 +106,10 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        /* Layout principal preenchendo o resto da tela (Header 75px + Filtros 60px = 135px) */
+        /* Layout principal preenchendo o resto da tela (Header 65px + Filtros 60px = 125px) */
         .layout-principal {
             width: 100%;
-            height: calc(100vh - 135px); 
+            height: calc(100vh - 125px); 
             display: flex;
             flex-direction: column;
             position: relative;
@@ -296,6 +302,7 @@
 
     <!-- CABEÇALHO ROXO ESCURO FIXO NO TOPO -->
     <header class="header-animalia">
+        <!-- Logotipo centralizado com efeito flutuante sobreposto -->
         <div class="logo-container">
             <img src="logo-animalia.png" alt="Animália Park Logo" class="logo-central">
         </div>
@@ -366,7 +373,7 @@
                     { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "🔁Entrada/Saida<br>🚻Banheiro (Comum e Acessivel)<br>🧑‍‍💻SAV (Serviço de Atendimento ao Visitante)<br>☕Cafeteria (Cafés e salgados)<br>🧸Animalia Adventure (Souvenier)<br>📸Fotografica (Retirada de Fotos)<br>", icone: "icons/recepçao.png", categoria: "outros", top: 27, left: 48 },
                     { id: "FOOD PARK", nome: "FOOD PARK", area: "Natureza e uma boa alimentação", desc: "🚻Banheiro (Comum e Acessivel)<br>🍖Espetaria/Linguiçaria<br>🍗Chicken & Fries<br>🥟Pastelaria<br>🍜Yakissoba<br>", icone: "icons/food-park.png", categoria: "alimentacao", top: 60.5, left: 70.5 },
                     { id: "AVIÁRIO", nome: "AVIÁRIO", area: "Um dos Maiores Aviarios da America Latina", desc: "🚻Banheiro (Comum e Acessivel)<br>☕Café Caverna (Cafés e salgados)<br>🪿Aviário (Passaros e Natureza)<br>", icone: "icons/Aviario.png", categoria: "animais", top: 60, left: 33 },
-                    { id: "RESTAURANTE CENTRAL", nome: "RESTAURANTE CENTRAL", area: "Buffet a Vontade", desc: "🚻Banheiro (Comum e Acessivel)<br> 🍽️️Restaurante Baboá (Buffet por Pessoa)<br> 🦋Jardim das Borboletas (Area de Descanso)<br>", icone: "icons/rest.central.png", categoria: "alimentacao", top: 45.5, left: 55.5 },
+                    { id: "RESTAURANTE CENTRAL", nome: "RESTAURANTE CENTRAL", area: "Buffet a Vontade", desc: "🚻Banheiro (Comum e Acessivel)<br> 🍽Restaurante Baboá (Buffet por Pessoa)<br> 🦋Jardim das Borboletas (Area de Descanso)<br>", icone: "icons/rest.central.png", categoria: "alimentacao", top: 45.5, left: 55.5 },
                     { id: "DIVERSÃO INDOOR A&B", nome: "🍟🍔 ANIMALIA ALIMENTAÇÃO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🚻Banheiro (Comum e Acessivel)<br>🍔 Cesta Pic Nic (Burgues e bebidas).<br>☕Carrossel (Porções e Cafés).<br>🥮Mundo Doce (Doces e Bebidas).<br>🍿Carrinho de Doce e Pipoca.(Vai um docinho ai?)", icone: "icons/div-ab.png", categoria: "alimentacao", top: 17, left: 35 },
                     { id: "DIVERSÃO INDOOR DIV", nome: "🎡 ANIMALIA DIVERSÃO", area: "Atrações Magicas e divertidas!", desc: "🚻Banheiro (Comum e Acessivel)<br> 🐸Vitoria Regia<br>🛩️Eagle Flight (Aviãozinho)<br>🎈Balão Mexicano<br>👒Forte Apache (Trenzinho)<br>🦘Kanguroo Joy<br>🦒Giraffe Cool<br>🎠Bella Giostra (Carrosel)<br>🩻Joe Caveira<br>🧗Kite Dragon<br>🍭Mundo Doce<br>⛵Rise of Rome<br>🥶Bear Mountain<br>🏎️Big Chock (bate-bate)<br>🧩Cantinho do Silencio (Para Pessoas neurodivergentes)<br>🧸Diversão Adventure (Souvenier)<br>", icone: "icons/div.png", categoria: "outros", top: 21, left: 38 },
                     { id: "DIVERSAO AVENTURA", nome: "🎢 ANIMALIA AVENTURA", area: "Atrações Radicaaaaais!", desc: "🚻Banheiro (Comum e Acessivel)<br> ⛵Barco Viking (Aqui tem que gritar)<br>💧Splash (Aguaaaa)<br>🥶Cyber Hawk (De ponta cabeça)<br>🎢Cyclone (Intensidade e aventura)<br>🐀Big Air Coaster (Essa é leve)<br>🔫Aqua Combat (Combate aquatico)<br>", icone: "icons/div.png", categoria: "outros", top: 10, left: 40 },
@@ -434,7 +441,6 @@
                     li.classList.add("active");
                 }
 
-                // Apenas texto puro nos filtros do topo
                 li.textContent = cat.texto;
 
                 li.onclick = () => {
@@ -559,7 +565,7 @@
             });
 
             container.addEventListener("touchmove", (e) => {
-                if (isDragging && e.touches.length === 1) {
+                if (isDragging && e.touches.length === 1) %>% {
                     pointX = e.touches[0].clientX - startX;
                     pointY = e.touches[0].clientY - startY;
                     atualizarTransformacao();
