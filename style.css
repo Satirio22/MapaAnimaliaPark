@@ -37,7 +37,7 @@ body, html {
     object-fit: contain;
 }
 
-/* Caixa de texto do título (sem formato de botão) */
+/* Caixa de texto do título */
 .titulo-caixa-texto {
     position: absolute;
     right: 20px;
@@ -52,7 +52,7 @@ body, html {
 
 /* Barra de filtros superior */
 .filtros-superior-container {
-    height: 50px;
+    height: 45px;
     background-color: #f8f9fa;
     border-bottom: 1px solid #ddd;
     display: flex;
@@ -61,13 +61,17 @@ body, html {
     gap: 15px;
     z-index: 90;
     overflow-x: auto;
+    white-space: nowrap;
+}
+
+.filtros-superior-container::-webkit-scrollbar {
+    display: none; /* Esconde a barra de rolagem no Chrome/Safari para ficar limpo */
 }
 
 .filtros-superior-container h3 {
-    font-size: 12px;
+    font-size: 11px;
     color: #444;
     text-transform: uppercase;
-    white-space: nowrap;
     margin: 0;
 }
 
@@ -87,7 +91,7 @@ body, html {
     gap: 6px;
     background: #ffffff;
     border: 1px solid #ccc;
-    padding: 5px 12px;
+    padding: 4px 10px;
     border-radius: 20px;
     cursor: pointer;
     font-size: 12px;
@@ -107,20 +111,21 @@ body, html {
     border-color: #8C1B92;
 }
 
-/* TAMANHO CONTROLADO PARA OS ÍCONES DOS FILTROS */
+/* Tamanho controlado para os ícones dos filtros */
 .legenda-lista-horizontal .filtro-item img {
     width: 16px !important;
     height: 16px !important;
     object-fit: contain;
 }
 
-/* Layout principal preenchendo o resto da tela */
+/* Layout principal preenchendo exatamente o resto da tela */
 .layout-principal {
     width: 100%;
-    height: calc(100vh - 105px); /* Cabeçalho + barra de filtros */
+    height: calc(100vh - 100px); /* Subtrai altura do header (55px) + filtros (45px) */
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow: hidden;
 }
 
 /* Área do mapa */
@@ -173,6 +178,32 @@ body, html {
     height: 32px;
     object-fit: contain;
     filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
+}
+
+/* Posição do usuário no mapa */
+.user-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+    font-size: 20px;
+    pointer-events: none;
+}
+
+.pulsar {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 123, 255, 0.4);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulsarAnim 1.5s infinite;
+}
+
+@keyframes pulsarAnim {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
 }
 
 /* Controles Flutuantes de Zoom */
