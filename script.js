@@ -4,9 +4,9 @@ const dadosPark = {
         imagem: "mapa.zoo.png",
         categoriasLegenda: [
             { id: 'todos', texto: 'Ver Todos', img: 'icons/vila.png' },
-            { id: 'alimentacao', texto: 'Alimentação', img: 'icons/food-park.png' },
+            { id: 'alimentacao', texto: 'Pontos Alimentação', img: 'icons/food-park.png' },
             { id: 'banheiros', texto: 'Banheiros', img: 'icons/wc.png' },
-            { id: 'animais', texto: 'Zoo', img: 'icons/Aviario.png' },
+            { id: 'animais', texto: 'Animais & Recintos', img: 'icons/Aviario.png' },
             { id: 'outros', texto: 'Outros / Serviços', img: 'icons/recepçao.png' }
         ],
         pontos: [
@@ -56,7 +56,6 @@ function renderizarPontos(categoriaFiltro = 'todos') {
     
     const pontos = dadosPark.reserva.pontos;
     pontos.forEach(ponto => {
-        // Se a categoria for 'todos' ou bater exatamente com a categoria do ponto
         if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
             const el = document.createElement("div");
             el.className = "ponto";
@@ -87,26 +86,22 @@ function atualizarLegenda() {
 
     categorias.forEach(cat => {
         const li = document.createElement("li");
-        li.className = "filtro-item";
+        li.style.cursor = "pointer";
+        li.style.padding = "6px 8px";
+        li.style.borderRadius = "6px";
+        li.style.transition = "background 0.2s";
         
-        li.innerHTML = `<img src="${cat.img}" alt="${cat.texto}"> <span>${cat.texto}</span>`;
+        li.innerHTML = `<img src="${cat.img}" alt="${cat.texto}"> <span><b>${cat.texto}</b></span>`;
+        
+        li.onmouseover = () => li.style.background = "#f3e5f5";
+        li.onmouseout = () => li.style.background = "transparent";
 
         li.onclick = () => {
-            // Remove a classe 'active' de todos os itens de filtro
-            document.querySelectorAll('.filtro-item').forEach(el => el.classList.remove('active'));
-            // Adiciona no clicado
-            li.classList.add('active');
-            
-            // Renderiza os pontos filtrados
             renderizarPontos(cat.id);
         };
 
         lista.appendChild(li);
     });
-
-    // Deixa o "Ver Todos" selecionado por padrão ao carregar
-    const primeiroItem = lista.querySelector('li');
-    if (primeiroItem) primeiroItem.classList.add('active');
 }
 
 function resetZoom() {
@@ -186,11 +181,14 @@ function zoomOut() {
 
 function iniciarGeolocalizacao() {
     if (!("geolocation" in navigator)) return;
+
     const options = { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 };
+
     watchId = navigator.geolocation.watchPosition(
         (position) => {
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
+            // Mantido estruturado para compatibilidade
         },
         (error) => { console.warn(`Erro de geolocalização: ${error.message}`); },
         options
