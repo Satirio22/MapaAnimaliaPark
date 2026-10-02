@@ -7,7 +7,7 @@ const dadosPark = {
     bounds: {
         north: -23.621249, // Topo , 
         south: -23.624544, // Base (aumenta um pouco a altura para esticar na vertical) 
-        west: -46.968300, // Esquerda 
+        west: -46.968290, // Esquerda 
         east: -46.964483   // Direita (mantém a proporção correta de largura)
     },
     legenda: [
