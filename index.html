@@ -15,20 +15,25 @@
         </div>
         
         <nav class="filtros">
-            <button class="btn-filtro active" onclick="filtrarCategoria('todos', this)">Todos</button>
-            <button class="btn-filtro" onclick="filtrarCategoria('banheiro', this)">🚻 Banheiros</button>
-            <button class="btn-filtro" onclick="filtrarCategoria('animal', this)">🦁 Animais</button>
-            <button class="btn-filtro" onclick="filtrarCategoria('alimentacao', this)">🍔 Alimentação</button>
-            <button class="btn-filtro" onclick="filtrarCategoria('atracao', this)">🎢 Atrações</button>
-            <button class="btn-filtro" onclick="filtrarCategoria('outro', this)">ℹ️ Outros</button>
+            <button class="btn-filtro active" onclick="trocarMapa('reserva', this)">Animália Reserva</button>
+            <button class="btn-filtro" onclick="trocarMapa('diversao', this)">Animália Diversão</button>
         </nav>
     </header>
 
     <!-- LAYOUT PRINCIPAL (MAPA + LEGENDA) -->
     <main class="layout-principal">
-        <!-- ÁREA DO MAPA (GOOGLE MAPS + OVERLAY) -->
+        <!-- ÁREA DO MAPA -->
         <div id="mapaContainer" class="mapa-container">
-            <div id="mapaGoogle" style="width: 100%; height: 100%;"></div>
+            <div id="mapa" class="mapa">
+                <img id="imagemMapa" src="mapa.zoo.png" alt="Mapa do Parque">
+                <div id="camadaPontos"></div>
+                
+                <!-- ÍCONE DA POSIÇÃO DO USUÁRIO -->
+                <div id="userLocation" class="user-marker" style="display: none;">
+                    <div class="pulsar"></div>
+                    🔵
+                </div>
+            </div>
 
             <!-- CONTROLES FLUTUANTES DE ZOOM E LOCALIZAÇÃO PARA CELULAR -->
             <div class="zoom-controls">
@@ -59,9 +64,6 @@
         </div>
     </div>
 
-    <!-- Script do Google Maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo7wHBP2dfVukINV6XMxRAP0XOI-R7mzo&callback=initMap""></script>
-    
     <script src="script.js"></script>
 </body>
 </html>
