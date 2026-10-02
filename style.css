@@ -1,47 +1,84 @@
-/* Caixa de texto no topo (sem estilo de botão) */
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+}
+
+/* Cabeçalho roxo fixo */
+.header-animalia {
+    height: 55px;
+    background-color: #6a1b9a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index: 100;
+}
+
+.logo-container {
+    height: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-central {
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Caixa de texto do título (sem formato de botão) */
 .titulo-caixa-texto {
+    position: absolute;
+    right: 20px;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: bold;
-    letter-spacing: 1px;
-    text-align: center;
-    padding: 6px 15px;
-    user-select: text;
+    letter-spacing: 0.5px;
     background: transparent;
     border: none;
-    box-shadow: none;
     cursor: default;
 }
 
-/* Container da barra superior de filtros */
+/* Barra de filtros superior */
 .filtros-superior-container {
+    height: 50px;
     background-color: #f8f9fa;
     border-bottom: 1px solid #ddd;
-    padding: 8px 15px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 6px;
-    z-index: 10;
+    padding: 0 15px;
+    gap: 15px;
+    z-index: 90;
+    overflow-x: auto;
 }
 
 .filtros-superior-container h3 {
-    font-size: 13px;
+    font-size: 12px;
     color: #444;
-    margin: 0;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    white-space: nowrap;
+    margin: 0;
 }
 
-/* Lista de filtros na horizontal no topo */
+/* Lista de filtros na horizontal */
 .legenda-lista-horizontal {
     display: flex;
-    flex-wrap: wrap;
     gap: 8px;
     list-style: none;
     padding: 0;
     margin: 0;
-    justify-content: center;
+    align-items: center;
 }
 
 .legenda-lista-horizontal .filtro-item {
@@ -50,11 +87,12 @@
     gap: 6px;
     background: #ffffff;
     border: 1px solid #ccc;
-    padding: 5px 10px;
+    padding: 5px 12px;
     border-radius: 20px;
     cursor: pointer;
     font-size: 12px;
     color: #333;
+    white-space: nowrap;
     transition: all 0.2s ease;
 }
 
@@ -69,15 +107,173 @@
     border-color: #8C1B92;
 }
 
+/* TAMANHO CONTROLADO PARA OS ÍCONES DOS FILTROS */
 .legenda-lista-horizontal .filtro-item img {
-    width: 16px;
-    height: 16px;
+    width: 16px !important;
+    height: 16px !important;
     object-fit: contain;
 }
 
-/* Ajuste no layout principal para acomodar a barra em cima */
+/* Layout principal preenchendo o resto da tela */
 .layout-principal {
+    width: 100%;
+    height: calc(100vh - 105px); /* Cabeçalho + barra de filtros */
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 100px); /* Ajustado conforme o topo */
+    position: relative;
+}
+
+/* Área do mapa */
+.mapa-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    touch-action: none;
+}
+
+.mapa {
+    position: absolute;
+    transform-origin: 0 0;
+    will-change: transform;
+}
+
+#imagemMapa {
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Marcadores no mapa */
+#camadaPontos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.ponto {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 5;
+    transition: transform 0.2s;
+}
+
+.ponto:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.icone-marcador {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
+}
+
+/* Controles Flutuantes de Zoom */
+.zoom-controls {
+    position: absolute;
+    right: 15px;
+    bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 50;
+}
+
+.zoom-controls button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: #ffffff;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.zoom-controls button:active {
+    background: #e0e0e0;
+}
+
+/* Modal Inferior (Bottom Sheet) */
+.janela {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transition: bottom 0.3s ease-in-out;
+    z-index: 1000;
+    visibility: hidden;
+}
+
+.janela.ativa {
+    bottom: 0;
+    visibility: visible;
+}
+
+.conteudo {
+    width: 100%;
+    max-width: 600px;
+    background: #ffffff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+    position: relative;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.barra-arraste {
+    width: 40px;
+    height: 4px;
+    background: #ccc;
+    border-radius: 2px;
+    margin: 0 auto 15px auto;
+}
+
+.fechar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.conteudo h2 {
+    font-size: 18px;
+    color: #222;
+    margin-bottom: 5px;
+}
+
+.conteudo h3 {
+    font-size: 14px;
+    color: #6a1b9a;
+    margin-bottom: 15px;
+}
+
+.conteudo p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
 }
