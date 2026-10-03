@@ -1,5 +1,5 @@
 // ==========================================
-// DADOS DO PARQUE (Baseados no HTML)
+// DADOS DO PARQUE
 // ==========================================
 const dadosPark = {
     reserva: {
@@ -11,32 +11,36 @@ const dadosPark = {
             { id: 'outros', texto: 'OUTROS / SERVIÇOS' }
         ],
         pontos: [
+            // Outros / Serviços
             { id: "AMBULATÓRIO", nome: "AMBULATÓRIO", area: "Ambulatório Animália Park", desc: "Localizado na Vila Animália.", icone: "icons/ambulatorio.png", categoria: "outros", top: 26, left: 53 },
-            { id: "ESTACIONAMENTO2", nome: "ESTACIONAMENTO", area: "Estacionamento seguro e com Transfer", desc: "🚗Vagas Comuns<br>♿Vagas Acessiveis<br>", icone: "icons/estacionamento.png", categoria: "outros", top: 76, left: 46 },
-            { id: "ESTACIONAMENTO1", nome: "ESTACIONAMENTO", area: "Vaga garantida e seu carro assegurado!", desc: "🚗Vagas Comuns<br>♿Vagas Acessiveis<br>🪫Vagas para Carros Eletrificados<br>", icone: "icons/estacionamento.png", categoria: "outros", top: 40, left: 28 },
+            { id: "ESTACIONAMENTO2", nome: "ESTACIONAMENTO", area: "Estacionamento seguro e com Transfer", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>", icone: "icons/estacionamento.png", categoria: "outros", top: 76, left: 46 },
+            { id: "ESTACIONAMENTO1", nome: "ESTACIONAMENTO", area: "Vaga garantida e seu carro assegurado!", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>🪫 Vagas para Carros Eletrificados<br>", icone: "icons/estacionamento.png", categoria: "outros", top: 40, left: 28 },
+            { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "🔁 Entrada/Saída<br>🚻 Banheiro (Comum e Acessível)<br>💻 SAV (Serviço de Atendimento ao Visitante)<br>☕ Cafeteria (Cafés e salgados)<br>🧸 Animalia Adventure (Souvenir)<br>📸 Fotográfica (Retirada de Fotos)<br>", icone: "icons/recepçao.png", categoria: "outros", top: 27, left: 48 },
+            { id: "DIVERSÃO INDOOR DIV", nome: "🎡 ANIMALIA DIVERSÃO", area: "Atrações Mágicas e divertidas!", desc: "🚻 Banheiro (Comum e Acessível)<br>🐸 Vitória Regia<br>🛩️ Eagle Flight (Aviãozinho)<br>🎈 Balão Mexicano<br>👒 Forte Apache (Trenzinho)<br>🦘 Kanguroo Joy<br>🦒 Giraffe Cool<br>🎠 Bella Giostra (Carrossel)<br>🩻 Joe Caveira<br>🧗 Kite Dragon<br>🍭 Mundo Doce<br>⛵ Rise of Rome<br>🥶 Bear Mountain<br>🏎️ Big Chock (bate-bate)<br>🧩 Cantinho do Silêncio (Para pessoas neurodivergentes)<br>🧸 Diversão Adventure (Souvenir)<br>", icone: "icons/div.png", categoria: "outros", top: 21, left: 38 },
+            { id: "DIVERSAO AVENTURA", nome: "🎢 ANIMALIA AVENTURA", area: "Atrações Radicaaaaais!", desc: "🚻 Banheiro (Comum e Acessível)<br>⛵ Barco Viking (Aqui tem que gritar)<br>💧 Splash (Águaaaa)<br>🥶 Cyber Hawk (De ponta cabeça)<br>🎢 Cyclone (Intensidade e aventura)<br>🐀 Big Air Coaster (Essa é leve)<br>🔫 Aqua Combat (Combate aquático)<br>", icone: "icons/div.png", categoria: "outros", top: 10, left: 40 },
 
-            { id: "FOOD PARK", nome: "WC FOOD PARK", area: "Localizado no Food Park", desc: "🚻Banheiro (Comum e Acessivel)", icone: "banheiro.png", categoria: "banheiros", top: 60.5, left: 70.5 },
-            { id: "VILA ANIMALIA", nome: "WC VILA ANIMÁLIA", area: "Localizado na Saida do Zoologíco", desc: "🚻Banheiro (Comum e Acessivel)", icone: "banheiro.png", categoria: "banheiros", top: 20, left: 53 },
-            // CORRIGIDO: de "banheiro" para "banheiros" para funcionar com o filtro
-            { id: "RESTAURANTE CENTRAL", nome: "WC RESTAURANTE CENTRAL", area: "Localizado na parte externa do Buffet", desc: "🚻Banheiro (Comum e Acessivel)", icone: "icons/banheiro.png", categoria: "banheiros", top: 45.5, left: 55.5 },
-            { id: "FAZENDINHA", nome: "WC FAZENDINHA", area: "Localizado perto do desembarque Estação 2.", desc: "🚻Banheiro (Comum e Acessivel)", icone: "icons/banheiro.png", categoria: "banheiros", top: 82, left: 65 },
-            { id: "RECEPÇÃO", nome: "WC RECEPÇÃO", area: "Localizado na Recepção, onde tudo começa e onde damos um até breve", desc: "🔁Entrada/Saida<br>🚻Banheiro (Comum e Acessivel)", icone: "icons/banheiro.png", categoria: "banheiros", top: 27, left: 48 },
-            { id: "AVIÁRIO", nome: "WC AVIÁRIO", area: "Localizado dentro do Aviário", desc: "🚻Banheiro (Comum e Acessivel)", icone: "banheiro.png", categoria: "icons/banheiro", top: 60, left: 33 },
-            { id: "DIVERSÃO INDOOR A&B", nome: "WC DIV INDOOR", area: "Localizado dentro do Animália Diversão", desc: "🚻Banheiro (Comum e Acessivel)", icone: "icons/banheiro.png", categoria: "banheiros", top: 17, left: 35 },
+            // Banheiros
+            { id: "WC FOOD PARK", nome: "WC FOOD PARK", area: "Localizado no Food Park", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 60.5, left: 70.5 },
+            { id: "VILA ANIMALIA", nome: "WC VILA ANIMÁLIA", area: "Localizado na Saída do Zoológico", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 20, left: 53 },
+            { id: "WC RESTAURANTE CENTRAL", nome: "WC RESTAURANTE CENTRAL", area: "Localizado na parte externa do Buffet", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 45.5, left: 55.5 },
+            { id: "WC FAZENDINHA", nome: "WC FAZENDINHA", area: "Localizado perto do desembarque Estação 2.", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 82, left: 65 },
+            { id: "WC RECEPÇÃO", nome: "WC RECEPÇÃO", area: "Localizado na Recepção", desc: "🔁 Entrada/Saída<br>🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 27, left: 48 },
+            { id: "WC AVIÁRIO", nome: "WC AVIÁRIO", area: "Localizado dentro do Aviário", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 60, left: 33 },
+            { id: "WC DIV INDOOR", nome: "WC DIV INDOOR", area: "Localizado dentro do Animália Diversão", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 17, left: 35 },
 
+            // Alimentação
             { id: "quiosque-leao", nome: "QUIOSQUE LEÃO", area: "🍿 Café, Salgados e pipocas", desc: "Logo após o recinto do Leão.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 49, left: 41 },
             { id: "quiosque-sucuarana", nome: "QUIOSQUE SUÇUARANA", area: "🍿 Salgados e pipocas", desc: "Em frente ao recinto Suçuarana.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 64, left: 43 },
             { id: "quiosque-tamandua", nome: "QUIOSQUE TAMANDUÁ", area: "🍿 Café, Salgados e pipocas", desc: "Localizado em frente ao recinto tamanduá.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 60, left: 56 },
             { id: "quiosque-lobo-marinho", nome: "QUIOSQUE LOBO MARINHO", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 80, left: 80 },
-            { id: "quiosque-canguru", nome: "QUIOSQUE CANGURU", area: "🍿 Café, Salgados e pipocas.", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 40, left: 74.5 },
-            { id: "FOOD PARK", nome: "FOOD PARK", area: "Natureza e uma boa alimentação", desc: "🚻Banheiro (Comum e Acessivel)<br>🍖Espetaria/Linguiçaria<br>🍗Chicken & Fries<br>🥟Pastelaria<br>🍜Yakissoba<br>", icone: "icons/food-park.png", categoria: "alimentacao", top: 60.5, left: 70.5 },
-            { id: "RESTAURANTE CENTRAL", nome: "RESTAURANTE CENTRAL", area: "Buffet a Vontade", desc: "🚻Banheiro (Comum e Acessivel)<br> 🍽️Restaurante Baboá (Buffet por Pessoa)<br> 🦋Jardim das Borboletas (Area de Descanso)<br>", icone: "icons/rest.central.png", categoria: "alimentacao", top: 45.5, left: 55.5 },
-            { id: "FAZENDINHA", nome: "FAZENDINHA", area: "Ambiente aconchegante para uma refeições e garantir uma lembrança", desc: "🚻Banheiro (Comum e Acessivel)<br>🍿Quiósque Fazendinha (Doces e Bebidas)<br>🧸Estação Souvenier (Ursinhos e lembrancinhas)<br>🍔Hamburgueria Teleférico (Burgues e bebidas)<br>🚠Estação Teleférico (Vai e Vola ou só vai)<br>", icone: "icons/fazenda.png", categoria: "animais", top: 82, left: 65 },
-            { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "🔁Entrada/Saida<br>🚻Banheiro (Comum e Acessivel)<br>🧑‍‍💻SAV (Serviço de Atendimento ao Visitante)<br>☕Cafeteria (Cafés e salgados)<br>🧸Animalia Adventure (Souvenier)<br>📸Fotografica (Retirada de Fotos)<br>", icone: "icons/recepçao.png", categoria: "outros", top: 27, left: 48 },
-            { id: "AVIÁRIO", nome: "AVIÁRIO", area: "Um dos Maiores Aviarios da America Latina", desc: "🚻Banheiro (Comum e Acessivel)<br>☕Cafá Caverna (Cafés e salgados)<br>🪿Aviário (Passaros e Natureza)<br>", icone: "icons/Aviario.png", categoria: "animais", top: 60, left: 33 },
-            { id: "DIVERSÃO INDOOR A&B", nome: "🍟🍔 ANIMALIA ALIMENTAÇÃO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🚻Banheiro (Comum e Acessivel)<br>🍔 Cesta Pic Nic (Burgues e bebidas).<br>☕Carrossel (Porções e Cafés).<br>🥮Mundo Doce (Doces e Bebidas).<br>🍿Carrinho de Doce e Pipoca.(Vai um docinho ai?)", icone: "icons/div-ab.png", categoria: "alimentacao", top: 17, left: 35 },
-            { id: "DIVERSÃO INDOOR DIV", nome: "🎡 ANIMALIA DIVERSÃO", area: "Atrações Magicas e divertidas!", desc: "🚻Banheiro (Comum e Acessivel)<br> 🐸Vitoria Regia<br>🛩️Eagle Flight (Aviãozinho)<br>🎈Balão Mexicano<br>👒Forte Apache (Trenzinho)<br>🦘Kanguroo Joy<br>🦒Giraffe Cool<br>🎠Bella Giostra (Carrosel)<br>🩻Joe Caveira<br>🧗Kite Dragon<br>🍭Mundo Doce<br>⛵Rise of Rome<br>🥶Bear Mountain<br>🏎️Big Chock (bate-bate)<br>🧩Cantinho do Silencio (Para Pessoas neurodivergentes)<br>🧸Diversão Adventure (Souvenier)<br>", icone: "icons/div.png", categoria: "outros", top: 21, left: 38 },
-            { id: "DIVERSAO AVENTURA", nome: "🎢 ANIMALIA AVENTURA", area: "Atrações Radicaaaaais!", desc: "🚻Banheiro (Comum e Acessivel)<br> ⛵Barco Viking (Aqui tem que gritar)<br>💧Splash (Aguaaaa)<br>🥶Cyber Hawk (De ponta cabeça)<br>🎢Cyclone (Intensidade e aventura)<br>🐀Big Air Coaster (Essa é leve)<br>🔫Aqua Combat (Combate aquatico)<br>", icone: "icons/div.png", categoria: "outros", top: 10, left: 40 }
+            { id: "quiosque-canguru", nome: "QUIOSQUE CANGURU", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 40, left: 74.5 },
+            { id: "FOOD PARK", nome: "FOOD PARK", area: "Natureza e uma boa alimentação", desc: "🚻 Banheiro (Comum e Acessível)<br>🍖 Espetaria/Linguiçaria<br>🍗 Chicken & Fries<br>🥟 Pastelaria<br>🍜 Yakissoba<br>", icone: "icons/food-park.png", categoria: "alimentacao", top: 60.5, left: 70.5 },
+            { id: "RESTAURANTE CENTRAL", nome: "RESTAURANTE CENTRAL", area: "Buffet a Vontade", desc: "🚻 Banheiro (Comum e Acessível)<br>🍽️ Restaurante Baboá (Buffet por Pessoa)<br>🦋 Jardim das Borboletas (Área de Descanso)<br>", icone: "icons/rest.central.png", categoria: "alimentacao", top: 45.5, left: 55.5 },
+            { id: "DIVERSÃO INDOOR A&B", nome: "🍟🍔 ANIMALIA ALIMENTAÇÃO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🚻 Banheiro (Comum e Acessível)<br>🍔 Cesta Pic Nic (Burgers e bebidas)<br>☕ Carrossel (Porções e Cafés)<br>🥮 Mundo Doce (Doces e Bebidas)<br>🍿 Carrinho de Doce e Pipoca", icone: "icons/div-ab.png", categoria: "alimentacao", top: 17, left: 35 },
+
+            // Zoológico / Animais
+            { id: "FAZENDINHA", nome: "FAZENDINHA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🚻 Banheiro (Comum e Acessível)<br>🍿 Quiósque Fazendinha (Doces e Bebidas)<br>🧸 Estação Souvenir (Ursinhos e lembrancinhas)<br>🍔 Hamburgueria Teleférico (Burgers e bebidas)<br>🚠 Estação Teleférico (Vai e Volta ou só vai)<br>", icone: "icons/fazenda.png", categoria: "animais", top: 82, left: 65 },
+            { id: "AVIÁRIO", nome: "AVIÁRIO", area: "Um dos Maiores Aviários da América Latina", desc: "🚻 Banheiro (Comum e Acessível)<br>☕ Café Caverna (Cafés e salgados)<br>🪿 Aviário (Pássaros e Natureza)<br>", icone: "icons/Aviario.png", categoria: "animais", top: 60, left: 33 }
         ]
     }
 };
@@ -78,7 +82,6 @@ function atualizarLegendaHorizontal() {
 
     dadosPark.reserva.categoriasLegenda.forEach((cat, index) => {
         const li = document.createElement("li");
-        // O primeiro item já começa ativo no carregamento
         li.className = "filtro-item" + (index === 0 ? " active" : "");
         li.innerText = cat.texto;
 
@@ -115,7 +118,6 @@ function inicializarMapa() {
     const imgMapa = document.getElementById("imagemMapa");
     imgMapa.onload = () => { 
         resetZoom(); 
-        // Renderiza a primeira categoria do array por padrão (alimentação)
         renderizarPontos(dadosPark.reserva.categoriasLegenda[0].id); 
     };
     imgMapa.src = dadosPark.reserva.imagem;
