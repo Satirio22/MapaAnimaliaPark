@@ -11,7 +11,7 @@ const dadosPark = {
             { id: 'servicos', texto: 'SERVIÇOS' },
             { id: 'souvenier', texto: 'FOTOS & SOUVENIER' },
             { id: 'atracao', texto: 'ATRAÇÕES' },
-            { id: 'outros', texto: 'OUTROS / SERVIÇOS' }
+            { id: 'outros', texto: 'SERVIÇOS' }
         ],
         pontos: [
                       // Alimentação
@@ -53,7 +53,8 @@ const dadosPark = {
             { id: "AMBULATÓRIO", nome: "AMBULATÓRIO", area: "Ambulatório Animália Park", desc: "Localizado na Vila Animália.", icone: "icons/ambulatorio.png", categoria: "outros", top: 26, left: 53 },
             { id: "ESTACIONAMENTO2", nome: "ESTACIONAMENTO", area: "Estacionamento seguro e com Transfer", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>", icone: "icons/estacionamento.png", categoria: "outros", top: 76, left: 46 },
             { id: "ESTACIONAMENTO1", nome: "ESTACIONAMENTO", area: "Vaga garantida e seu carro assegurado!", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>🪫 Vagas para Carros Eletrificados<br>", icone: "icons/estacionamento.png", categoria: "outros", top: 40, left: 28 },
-            { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "🔁 Entrada/Saída<br>💻 SAV (Serviço de Atendimento ao Visitante)<br>", icone: "icons/recepçao.png", categoria: "outros", top: 27, left: 48 },
+            { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "🔁 Entrada/Saída", icone: "icons/recepçao.png", categoria: "outros", top: 27, left: 48 },
+            { id: "RECEPÇÃO", nome: "SAV", area: "Reclamações, elogios ou retirada de duvidas", desc: "💻 SAV (Serviço de Atendimento ao Visitante)", icone: "icons/recepçao.png", categoria: "outros", top: 27, left: 48 },
 
                       // Atrações
             { id: "DIVERSÃO INDOOR DIV", nome: "🎡 ANIMALIA DIVERSÃO", area: "Atrações Mágicas e divertidas!", desc: "🐸 Vitória Regia<br>🛩️ Eagle Flight (Aviãozinho)<br>🎈 Balão Mexicano<br>👒 Forte Apache (Trenzinho)<br>🦘 Kanguroo Joy<br>🦒 Giraffe Cool<br>🎠 Bella Giostra (Carrossel)<br>🩻 Joe Caveira<br>🧗 Kite Dragon<br>🍭 Mundo Doce<br>⛵ Rise of Rome<br>🥶 Bear Mountain<br>🏎️ Big Chock (bate-bate)<br>🧩 Cantinho do Silêncio (Para pessoas neurodivergentes)<br>🧸 Diversão Adventure (Souvenir)<br>", icone: "icons/div.png", categoria: "atracao", top: 21, left: 38 },
