@@ -9,7 +9,7 @@ const dadosPark = {
             { id: 'banheiros', texto: 'BANHEIROS' },
             { id: 'animais', texto: 'ZOOLOGICO' },
             { id: 'servicos', texto: 'SERVIÇOS' },
-            { id: 'souvenier', texto: 'FOTOS & SOUVENIER' },
+            { id: 'souvenier', texto: 'SOUVENIER' },
             { id: 'atracao', texto: 'ATRAÇÕES' },
             { id: 'outros', texto: 'SERVIÇOS' }
         ],
