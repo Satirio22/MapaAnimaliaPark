@@ -18,11 +18,11 @@ const dadosPark = {
             { id: "FOOD PARK", nome: "WC FOOD PARK", area: "Localizado no Food Park", desc: "🚻Banheiro (Comum e Acessivel)", icone: "banheiro.png", categoria: "banheiros", top: 60.5, left: 70.5 },
             { id: "VILA ANIMALIA", nome: "WC VILA ANIMÁLIA", area: "Localizado na Saida do Zoologíco", desc: "🚻Banheiro (Comum e Acessivel)", icone: "banheiro.png", categoria: "banheiros", top: 20, left: 53 },
             // CORRIGIDO: de "banheiro" para "banheiros" para funcionar com o filtro
-            { id: "RESTAURANTE CENTRAL", nome: "WC RESTAURANTE CENTRAL", area: "Localizado na parte externa do Buffet", desc: "🚻Banheiro (Comum e Acessivel)", icone: "banheiro.png", categoria: "banheiros", top: 45.5, left: 55.5 },
-            { id: "FAZENDINHA", nome: "WC FAZENDINHA", area: "Localizado perto do desembarque Estação 2.", desc: "🚻Banheiro (Comum e Acessivel)", icone: "banheiro.png", categoria: "banheiros", top: 82, left: 65 },
-            { id: "RECEPÇÃO", nome: "WC RECEPÇÃO", area: "Localizado na Recepção, onde tudo começa e onde damos um até breve", desc: "🔁Entrada/Saida<br>🚻Banheiro (Comum e Acessivel)", icone: "banheiro.png", categoria: "banheiros", top: 27, left: 48 },
-            { id: "AVIÁRIO", nome: "WC AVIÁRIO", area: "Localizado dentro do Aviário", desc: "🚻Banheiro (Comum e Acessivel)", icone: "banheiro.png", categoria: "banheiros", top: 60, left: 33 },
-            { id: "DIVERSÃO INDOOR A&B", nome: "WC DIV INDOOR", area: "Localizado dentro do Animália Diversão", desc: "🚻Banheiro (Comum e Acessivel)", icone: "banheiro.png", categoria: "banheiros", top: 17, left: 35 },
+            { id: "RESTAURANTE CENTRAL", nome: "WC RESTAURANTE CENTRAL", area: "Localizado na parte externa do Buffet", desc: "🚻Banheiro (Comum e Acessivel)", icone: "icons/banheiro.png", categoria: "banheiros", top: 45.5, left: 55.5 },
+            { id: "FAZENDINHA", nome: "WC FAZENDINHA", area: "Localizado perto do desembarque Estação 2.", desc: "🚻Banheiro (Comum e Acessivel)", icone: "icons/banheiro.png", categoria: "banheiros", top: 82, left: 65 },
+            { id: "RECEPÇÃO", nome: "WC RECEPÇÃO", area: "Localizado na Recepção, onde tudo começa e onde damos um até breve", desc: "🔁Entrada/Saida<br>🚻Banheiro (Comum e Acessivel)", icone: "icons/banheiro.png", categoria: "banheiros", top: 27, left: 48 },
+            { id: "AVIÁRIO", nome: "WC AVIÁRIO", area: "Localizado dentro do Aviário", desc: "🚻Banheiro (Comum e Acessivel)", icone: "banheiro.png", categoria: "icons/banheiro", top: 60, left: 33 },
+            { id: "DIVERSÃO INDOOR A&B", nome: "WC DIV INDOOR", area: "Localizado dentro do Animália Diversão", desc: "🚻Banheiro (Comum e Acessivel)", icone: "icons/banheiro.png", categoria: "banheiros", top: 17, left: 35 },
 
             { id: "quiosque-leao", nome: "QUIOSQUE LEÃO", area: "🍿 Café, Salgados e pipocas", desc: "Logo após o recinto do Leão.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 49, left: 41 },
             { id: "quiosque-sucuarana", nome: "QUIOSQUE SUÇUARANA", area: "🍿 Salgados e pipocas", desc: "Em frente ao recinto Suçuarana.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 64, left: 43 },
