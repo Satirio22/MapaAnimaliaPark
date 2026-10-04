@@ -11,61 +11,61 @@ const dadosPark = {
             { id: 'servicos', texto: 'SERVIÇOS' },
             { id: 'souvenier', texto: 'SOUVENIER' },
             { id: 'atracao', texto: 'ATRAÇÕES' },
-            { id: 'outros', texto: 'SERVIÇOS' }
+            { id: 'outros', texto: 'OUTROS' }
         ],
         pontos: [
-                      // Alimentação
-            { id: "LEAO", nome: "QUIOSQUE LEÃO", area: "🍿 Café, Salgados e pipocas", desc: "Logo após o recinto do Leão.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 49, left: 41 },
-            { id: "SUÇUARANA", nome: "QUIOSQUE SUÇUARANA", area: "🍿 Salgados e pipocas", desc: "Em frente ao recinto Suçuarana.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 64, left: 43 },
-            { id: "TAMANDUA", nome: "QUIOSQUE TAMANDUÁ", area: "🍿 Café, Salgados e pipocas", desc: "Localizado em frente ao recinto tamanduá.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 60, left: 50 },
-            { id: "FAZENDINHA", nome: "QUIÓSQUE FAZENDINHA", area: "Doces e Pipocas", desc: "🍿 Quiósque Fazendinha (Doces e Bebidas)", icone: "icons/quiosque.png", categoria: "alimentacao", top: 78, left: 64 },  
-            { id: "HAMB EST2", nome: "HAMBURGUERIA EST.2", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍔 Hamburgueria Teleférico (Burgers e bebidas)<br>", icone: "icons/quiosque.png", categoria: "alimentacao", top: 80, left: 65 },
-            { id: "LOBO MARINHO", nome: "QUIOSQUE LOBO MARINHO", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 80, left: 80 },
-            { id: "FOOD PARK", nome: "FOOD PARK", area: "Natureza e uma boa alimentação", desc: "🍖 Espetaria/Linguiçaria<br>🍗 Chicken & Fries<br>🥟 Pastelaria<br>🍜 Yakissoba<br>", icone: "icons/food-park.png", categoria: "alimentacao", top: 60.5, left: 70.5 },
-            { id: "RESTAURANTE CENTRAL", nome: "RESTAURANTE CENTRAL", area: "Buffet a Vontade", desc: "🍽️ Restaurante Baboá (Buffet por Pessoa)<br>🦋 Jardim das Borboletas (Área de Descanso)<br>", icone: "icons/rest.central.png", categoria: "alimentacao", top: 45.5, left: 55.5 },
-            { id: "CANGURU", nome: "QUIOSQUE CANGURU", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 40, left: 74.5 },
-            { id: "VILA ANIMALIA", nome: "VILA ANIMÁLIA", area: "Ambiente aconchegante para uma refeições e garantir uma lembrança", desc: "🥩Restaurante Savana (Carnes nobres)<br>🥤Shake do Bin (Sorvetes e Shakes)<br>☕Vila Cafeteria (Cafés e salgados)<br>🍔Hamburgueria da Vila (Burgues e bebidas)<br>🍕Selva de Sabores (Pizzas e Crespes)<br>🍝Vila Tratoria (Massas e Carnes)<br>🌭Hot Dog do Kiran (Hot Dog's)<br>🍨Cantinho da Girafa (Sorvetes e massas)<br>", icone: "icons/vila.png", categoria: "alimentacao", top: 20, left: 53 },
-            { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "☕Cafeteria (Cafés e salgados)", icone: "icons/quiosque.png", top: 27, left: 48 },
-            { id: "DIVERSÃO INDOOR A&B", nome: "DIVERSAO INDOOR", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍔 Cesta Pic Nic (Burgers e bebidas)<br>☕ Carrossel (Porções e Cafés)<br>🥮 Mundo Doce (Doces e Bebidas)<br>🍿 Carrinho de Doce e Pipoca", icone: "icons/div-ab.png", categoria: "alimentacao", top: 17, left: 35 },
-            { id: "SPLASH", nome: "QUIÓSQUE SPLASH", area: "🍿 Café, Salgados e pipocas", desc: "Localizado próximo ao vulcão.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 8, left: 41 },
-            { id: "VIKING", nome: "QUIÓSQUE VIKING", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na entrada do Outdoor.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 17, left: 41 },
-            { id: "AVIÁRIO", nome: "CAFÉ AVIÁRIO", area: "Um dos Maiores Aviários da América Latina", desc: "☕ Café Caverna (Cafés e salgados)", icone: "icons/Aviario.png", categoria: "alimentacao", top: 60, left: 33 },
+            // Alimentação
+            { id: "LEAO", nome: "QUIOSQUE LEÃO", tipo: "ALIMENTAÇÃO", area: "🍿 Café, Salgados e pipocas", desc: "Logo após o recinto do Leão.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 49, left: 41 },
+            { id: "SUÇUARANA", nome: "QUIOSQUE SUÇUARANA", tipo: "ALIMENTAÇÃO", area: "🍿 Salgados e pipocas", desc: "Em frente ao recinto Suçuarana.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 64, left: 43 },
+            { id: "TAMANDUA", nome: "QUIOSQUE TAMANDUÁ", tipo: "ALIMENTAÇÃO", area: "🍿 Café, Salgados e pipocas", desc: "Localizado em frente ao recinto tamanduá.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 60, left: 50 },
+            { id: "FAZENDINHA", nome: "QUIÓSQUE FAZENDINHA", tipo: "ALIMENTAÇÃO", area: "Doces e Pipocas", desc: "🍿 Quiósque Fazendinha (Doces e Bebidas)", icone: "icons/quiosque.png", categoria: "alimentacao", top: 78, left: 64 },  
+            { id: "HAMB EST2", nome: "HAMBURGUERIA EST.2", tipo: "ALIMENTAÇÃO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍔 Hamburgueria Teleférico (Burgers e bebidas)<br>", icone: "icons/quiosque.png", categoria: "alimentacao", top: 80, left: 65 },
+            { id: "LOBO MARINHO", nome: "QUIOSQUE LOBO MARINHO", tipo: "ALIMENTAÇÃO", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 80, left: 80 },
+            { id: "FOOD PARK", nome: "FOOD PARK", tipo: "ALIMENTAÇÃO", area: "Natureza e uma boa alimentação", desc: "🍖 Espetaria/Linguiçaria<br>🍗 Chicken & Fries<br>🥟 Pastelaria<br>🍜 Yakissoba<br>", icone: "icons/food-park.png", categoria: "alimentacao", top: 60.5, left: 70.5 },
+            { id: "RESTAURANTE CENTRAL", nome: "RESTAURANTE CENTRAL", tipo: "ALIMENTAÇÃO", area: "Buffet a Vontade", desc: "🍽️ Restaurante Baboá (Buffet por Pessoa)<br>🦋 Jardim das Borboletas (Área de Descanso)<br>", icone: "icons/rest.central.png", categoria: "alimentacao", top: 45.5, left: 55.5 },
+            { id: "CANGURU", nome: "QUIOSQUE CANGURU", tipo: "ALIMENTAÇÃO", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 40, left: 74.5 },
+            { id: "VILA ANIMALIA", nome: "VILA ANIMÁLIA", tipo: "ALIMENTAÇÃO", area: "Ambiente aconchegante para uma refeições e garantir uma lembrança", desc: "🥩Restaurante Savana (Carnes nobres)<br>🥤Shake do Bin (Sorvetes e Shakes)<br>☕Vila Cafeteria (Cafés e salgados)<br>🍔Hamburgueria da Vila (Burgues e bebidas)<br>🍕Selva de Sabores (Pizzas e Crespes)<br>🍝Vila Tratoria (Massas e Carnes)<br>🌭Hot Dog do Kiran (Hot Dog's)<br>🍨Cantinho da Girafa (Sorvetes e massas)<br>", icone: "icons/vila.png", categoria: "alimentacao", top: 20, left: 53 },
+            { id: "RECEPÇÃO", nome: "RECEPÇÃO", tipo: "ALIMENTAÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "☕Cafeteria (Cafés e salgados)", icone: "icons/quiosque.png", categoria: "alimentacao", top: 27, left: 48 },
+            { id: "DIVERSÃO INDOOR A&B", nome: "DIVERSAO INDOOR", tipo: "ALIMENTAÇÃO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍔 Cesta Pic Nic (Burgers e bebidas)<br>☕ Carrossel (Porções e Cafés)<br>🥮 Mundo Doce (Doces e Bebidas)<br>🍿 Carrinho de Doce e Pipoca", icone: "icons/div-ab.png", categoria: "alimentacao", top: 17, left: 35 },
+            { id: "SPLASH", nome: "QUIÓSQUE SPLASH", tipo: "ALIMENTAÇÃO", area: "🍿 Café, Salgados e pipocas", desc: "Localizado próximo ao vulcão.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 8, left: 41 },
+            { id: "VIKING", nome: "QUIÓSQUE VIKING", tipo: "ALIMENTAÇÃO", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na entrada do Outdoor.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 17, left: 41 },
+            { id: "AVIÁRIO", nome: "CAFÉ AVIÁRIO", tipo: "ALIMENTAÇÃO", area: "Um dos Maiores Aviários da América Latina", desc: "☕ Café Caverna (Cafés e salgados)", icone: "icons/Aviario.png", categoria: "alimentacao", top: 60, left: 33 },
 
-                      // Banheiros
-            { id: "WC RECEPÇÃO", nome: "WC RECEPÇÃO", area: "Localizado na Recepção", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 27, left: 48 },
-            { id: "WC LEAO", nome: "WC LEÃO", area: "Localizado logo após o recinto do leão", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiro", top: 49, left: 41 },
-            { id: "WC AVIÁRIO", nome: "WC AVIÁRIO", area: "Localizado dentro do Aviário", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 60, left: 33 },
-            { id: "WC JARDIM BORBOLETA", nome: "WC BORBOLETÁRIO", area: "Localizado na parte externa do Buffet", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 45.5, left: 55.5 },
-            { id: "WC FAZENDINHA", nome: "WC FAZENDINHA", area: "Localizado perto do desembarque Estação 2.", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 82, left: 65 },
-            { id: "WC FOOD PARK", nome: "WC FOOD PARK", area: "Localizado no Food Park", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 60.5, left: 70.5 },
-            { id: "WC RESTAURANTE CENTRAL", nome: "WC RESTAURANTE CENTRAL", area: "Localizado na parte externa do Buffet", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 45.5, left: 55.5 },
-            { id: "VILA ANIMALIA", nome: "WC VILA ANIMÁLIA", area: "Localizado na Saída do Zoológico", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 20, left: 53 },
-            { id: "WC DIV INDOOR", nome: "WC DIV INDOOR", area: "Localizado dentro do Animália Diversão", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 17, left: 35 },
-            { id: "WC DIV OUTDOOR", nome: "WC DIV OUDOOR" , area: "Localizado ao redor do Diversão Aventura", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 41, left: 15 },
+            // Banheiros
+            { id: "WC RECEPÇÃO", nome: "WC RECEPÇÃO", tipo: "BANHEIROS", area: "Localizado na Recepção", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 27, left: 48 },
+            { id: "WC LEAO", nome: "WC LEÃO", tipo: "BANHEIROS", area: "Localizado logo após o recinto do leão", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 49, left: 41 },
+            { id: "WC AVIÁRIO", nome: "WC AVIÁRIO", tipo: "BANHEIROS", area: "Localizado dentro do Aviário", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 60, left: 33 },
+            { id: "WC JARDIM BORBOLETA", nome: "WC BORBOLETÁRIO", tipo: "BANHEIROS", area: "Localizado na parte externa do Buffet", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 45.5, left: 55.5 },
+            { id: "WC FAZENDINHA", nome: "WC FAZENDINHA", tipo: "BANHEIROS", area: "Localizado perto do desembarque Estação 2.", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 82, left: 65 },
+            { id: "WC FOOD PARK", nome: "WC FOOD PARK", tipo: "BANHEIROS", area: "Localizado no Food Park", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 60.5, left: 70.5 },
+            { id: "WC RESTAURANTE CENTRAL", nome: "WC RESTAURANTE CENTRAL", tipo: "BANHEIROS", area: "Localizado na parte externa do Buffet", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 45.5, left: 55.5 },
+            { id: "VILA ANIMALIA", nome: "WC VILA ANIMÁLIA", tipo: "BANHEIROS", area: "Localizado na Saída do Zoológico", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 20, left: 53 },
+            { id: "WC DIV INDOOR", nome: "WC DIV INDOOR", tipo: "BANHEIROS", area: "Localizado dentro do Animália Diversão", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 17, left: 35 },
+            { id: "WC DIV OUTDOOR", nome: "WC DIV OUDOOR", tipo: "BANHEIROS", area: "Localizado ao redor do Diversão Aventura", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 41, left: 15 },
 
-                      // Souvenier
-            { id: "RECEPÇÃO", nome: "ANIMALIA ADVENTURE", area: "Onde tudo começa e aonde damos um até breve!", desc: "🧸 Animalia Adventure (Souvenir)<br>📸 Fotográfica (Retirada de Fotos)<br>", icone: "icons/souvenier.png", categoria: "souvenier", top: 27, left: 48 },
-            { id: "VILA ANIMALIA", nome: "VILAS E BABY ZOO", area: "Ambiente aconchegante para uma refeições e garantir uma lembrança", desc: "🧸Vila Adventure (Souvenier)<br>🧸Baby Zoo (Souvenier)<br>", icone: "icons/souvenier.png",categoria: "souvenier", top: 20, left: 53 },
-            { id: "FAZENDINHA", nome: "ESTAÇÃO SOUVENIER", area: "Ambiente aconchegante para refeições e lembranças", desc: "🧸 Estação Souvenir (Ursinhos e lembrancinhas)", icone: "icons/souvenier.png", categoria: "souvenier", top: 82, left: 65 },
-            { id: "FOTO", nome: "FOTO OFICIAL", area: "Xxxxxxxxx!!!", desc: "📸 Fotografia Oficial", icone: "icons/foto.png", categoria: "souvenier", top: 60, left: 33 },
-            { id: "FOTO", nome: "FOTO OFICIAL", area: "Leve uma recordação para casa!", desc: "📸 Fotografia Oficial", icone: "icons/foto.png", categoria: "souvenier", top: 27, left: 48 },
+            // Souvenier
+            { id: "RECEPÇÃO", nome: "ANIMALIA ADVENTURE", tipo: "SOUVENIER", area: "Onde tudo começa e aonde damos um até breve!", desc: "🧸 Animalia Adventure (Souvenir)<br>📸 Fotográfica (Retirada de Fotos)<br>", icone: "icons/souvenier.png", categoria: "souvenier", top: 27, left: 48 },
+            { id: "VILA ANIMALIA", nome: "VILAS E BABY ZOO", tipo: "SOUVENIER", area: "Ambiente aconchegante para uma refeições e garantir uma lembrança", desc: "🧸Vila Adventure (Souvenier)<br>🧸Baby Zoo (Souvenier)<br>", icone: "icons/souvenier.png", categoria: "souvenier", top: 20, left: 53 },
+            { id: "FAZENDINHA", nome: "ESTAÇÃO SOUVENIER", tipo: "SOUVENIER", area: "Ambiente aconchegante para refeições e lembranças", desc: "🧸 Estação Souvenir (Ursinhos e lembrancinhas)", icone: "icons/souvenier.png", categoria: "souvenier", top: 82, left: 65 },
+            { id: "FOTO", nome: "FOTO OFICIAL", tipo: "SOUVENIER", area: "Xxxxxxxxx!!!", desc: "📸 Fotografia Oficial", icone: "icons/foto.png", categoria: "souvenier", top: 60, left: 33 },
+            { id: "FOTO", nome: "FOTO OFICIAL", tipo: "SOUVENIER", area: "Leve uma recordação para casa!", desc: "📸 Fotografia Oficial", icone: "icons/foto.png", categoria: "souvenier", top: 27, left: 48 },
 
-                     // Outros / Serviços
-            { id: "AMBULATÓRIO", nome: "AMBULATÓRIO", area: "Ambulatório Animália Park", desc: "Localizado na Vila Animália.", icone: "icons/ambulatorio.png", categoria: "outros", top: 26, left: 53 },
-            { id: "ESTACIONAMENTO2", nome: "ESTACIONAMENTO", area: "Estacionamento seguro e com Transfer", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>", icone: "icons/estacionamento.png", categoria: "outros", top: 76, left: 46 },
-            { id: "ESTACIONAMENTO1", nome: "ESTACIONAMENTO", area: "Vaga garantida e seu carro assegurado!", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>🪫 Vagas para Carros Eletrificados<br>", icone: "icons/estacionamento.png", categoria: "outros", top: 40, left: 28 },
-            { id: "RECEPÇÃO", nome: "RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "🔁 Entrada/Saída", icone: "icons/recepçao.png", categoria: "outros", top: 27, left: 48 },
-            { id: "RECEPÇÃO", nome: "SAV", area: "Reclamações, elogios ou retirada de duvidas", desc: "💻 SAV (Serviço de Atendimento ao Visitante)", icone: "icons/recepçao.png", categoria: "outros", top: 27, left: 48 },
+            // Serviços
+            { id: "AMBULATÓRIO", nome: "AMBULATÓRIO", tipo: "SERVIÇOS", area: "Ambulatório Animália Park", desc: "Localizado na Vila Animália.", icone: "icons/ambulatorio.png", categoria: "servicos", top: 26, left: 53 },
+            { id: "ESTACIONAMENTO2", nome: "ESTACIONAMENTO", tipo: "SERVIÇOS", area: "Estacionamento seguro e com Transfer", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 76, left: 46 },
+            { id: "ESTACIONAMENTO1", nome: "ESTACIONAMENTO", tipo: "SERVIÇOS", area: "Vaga garantida e seu carro assegurado!", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>🪫 Vagas para Carros Eletrificados<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 40, left: 28 },
+            { id: "RECEPÇÃO", nome: "RECEPÇÃO", tipo: "SERVIÇOS", area: "Onde tudo começa e aonde damos um até breve!", desc: "🔁 Entrada/Saída", icone: "icons/recepçao.png", categoria: "servicos", top: 27, left: 48 },
+            { id: "RECEPÇÃO", nome: "SAV", tipo: "SERVIÇOS", area: "Reclamações, elogios ou retirada de duvidas", desc: "💻 SAV (Serviço de Atendimento ao Visitante)", icone: "icons/recepçao.png", categoria: "servicos", top: 27, left: 48 },
 
-                      // Atrações
-            { id: "DIVERSÃO INDOOR DIV", nome: "🎡 ANIMALIA DIVERSÃO", area: "Atrações Mágicas e divertidas!", desc: "🐸 Vitória Regia<br>🛩️ Eagle Flight (Aviãozinho)<br>🎈 Balão Mexicano<br>👒 Forte Apache (Trenzinho)<br>🦘 Kanguroo Joy<br>🦒 Giraffe Cool<br>🎠 Bella Giostra (Carrossel)<br>🩻 Joe Caveira<br>🧗 Kite Dragon<br>🍭 Mundo Doce<br>⛵ Rise of Rome<br>🥶 Bear Mountain<br>🏎️ Big Chock (bate-bate)<br>🧩 Cantinho do Silêncio (Para pessoas neurodivergentes)<br>🧸 Diversão Adventure (Souvenir)<br>", icone: "icons/div.png", categoria: "atracao", top: 21, left: 38 },
-            { id: "DIVERSAO AVENTURA", nome: "🎢 ANIMALIA AVENTURA", area: "Atrações Radicaaaaais!", desc: "⛵ Barco Viking (Aqui tem que gritar)<br>💧 Splash (Águaaaa)<br>🥶 Cyber Hawk (De ponta cabeça)<br>🎢 Cyclone (Intensidade e aventura)<br>🐀 Big Air Coaster (Essa é leve)<br>🔫 Aqua Combat (Combate aquático)<br>", icone: "icons/div.png", categoria: "atracao", top: 10, left: 40 },
-            { id: "EST. 2", nome: "TELEFÉRICO EST.2", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/fazenda.png", categoria: "atracao", top: 82, left: 65 },
-            { id: "EST. 1", nome: "TELEFÉRICO EST. 1A", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/banheiro.png", categoria: "atracao", top: 20, left: 53 },
+            // Atrações
+            { id: "DIVERSÃO INDOOR DIV", nome: "🎡 ANIMALIA DIVERSÃO", tipo: "ATRAÇÕES", area: "Atrações Mágicas e divertidas!", desc: "🐸 Vitória Regia<br>🛩️ Eagle Flight (Aviãozinho)<br>🎈 Balão Mexicano<br>👒 Forte Apache (Trenzinho)<br>🦘 Kanguroo Joy<br>🦒 Giraffe Cool<br>🎠 Bella Giostra (Carrossel)<br>🩻 Joe Caveira<br>🧗 Kite Dragon<br>🍭 Mundo Doce<br>⛵ Rise of Rome<br>🥶 Bear Mountain<br>🏎️ Big Chock (bate-bate)<br>🧩 Cantinho do Silêncio (Para pessoas neurodivergentes)<br>🧸 Diversão Adventure (Souvenir)<br>", icone: "icons/div.png", categoria: "atracao", top: 21, left: 38 },
+            { id: "DIVERSAO AVENTURA", nome: "🎢 ANIMALIA AVENTURA", tipo: "ATRAÇÕES", area: "Atrações Radicaaaaais!", desc: "⛵ Barco Viking (Aqui tem que gritar)<br>💧 Splash (Águaaaa)<br>🥶 Cyber Hawk (De ponta cabeça)<br>🎢 Cyclone (Intensidade e aventura)<br>🐀 Big Air Coaster (Essa é leve)<br>🔫 Aqua Combat (Combate aquático)<br>", icone: "icons/div.png", categoria: "atracao", top: 10, left: 40 },
+            { id: "EST. 2", nome: "TELEFÉRICO EST.2", tipo: "ATRAÇÕES", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/fazenda.png", categoria: "atracao", top: 82, left: 65 },
+            { id: "EST. 1", nome: "TELEFÉRICO EST. 1A", tipo: "ATRAÇÕES", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/banheiro.png", categoria: "atracao", top: 20, left: 53 },
 
             // Zoológico / Animais
-            { id: "FAZENDINHA", nome: "FAZENDINHA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🚻 Banheiro (Comum e Acessível)<br>🍿 Quiósque Fazendinha (Doces e Bebidas)<br>🧸 Estação Souvenir (Ursinhos e lembrancinhas)<br>🍔 Hamburgueria Teleférico (Burgers e bebidas)<br>🚠 Estação Teleférico (Vai e Volta ou só vai)<br>", icone: "icons/fazenda.png", categoria: "animais", top: 82, left: 65 },
-            { id: "AVIÁRIO", nome: "AVIÁRIO", area: "Um dos Maiores Aviários da América Latina", desc: "🚻 Banheiro (Comum e Acessível)<br>☕ Café Caverna (Cafés e salgados)<br>🪿 Aviário (Pássaros e Natureza)<br>", icone: "icons/Aviario.png", categoria: "animais", top: 60, left: 33 }
+            { id: "FAZENDINHA", nome: "FAZENDINHA", tipo: "ZOOLOGICO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🚻 Banheiro (Comum e Acessível)<br>🍿 Quiósque Fazendinha (Doces e Bebidas)<br>🧸 Estação Souvenir (Ursinhos e lembrancinhas)<br>🍔 Hamburgueria Teleférico (Burgers e bebidas)<br>🚠 Estação Teleférico (Vai e Volta ou só vai)<br>", icone: "icons/fazenda.png", categoria: "animais", top: 82, left: 65 },
+            { id: "AVIÁRIO", nome: "AVIÁRIO", tipo: "ZOOLOGICO", area: "Um dos Maiores Aviários da América Latina", desc: "🚻 Banheiro (Comum e Acessível)<br>☕ Café Caverna (Cafés e salgados)<br>🪿 Aviário (Pássaros e Natureza)<br>", icone: "icons/Aviario.png", categoria: "animais", top: 60, left: 33 }
         ]
     }
 };
@@ -151,6 +151,11 @@ function inicializarMapa() {
 }
 
 function abrirLocal(ponto) {
+    // Exibe o tipo/categoria principal acima do nome do local
+    const elTipo = document.getElementById("tipoLocal");
+    if (elTipo) {
+        elTipo.innerText = ponto.tipo || "LOCAL";
+    }
     document.getElementById("nomeLocal").innerText = ponto.nome;
     document.getElementById("areaLocal").innerText = ponto.area;
     document.getElementById("descricaoLocal").innerHTML = ponto.desc;
