@@ -85,6 +85,9 @@ function renderizarPontos(categoriaFiltro = 'alimentacao') {
     if (!camada) return;
     camada.innerHTML = "";
     
+    // Armazena ícones únicos presentes nesta categoria para atualizar a legenda dinâmica
+    const iconesUnicos = new Map();
+
     dadosPark.reserva.pontos.forEach(ponto => {
         if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
             const el = document.createElement("div");
@@ -94,7 +97,27 @@ function renderizarPontos(categoriaFiltro = 'alimentacao') {
             el.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}" class="icone-marcador">`;
             el.onclick = (e) => { e.stopPropagation(); abrirLocal(ponto); };
             camada.appendChild(el);
+
+            // Mapeia o ícone e o tipo/nome correspondente para a legenda lateral
+            if (!iconesUnicos.has(ponto.icone)) {
+                iconesUnicos.set(ponto.icone, ponto.tipo || "Local");
+            }
         }
+    });
+
+    atualizarLegendaLateral(iconesUnicos);
+}
+
+function atualizarLegendaLateral(iconesMap) {
+    const containerLegenda = document.getElementById("conteudoLegendaLateral");
+    if (!containerLegenda) return;
+    containerLegenda.innerHTML = "";
+
+    iconesMap.forEach((texto, icone) => {
+        const item = document.createElement("div");
+        item.className = "item-legenda-visual";
+        item.innerHTML = `<img src="${icone}" alt="${texto}"> ${texto}`;
+        containerLegenda.appendChild(item);
     });
 }
 
