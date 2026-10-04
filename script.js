@@ -29,6 +29,7 @@ const dadosPark = {
             { id: "DIVERSÃO INDOOR A&B", nome: "DIVERSAO INDOOR", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍔 Cesta Pic Nic (Burgers e bebidas)<br>☕ Carrossel (Porções e Cafés)<br>🥮 Mundo Doce (Doces e Bebidas)<br>🍿 Carrinho de Doce e Pipoca", icone: "icons/div-ab.png", categoria: "alimentacao", top: 17, left: 35 },
             { id: "SPLASH", nome: "QUIÓSQUE SPLASH", area: "🍿 Café, Salgados e pipocas", desc: "Localizado próximo ao vulcão.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 8, left: 41 },
             { id: "VIKING", nome: "QUIÓSQUE VIKING", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na entrada do Outdoor.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 17, left: 41 },
+            { id: "AVIÁRIO", nome: "CAFÉ AVIÁRIO", area: "Um dos Maiores Aviários da América Latina", desc: "☕ Café Caverna (Cafés e salgados)", icone: "icons/Aviario.png", categoria: "alimentacao", top: 60, left: 33 }
 
                       // Banheiros
             { id: "WC RECEPÇÃO", nome: "WC RECEPÇÃO", area: "Localizado na Recepção", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 27, left: 48 },
