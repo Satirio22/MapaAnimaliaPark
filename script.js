@@ -85,7 +85,6 @@ function renderizarPontos(categoriaFiltro = 'alimentacao') {
     if (!camada) return;
     camada.innerHTML = "";
     
-    // Armazena ícones únicos presentes nesta categoria para atualizar a legenda dinâmica
     const iconesUnicos = new Map();
 
     dadosPark.reserva.pontos.forEach(ponto => {
@@ -98,7 +97,6 @@ function renderizarPontos(categoriaFiltro = 'alimentacao') {
             el.onclick = (e) => { e.stopPropagation(); abrirLocal(ponto); };
             camada.appendChild(el);
 
-            // Mapeia o ícone e o tipo/nome correspondente para a legenda lateral
             if (!iconesUnicos.has(ponto.icone)) {
                 iconesUnicos.set(ponto.icone, ponto.tipo || "Local");
             }
