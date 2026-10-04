@@ -159,7 +159,7 @@
             filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
         }
 
-        /* Caixa de Legenda Flutuante ao lado do mapa */
+        /* Caixa de Legenda Flutuante Dinâmica */
         .painel-legenda-lateral {
             position: absolute;
             top: 15px;
@@ -169,7 +169,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             z-index: 60;
-            max-width: 200px;
+            max-width: 220px;
             backdrop-filter: blur(5px);
         }
 
@@ -306,32 +306,8 @@
             <!-- CAIXINHA DE LEGENDA LATERAL FLUTUANTE -->
             <div class="painel-legenda-lateral">
                 <h4>Legenda</h4>
-                <div class="item-legenda-visual">
-                    <img src="icons/quiosque.png" alt="Quiosque"> Quiosque
-                </div>
-                <div class="item-legenda-visual">
-                    <img src="icons/food-park.png" alt="Food Park"> Food Park
-                </div>
-                <div class="item-legenda-visual">
-                    <img src="icons/rest.central.png" alt="Restaurante"> Restaurante
-                </div>
-                <div class="item-legenda-visual">
-                    <img src="icons/vila.png" alt="Vila"> Vila Animália
-                </div>
-                <div class="item-legenda-visual">
-                    <img src="icons/banheiro.png" alt="Banheiro"> Banheiro
-                </div>
-                <div class="item-legenda-visual">
-                    <img src="icons/souvenier.png" alt="Souvenir"> Souvenir
-                </div>
-                <div class="item-legenda-visual">
-                    <img src="icons/foto.png" alt="Foto"> Foto Oficial
-                </div>
-                <div class="item-legenda-visual">
-                    <img src="icons/estacionamento.png" alt="Estacionamento"> Estacionamento
-                </div>
-                <div class="item-legenda-visual">
-                    <img src="icons/div.png" alt="Atração"> Atrações
+                <div id="conteudoLegendaLateral">
+                    <!-- Atualizado dinamicamente via JS -->
                 </div>
             </div>
 
