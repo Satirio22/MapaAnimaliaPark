@@ -10,8 +10,7 @@ const dadosPark = {
             { id: 'animais', texto: 'ZOOLÓGICO' },
             { id: 'servicos', texto: 'SERVIÇOS' },
             { id: 'souvenier', texto: 'SOUVENIR' },
-            { id: 'atracao', texto: 'ATRAÇÕES' },
-            { id: 'outros', texto: 'OUTROS' }
+            { id: 'atracao', texto: 'ATRAÇÕES' }
         ],
         pontos: [
             // Alimentação
