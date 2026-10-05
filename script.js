@@ -23,8 +23,8 @@ const dadosPark = {
             { id: "alim_hamb_est2", nome: "HAMBURGUERIA EST.2", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍔 Hamburgueria Teleférico (Burgers e bebidas)<br>", icone: "icons/ponto.png", categoria: "alimentacao", top: 80, left: 65 },
             { id: "alim_lobo_marinho", nome: "QUIOSQUE LOBO MARINHO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 80, left: 80 },
             
-            { id: "alim_pastelaria", nome: "FOOD PARK PASTELARIA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🥟 Pastelaria", icone: "icons/ponto.png", categoria: "alimentacao", top: 58, left: 74 },
-            { id: "alim_yakisoba", nome: "FOOD PARK YAKISOBA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍜 Yakissoba", icone: "icons/ponto.png", categoria: "alimentacao", top: 60, left: 74 },
+            { id: "alim_pastelaria", nome: "FOOD PARK PASTELARIA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🥟 Pastelaria", icone: "icons/ponto.png", categoria: "alimentacao", top: 60, left: 74 },
+            { id: "alim_yakisoba", nome: "FOOD PARK YAKISOBA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍜 Yakissoba", icone: "icons/ponto.png", categoria: "alimentacao", top: 63, left: 74 },
             
             { id: "alim_chickenfries", nome: "FOOD PARK CHICKEN & FRIES", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍗 Chicken & Fries", icone: "icons/ponto.png", categoria: "alimentacao", top: 60, left: 70 },
             { id: "alim_espetaria", nome: "FOOD PARK ESPETARIA/LINGUIÇARIA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍖 Espetaria/Linguiçaria", icone: "icons/ponto.png", categoria: "alimentacao", top: 63, left: 70 },
