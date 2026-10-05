@@ -27,7 +27,7 @@ const dadosPark = {
             { id: "alim_yakisoba", nome: "FOOD PARK YAKISOBA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍜 Yakissoba", icone: "icons/ponto.png", categoria: "alimentacao", top: 60, left: 74 },
             
             { id: "alim_chickenfries", nome: "FOOD PARK CHICKEN & FRIES", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍗 Chicken & Fries", icone: "icons/ponto.png", categoria: "alimentacao", top: 60, left: 74 },
-            { id: "alim_espetaria", nome: "FOOD PARK ESPETARIA/LINGUIÇARIA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍖 Espetaria/Linguiçaria", icone: "icons/ponto.png", categoria: "alimentacao", top: 63, left: 74 },
+            { id: "alim_espetaria", nome: "FOOD PARK ESPETARIA/LINGUIÇARIA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍖 Espetaria/Linguiçaria", icone: "icons/ponto.png", categoria: "alimentacao", top: 63, left: 70 },
             
             { id: "alim_rest_central", nome: "RESTAURANTE CENTRAL", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Buffet a Vontade", desc: "🍽️ Restaurante Baboá (Buffet por Pessoa)", icone: "icons/ponto.png", categoria: "alimentacao", top: 45.5, left: 55.5 },
             { id: "alim_iglu", nome: "MOBILE IGLU", tipo: "ALIMENTAÇÃO", legendaNome: "MOBILE", area: "Sorvete para resfrescar!", desc: "Localizado na Reserva.", icone: "icons/mobile.png", categoria: "alimentacao", top: 40, left: 70 },
