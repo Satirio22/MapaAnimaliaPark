@@ -63,7 +63,6 @@ const dadosPark = {
 
             // Souvenirs
             { id: "souv_adventure", nome: "ANIMALIA ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Onde tudo começa e aonde damos um até breve!", desc: "🧸 Animalia Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenier", top: 27, left: 46 },
-            { id: "souv_foto", nome: "FOTOGRAFIA OFICIAL", tipo: "SOUVENIR", legendaNome: "FOTO OFICIAL", area: "Leve a recordação para casa!", desc: "📸 Fotográfica (Retirada de Fotos)", icone: "icons/souvenir.png", categoria: "souvenier", top: 27, left: 48 },
             { id: "souv_vilas_baby", nome: "VILAS ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e garantir uma lembrança", desc: "🧸 Vila Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenier", top: 20, left: 53 },
             { id: "souv_baby", nome: "BABY ZOO", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e garantir uma lembrança", desc: "🧸 Baby Zoo (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenier", top: 20, left: 53 },
             { id: "souv_est.fazenda", nome: "ESTAÇÃO SOUVENIR", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e lembranças", desc: "🧸 Estação Souvenir (Ursinhos e lembrancinhas)", icone: "icons/souvenir.png", categoria: "souvenier", top: 82, left: 65 },
