@@ -39,8 +39,8 @@ const dadosPark = {
 
             { id: "alim_selva", nome: "SELVA DOS SABORES", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍕 Selva de Sabores (Pizzas e Crepes)<br>", icone: "icons/ponto.png", categoria: "alimentacao", top: 23.5, left: 52 },
             { id: "alim_hotdog", nome: "HOTDOG DO KIRAN", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🌭Hot Dog do Kiran (Hot Dog's)", icone: "icons/ponto.png", categoria: "alimentacao", top: 25.5, left: 52.1 },
-            { id: "alim_tratoria", nome: "VILA TRATORIA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍝Vila Tratoria (Massas e Carnes)", icone: "icons/ponto.png", categoria: "alimentacao", top: 26,5, left: 55 },
-            { id: "alim_cantinhogirafa", nome: "CANTINHO DA GIRAFA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍨 Cantinho da Girafa (Picoles e massas)", icone: "icons/ponto.png", categoria: "alimentacao", top: 27.5, left: 52.1 },
+            { id: "alim_tratoria", nome: "VILA TRATORIA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍝Vila Tratoria (Massas e Carnes)", icone: "icons/ponto.png", categoria: "alimentacao", top: 26.5, left: 55 },
+            { id: "alim_cantgira", nome: "CANTINHO DA GIRAFA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍨 Cantinho da Girafa (Picoles e massas)", icone: "icons/ponto.png", categoria: "alimentacao", top: 27.5, left: 52.1 },
 
 
 
