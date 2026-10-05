@@ -9,7 +9,7 @@ const dadosPark = {
             { id: 'banheiros', texto: 'BANHEIROS' },
             { id: 'animais', texto: 'RESERVA' },
             { id: 'servicos', texto: 'SERVICOS' },
-            { id: 'souvenier', texto: 'SOUVENIR' },
+            { id: 'souvenir', texto: 'SOUVENIR' },
             { id: 'atracao', texto: 'ATRAÇÕES' }
         ],
         pontos: [
@@ -60,13 +60,13 @@ const dadosPark = {
             { id: "wc_hipopotamo", nome: "WC HIPOPOTAMO", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado em frente ao recinto do Hipopotamo", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 43, left: 68 },
 
             // Souvenirs
-            { id: "souv_adventure", nome: "ANIMALIA ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Onde tudo começa e aonde damos um até breve!", desc: "🧸 Animalia Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenier", top: 27, left: 47 },
-            { id: "souv_vilas_baby", nome: "VILAS ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e garantir uma lembrança", desc: "🧸 Vila Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenier", top: 19.1, left: 55  },
-            { id: "souv_baby", nome: "BABY ZOO", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e garantir uma lembrança", desc: "🧸 Baby Zoo (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenier", top: 20.1, left: 53 },
-            { id: "souv_est.fazenda", nome: "ESTAÇÃO SOUVENIR", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e lembranças", desc: "🧸 Estação Souvenir (Ursinhos e lembrancinhas)", icone: "icons/souvenir.png", categoria: "souvenier", top: 78, left: 64 },
-            { id: "foto_aviario", nome: "FOTO OFICIAL AVIÁRIO", tipo: "SOUVENIR", legendaNome: "FOTO OFICIAL", area: "Leve uma recordação para casa!", desc: "📸 Fotografia Oficial", icone: "icons/foto.png", categoria: "souvenier", top: 56, left: 38 },            
-            { id: "foto_recepcao", nome: "FOTO OFICIAL RECEPÇÃO", tipo: "SOUVENIR", legendaNome: "FOTO OFICIAL", area: "Leve uma recordação para casa!", desc: "📸 Fotografia Oficial", icone: "icons/foto.png", categoria: "souvenier", top: 27, left: 49 }, 
-            { id: "souv_divavd", nome: "DIVERSÂO ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Diversão e Pelucia!", desc: "🧸 Diversão Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenier", top: 20, left: 37},
+            { id: "souv_adventure", nome: "ANIMALIA ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Onde tudo começa e aonde damos um até breve!", desc: "🧸 Animalia Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 27, left: 47 },
+            { id: "souv_vilas_baby", nome: "VILAS ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e garantir uma lembrança", desc: "🧸 Vila Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 19.1, left: 55  },
+            { id: "souv_baby", nome: "BABY ZOO", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e garantir uma lembrança", desc: "🧸 Baby Zoo (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 20.1, left: 53 },
+            { id: "souv_est.fazenda", nome: "ESTAÇÃO SOUVENIR", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e lembranças", desc: "🧸 Estação Souvenir (Ursinhos e lembrancinhas)", icone: "icons/souvenir.png", categoria: "souvenir", top: 78, left: 64 },
+            { id: "foto_aviario", nome: "FOTO OFICIAL AVIÁRIO", tipo: "SOUVENIR", legendaNome: "FOTO OFICIAL", area: "Leve uma recordação para casa!", desc: "📸 Fotografia Oficial", icone: "icons/foto.png", categoria: "souvenir", top: 56, left: 38 },            
+            { id: "foto_recepcao", nome: "FOTO OFICIAL RECEPÇÃO", tipo: "SOUVENIR", legendaNome: "FOTO OFICIAL", area: "Leve uma recordação para casa!", desc: "📸 Fotografia Oficial", icone: "icons/foto.png", categoria: "souvenir", top: 27, left: 49 }, 
+            { id: "souv_divavd", nome: "DIVERSÂO ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Diversão e Pelucia!", desc: "🧸 Diversão Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 20, left: 37},
 
             // Serviços
             { id: "serv_ambulatorio", nome: "AMBULATÓRIO", tipo: "SERVICOS", legendaNome: "AMBULATÓRIO MÉDICO", area: "Ambulatório teste Animália Park", desc: "Localizado na Vila Animália.", icone: "icons/ambulatório.png", categoria: "servicos", top: 26, left: 53 },
