@@ -88,6 +88,7 @@ const dadosPark = {
 };
 
 let scale = 1, pointX = 0, pointY = 0, startX = 0, startY = 0, isDragging = false;
+let initialDistance = null; // Para futuro suporte a pinça (pinch-to-zoom)
 
 // ==========================================
 // FUNÇÕES DE MAPA E INTERFACE
@@ -116,7 +117,6 @@ function renderizarPontos(categoriaFiltro = 'alimentacao') {
             el.onclick = (e) => { e.stopPropagation(); abrirLocal(ponto); };
             camada.appendChild(el);
 
-            // Usa o 'legendaNome' específico configurado em cada ponto
             if (!iconesUnicos.has(ponto.icone)) {
                 iconesUnicos.set(ponto.icone, ponto.legendaNome || ponto.tipo || "Local");
             }
@@ -219,7 +219,7 @@ function zoomOut() {
 }
 
 // ==========================================
-// EVENTOS DE GESTO E ARRASTO
+// EVENTOS DE GESTO E ARRASTO (MOUSE & TOUCH)
 // ==========================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -227,6 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("mapaContainer");
     if (!container) return;
 
+    // Eventos de Mouse
     container.addEventListener("mousedown", (e) => {
         isDragging = true; 
         startX = e.clientX - pointX; 
@@ -244,5 +245,32 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = false; 
     });
 
-    window.addEventListener("resize", resetZoom);
+    // Eventos de Toque (Mobile)
+    container.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 1) {
+            isDragging = true;
+            startX = e.touches[0].clientX - pointX;
+            startY = e.touches[0].clientY - pointY;
+        }
+    }, { passive: true });
+
+    container.addEventListener("touchmove", (e) => {
+        if (!isDragging || e.touches.length !== 1) return;
+        pointX = e.touches[0].clientX - startX;
+        pointY = e.touches[0].clientY - startY;
+        atualizarTransformacao();
+    }, { passive: true });
+
+    container.addEventListener("touchend", () => {
+        isDragging = false;
+    });
+
+    // Prevenção de reset indesejado no mobile ao redimensionar (barra de navegação do browser)
+    let lastWidth = window.innerWidth;
+    window.addEventListener("resize", () => {
+        if (window.innerWidth !== lastWidth) {
+            lastWidth = window.innerWidth;
+            resetZoom();
+        }
+    });
 });
