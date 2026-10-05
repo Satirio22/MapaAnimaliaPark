@@ -10,6 +10,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body, html {
@@ -39,6 +40,7 @@
             position: relative;
             overflow-x: auto;
             scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
         }
 
         .filtros-superior-container::-webkit-scrollbar {
@@ -91,6 +93,7 @@
             color: #ffffff;
             letter-spacing: 0.5px;
             transition: all 0.2s ease;
+            user-select: none;
         }
 
         .filtro-item.active {
@@ -122,6 +125,7 @@
             position: absolute;
             transform-origin: 0 0;
             will-change: transform;
+            user-select: none;
         }
 
         #imagemMapa {
@@ -242,7 +246,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            transition: bottom 0.3s ease-in-out;
+            transition: bottom 0.3s ease-in-out, visibility 0.3s;
             z-index: 1000;
             visibility: hidden;
         }
