@@ -7,7 +7,7 @@ const dadosPark = {
         categoriasLegenda: [
             { id: 'alimentacao', texto: 'ALIMENTAÇÃO' },
             { id: 'banheiros', texto: 'BANHEIROS' },
-            { id: 'animais', texto: 'ZOOLÓGICO' },
+            { id: 'animais', texto: 'RESERVA' },
             { id: 'servicos', texto: 'SERVIÇOS' },
             { id: 'souvenier', texto: 'SOUVENIR' },
             { id: 'atracao', texto: 'ATRAÇÕES' }
@@ -82,8 +82,8 @@ const dadosPark = {
             { id: "atracao_tel_est1", nome: "EST.1 VILA ANIMALIA", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 20, left: 53 },
 
             // Zoológico / Animais
-            { id: "zoo_fazendinha", nome: "FAZENDINHA", tipo: "ZOOLÓGICO", legendaNome: "Fazendinha Park", area: "Ambiente aconchegante para refeições e lembranças", desc: "🚻 Banheiro (Comum e Acessível)<br>🍿 Quiosque Fazendinha (Doces e Bebidas)<br>🧸 Estação Souvenir (Ursinhos e lembrancinhas)<br>🍔 Hamburgueria Teleférico (Burgers e bebidas)<br>🚠 Estação Teleférico (Vai e Volta ou só vai)<br>", icone: "icons/fazenda.png", categoria: "animais", top: 82, left: 65 },
-            { id: "zoo_aviario", nome: "AVIÁRIO", tipo: "ZOOLÓGICO", legendaNome: "Aviário Principal", area: "Um dos Maiores Aviários da América Latina", desc: "🚻 Banheiro (Comum e Acessível)<br>☕ Café Caverna (Cafés e salgados)<br>🪿 Aviário (Pássaros e Natureza)<br>", icone: "icons/Aviario.png", categoria: "animais", top: 60, left: 33 }
+            { id: "zoo_leao", nome: "LEÃO", tipo: "RESERVA", legendaNome: "RECINTO ANIMAL", area: "Animalia Reserva", desc: "Recinto", icone: "icons/fazenda.png", categoria: "animais", top: 82, left: 65 },
+            { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "RESERVA", legendaNome: "RECINTO ANIMAL", area: "Animalia Reserva", desc: "Recinto", icone: "icons/Aviario.png", categoria: "animais", top: 60, left: 33 }
         ]
     }
 };
