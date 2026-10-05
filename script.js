@@ -22,19 +22,13 @@ const dadosPark = {
             { id: "alim_fazendinha", nome: "QUIOSQUE FAZENDINHA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "Doces e Pipocas", desc: "🍿 Quiosque Fazendinha (Doces e Bebidas)", icone: "icons/quiosque.png", categoria: "alimentacao", top: 78, left: 64 },  
             { id: "alim_hamb_est2", nome: "HAMBURGUERIA EST.2", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍔 Hamburgueria Teleférico (Burgers e bebidas)<br>", icone: "icons/ponto.png", categoria: "alimentacao", top: 80, left: 65 },
             { id: "alim_lobo_marinho", nome: "QUIOSQUE LOBO MARINHO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 80, left: 80 },
-            
             { id: "alim_pastelaria", nome: "FOOD PARK PASTELARIA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🥟 Pastelaria", icone: "icons/ponto.png", categoria: "alimentacao", top: 60, left: 71 },
             { id: "alim_yakisoba", nome: "FOOD PARK YAKISOBA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍜 Yakissoba", icone: "icons/ponto.png", categoria: "alimentacao", top: 63, left: 71 },
-            
             { id: "alim_chickenfries", nome: "FOOD PARK CHICKEN & FRIES", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍗 Chicken & Fries", icone: "icons/ponto.png", categoria: "alimentacao", top: 60, left: 69 },
             { id: "alim_espetaria", nome: "FOOD PARK ESPETARIA/LINGUIÇARIA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍖 Espetaria/Linguiçaria", icone: "icons/ponto.png", categoria: "alimentacao", top: 63, left: 69 },
-            
             { id: "alim_rest_central", nome: "RESTAURANTE CENTRAL", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Buffet a Vontade", desc: "🍽️ Restaurante Baboá (Buffet por Pessoa)", icone: "icons/ponto.png", categoria: "alimentacao", top: 45.5, left: 55.5 },
             { id: "alim_iglu", nome: "MOBILE IGLU", tipo: "ALIMENTAÇÃO", legendaNome: "MOBILE", area: "Sorvete para resfrescar!", desc: "Localizado na Reserva.", icone: "icons/mobile.png", categoria: "alimentacao", top: 40, left: 70 },
             { id: "alim_canguru", nome: "QUIOSQUE CANGURU", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 40, left: 74.5 },
-
-
-
             { id: "alim_hambvila", nome: "HAMBURGUERIA DA VILA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍔Hamburgueria da Vila (Burgues e bebidas)", icone: "icons/ponto.png", categoria: "alimentacao", top: 21, left: 51 },
             { id: "alim_cafevila", nome: "CAFETERIA DA VILA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "☕Vila Cafeteria (Cafés e salgados)", icone: "icons/ponto.png", categoria: "alimentacao", top: 20.1, left: 53 },
             { id: "alim_shakedobin", nome: "SHAKE DO BIN", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🥤 Shake do Bin (Sorvetes e Shakes)", icone: "icons/ponto.png", categoria: "alimentacao", top: 19.1, left: 55 },
@@ -43,10 +37,6 @@ const dadosPark = {
             { id: "alim_hotdog", nome: "HOTDOG DO KIRAN", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🌭Hot Dog do Kiran (Hot Dog's)", icone: "icons/ponto.png", categoria: "alimentacao", top: 23, left: 54 },
             { id: "alim_tratoria", nome: "VILA TRATORIA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍝Vila Tratoria (Massas e Carnes)", icone: "icons/ponto.png", categoria: "alimentacao", top: 22, left: 56 },
             { id: "alim_cantgira", nome: "CANTINHO DA GIRAFA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍨 Cantinho da Girafa (Picoles e massas)", icone: "icons/ponto.png", categoria: "alimentacao", top: 26, left: 53 },
-
-
-
-
             { id: "alim_cesta", nome: "CESTA PICNIC", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍔 Cesta Pic Nic (Burgers e bebidas)", icone: "icons/ponto.png", categoria: "alimentacao", top: 17, left: 31 },
             { id: "alim_carrosel", nome: "CESTA CARROSEL", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Diversão e refeição, tudo em um só lugar!", desc: "☕ Carrossel (Porções e Cafés)", icone: "icons/ponto.png", categoria: "alimentacao", top: 17, left: 34 },
             { id: "alim_mundodoce", nome: "MUNDO DOCE", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Mundo Doce (Doces e Bebidas)", icone: "icons/ponto.png", categoria: "alimentacao", top: 17, left: 37 },
@@ -55,7 +45,8 @@ const dadosPark = {
             { id: "alim_lego", nome: "LEGO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIOSQUE", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Lego (Doces e Bebidas)", icone: "icons/quiosque.png", categoria: "alimentacao", top: 20, left: 37 },
             { id: "alim_splash", nome: "QUIOSQUE SPLASH", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Café, Salgados e pipocas", desc: "Localizado próximo ao vulcão.", icone: "icons/ponto.png", categoria: "alimentacao", top: 7, left: 41 },
             { id: "alim_viking", nome: "QUIOSQUE VIKING", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na entrada do Outdoor.", icone: "icons/ponto.png", categoria: "alimentacao", top: 14, left: 39 },
-            { id: "alim_aviario", nome: "CAFÉ AVIÁRIO", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Um dos Maiores Aviários da América Latina", desc: "☕ Café Caverna (Cafés e salgados)", icone: "icons/ponto.png", categoria: "alimentacao", top: 58, left: 33 },
+            
+            { id: "alim_aviario", nome: "CAFÉ AVIÁRIO", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Um dos Maiores Aviários da América Latina", desc: "☕ Café Caverna (Cafés e salgados)", icone: "icons/ponto.png", categoria: "alimentacao", top: 60, left: 35 },
 
             // Banheiros
             { id: "wc_recepcao", nome: "WC RECEPÇÃO", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado na Recepção", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 27, left: 48 },
