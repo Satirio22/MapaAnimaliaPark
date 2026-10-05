@@ -82,7 +82,7 @@ const dadosPark = {
 
             // Zoológico / Animais
             { id: "zoo_leao", nome: "LEÃO", tipo: "RESERVA", legendaNome: "RECINTOS", area: "Animalia Reserva", desc: "Recinto", icone: "icons/leao.png", categoria: "animais", top: 47.5, left: 42  },
-            { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "RESERVA", legendaNome: "RECINTOS", area: "Animalia Reserva", desc: "Recinto", icone: "icons/onca.png", categoria: "animais", top: 60, left: 33 }
+            { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "RESERVA", legendaNome: "RECINTOS", area: "Animalia Reserva", desc: "Recinto", icone: "icons/onca.png", categoria: "animais", top: 60, left: 33 },
         ]
     }
 };
