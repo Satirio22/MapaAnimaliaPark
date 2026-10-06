@@ -86,8 +86,8 @@ const dadosPark = {
             { id: "atracao_tel_est1", nome: "EST.1 VILA ANIMALIA", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 20, left: 53 },
 
             // Zoológico / Animais
-            { id: "zoo_leao", nome: "LEÃO", tipo: "RESERVA", legendaNome: "LEÃO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/leao.png", categoria: "animais", top: 46, left: 38 },
-            { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "RESERVA", legendaNome: "ONÇA PINTADA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/onca.png", categoria: "animais", top: 60, left: 33 },
+            { id: "zoo_leao", nome: "LEÃO", tipo: "RESERVA", legendaNome: "LEÃO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/leao.png", categoria: "animais", top: 44, left: 38.5 },
+            { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "RESERVA", legendaNome: "ONÇA PINTADA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/onca.png", categoria: "animais", top: 40, left: 30 },
             { id: "zoo_tamandua", nome: "TAMANDUA", tipo: "RESERVA", legendaNome: "TAMANDUA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/tamandua.png", categoria: "animais", top: 60, left: 50 },
             { id: "zoo_sucuarana", nome: "SUÇUARANA", tipo: "RESERVA", legendaNome: "SUÇUARANA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/sucuarana.png", categoria: "animais", top: 64, left: 43 }
         ]
