@@ -229,6 +229,15 @@ function zoomOut() {
 // EVENTOS DE GESTO E ARRASTO (MOUSE & TOUCH)
 // ==========================================
 
+let initialDistance = 0;
+let initialScale = 1;
+
+function getDistance(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     inicializarMapa();
     const container = document.getElementById("mapaContainer");
@@ -252,27 +261,48 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = false; 
     });
 
-    // Eventos de Toque (Mobile)
+    // Eventos de Toque (Mobile - Arraste e Zoom com dois dedos)
     container.addEventListener("touchstart", (e) => {
         if (e.touches.length === 1) {
+            // Um dedo: Arrastar
             isDragging = true;
             startX = e.touches[0].clientX - pointX;
             startY = e.touches[0].clientY - pointY;
+        } else if (e.touches.length === 2) {
+            // Dois dedos: Iniciar Zoom por Pinça
+            isDragging = false;
+            initialDistance = getDistance(e.touches);
+            initialScale = scale;
         }
     }, { passive: true });
 
     container.addEventListener("touchmove", (e) => {
-        if (!isDragging || e.touches.length !== 1) return;
-        pointX = e.touches[0].clientX - startX;
-        pointY = e.touches[0].clientY - startY;
-        atualizarTransformacao();
+        if (e.touches.length === 1 && isDragging) {
+            // Movimento de arrastar com um dedo
+            pointX = e.touches[0].clientX - startX;
+            pointY = e.touches[0].clientY - startY;
+            atualizarTransformacao();
+        } else if (e.touches.length === 2) {
+            // Movimento de pinça com dois dedos
+            const currentDistance = getDistance(e.touches);
+            if (initialDistance > 0) {
+                const zoomFactor = currentDistance / initialDistance;
+                scale = Math.min(Math.max(initialScale * zoomFactor, 0.2), 3.0);
+                atualizarTransformacao();
+            }
+        }
     }, { passive: true });
 
-    container.addEventListener("touchend", () => {
-        isDragging = false;
+    container.addEventListener("touchend", (e) => {
+        if (e.touches.length < 2) {
+            initialDistance = 0;
+        }
+        if (e.touches.length === 0) {
+            isDragging = false;
+        }
     });
 
-    // Prevenção de reset indesejado no mobile ao rolar a página (barra de navegação)
+    // Prevenção de reset indesejado no mobile ao rolar a página
     let lastWidth = window.innerWidth;
     window.addEventListener("resize", () => {
         if (window.innerWidth !== lastWidth) {
