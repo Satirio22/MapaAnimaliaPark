@@ -231,6 +231,8 @@ function zoomOut() {
 
 let initialDistance = 0;
 let initialScale = 1;
+let focalPointX = 0;
+let focalPointY = 0;
 
 function getDistance(touches) {
     const dx = touches[0].clientX - touches[1].clientX;
@@ -261,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = false; 
     });
 
-    // Eventos de Toque (Mobile - Arraste e Zoom com pinça)
+    // Eventos de Toque (Mobile - Arraste e Zoom focado na pinça)
     container.addEventListener("touchstart", (e) => {
         if (e.targetTouches.length === 1) {
             isDragging = true;
@@ -271,6 +273,11 @@ document.addEventListener("DOMContentLoaded", () => {
             isDragging = false;
             initialDistance = getDistance(e.targetTouches);
             initialScale = scale;
+
+            // Ponto central exato entre os dois dedos em relação ao container
+            const rect = container.getBoundingClientRect();
+            focalPointX = ((e.targetTouches[0].clientX + e.targetTouches[1].clientX) / 2) - rect.left;
+            focalPointY = ((e.targetTouches[0].clientY + e.targetTouches[1].clientY) / 2) - rect.top;
         }
     }, { passive: false });
 
@@ -283,7 +290,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const currentDistance = getDistance(e.targetTouches);
             if (initialDistance > 0) {
                 const zoomFactor = currentDistance / initialDistance;
-                scale = Math.min(Math.max(initialScale * zoomFactor, 0.2), 3.0);
+                let newScale = Math.min(Math.max(initialScale * zoomFactor, 0.2), 3.0);
+
+                // Aplica o zoom mantendo o foco exatamente onde os dedos estão pinçando
+                pointX = focalPointX - (focalPointX - pointX) * (newScale / scale);
+                pointY = focalPointY - (focalPointY - pointY) * (newScale / scale);
+                scale = newScale;
+
                 atualizarTransformacao();
             }
         }
