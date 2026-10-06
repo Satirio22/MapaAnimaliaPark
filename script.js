@@ -261,48 +261,43 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = false; 
     });
 
-    // Eventos de Toque (Mobile - Arraste e Zoom com dois dedos)
+    // Eventos de Toque (Mobile - Arraste e Zoom com pinça)
     container.addEventListener("touchstart", (e) => {
-        if (e.touches.length === 1) {
-            // Um dedo: Arrastar
+        if (e.targetTouches.length === 1) {
             isDragging = true;
-            startX = e.touches[0].clientX - pointX;
-            startY = e.touches[0].clientY - pointY;
-        } else if (e.touches.length === 2) {
-            // Dois dedos: Iniciar Zoom por Pinça
+            startX = e.targetTouches[0].clientX - pointX;
+            startY = e.targetTouches[0].clientY - pointY;
+        } else if (e.targetTouches.length === 2) {
             isDragging = false;
-            initialDistance = getDistance(e.touches);
+            initialDistance = getDistance(e.targetTouches);
             initialScale = scale;
         }
-    }, { passive: true });
+    }, { passive: false });
 
     container.addEventListener("touchmove", (e) => {
-        if (e.touches.length === 1 && isDragging) {
-            // Movimento de arrastar com um dedo
-            pointX = e.touches[0].clientX - startX;
-            pointY = e.touches[0].clientY - startY;
+        if (e.targetTouches.length === 1 && isDragging) {
+            pointX = e.targetTouches[0].clientX - startX;
+            pointY = e.targetTouches[0].clientY - startY;
             atualizarTransformacao();
-        } else if (e.touches.length === 2) {
-            // Movimento de pinça com dois dedos
-            const currentDistance = getDistance(e.touches);
+        } else if (e.targetTouches.length === 2) {
+            const currentDistance = getDistance(e.targetTouches);
             if (initialDistance > 0) {
                 const zoomFactor = currentDistance / initialDistance;
                 scale = Math.min(Math.max(initialScale * zoomFactor, 0.2), 3.0);
                 atualizarTransformacao();
             }
         }
-    }, { passive: true });
+    }, { passive: false });
 
     container.addEventListener("touchend", (e) => {
-        if (e.touches.length < 2) {
+        if (e.targetTouches.length < 2) {
             initialDistance = 0;
         }
-        if (e.touches.length === 0) {
+        if (e.targetTouches.length === 0) {
             isDragging = false;
         }
     });
 
-    // Prevenção de reset indesejado no mobile ao rolar a página
     let lastWidth = window.innerWidth;
     window.addEventListener("resize", () => {
         if (window.innerWidth !== lastWidth) {
