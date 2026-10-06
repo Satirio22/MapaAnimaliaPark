@@ -8,7 +8,7 @@ const dadosPark = {
             { id: 'alimentacao', texto: 'ALIMENTAÇÃO' },
             { id: 'banheiros', texto: 'BANHEIROS' },
             { id: 'animais', texto: 'RESERVA' },
-            { id: 'servicos', texto: 'SERVICOS' },
+            { id: 'servicos', texto: 'SERVIÇOS' },
             { id: 'souvenir', texto: 'SOUVENIR' },
             { id: 'atracao', texto: 'ATRAÇÕES' }
         ],
@@ -55,13 +55,13 @@ const dadosPark = {
             { id: "wc_food_park", nome: "WC FOOD PARK", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado no Food Park", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 60.5, left: 74.5 },
             { id: "wc_vila_animalia", nome: "WC VILA ANIMÁLIA", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado na Saída do Zoológico", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 21, left: 56 },
             { id: "wc_div_indoor", nome: "WC DIV INDOOR", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado dentro do Animália Diversão", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 17, left: 35 },
-            { id: "wc_div_outdoor", nome: "WC DIV OUTDOOR", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado ao redor do Diversão Aventura", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 15, left: 48  },
+            { id: "wc_div_outdoor", nome: "WC DIV OUTDOOR", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado ao redor do Diversão Aventura", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 15, left: 48 },
             { id: "wc_borboletario", nome: "WC BORBOLETÁRIO", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado na parte externa do Buffet", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 55, left: 55.5 },
             { id: "wc_hipopotamo", nome: "WC HIPOPOTAMO", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado em frente ao recinto do Hipopotamo", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 43, left: 68 },
 
             // Souvenirs
             { id: "souv_adventure", nome: "ANIMALIA ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Onde tudo começa e aonde damos um até breve!", desc: "🧸 Animalia Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 27, left: 47 },
-            { id: "souv_vilas_baby", nome: "VILAS ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e garantir uma lembrança", desc: "🧸 Vila Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 19.1, left: 55  },
+            { id: "souv_vilas_baby", nome: "VILAS ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e garantir uma lembrança", desc: "🧸 Vila Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 19.1, left: 55 },
             { id: "souv_baby", nome: "BABY ZOO", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e garantir uma lembrança", desc: "🧸 Baby Zoo (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 20.1, left: 53 },
             { id: "souv_est.fazenda", nome: "ESTAÇÃO SOUVENIR", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e lembranças", desc: "🧸 Estação Souvenir (Ursinhos e lembrancinhas)", icone: "icons/souvenir.png", categoria: "souvenir", top: 78, left: 64 },
             { id: "foto_aviario", nome: "FOTO OFICIAL AVIÁRIO", tipo: "SOUVENIR", legendaNome: "FOTO OFICIAL", area: "Leve uma recordação para casa!", desc: "📸 Fotografia Oficial", icone: "icons/foto.png", categoria: "souvenir", top: 56, left: 38 },            
@@ -69,26 +69,25 @@ const dadosPark = {
             { id: "souv_divavd", nome: "DIVERSÂO ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Diversão e Pelucia!", desc: "🧸 Diversão Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 20, left: 37},
 
             // Serviços
-            { id: "serv_ambulatorio", nome: "AMBULATÓRIO", tipo: "SERVICOS", legendaNome: "AMBULATÓRIO MÉDICO", area: "Ambulatório teste Animália Park", desc: "Localizado na Vila Animália.", icone: "icons/ambulatório.png", categoria: "servicos", top: 26, left: 53 },
-            { id: "serv_estacionamento2", nome: "ESTACIONAMENTO EXTERNO", tipo: "SERVICOS", legendaNome: "ESTACIONAMENTO", area: "Estacionamento seguro e com Transfer", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 76, left: 46 },
-            { id: "serv_estacionamento1", nome: "ESTACIONAMENTO INTERNO", tipo: "SERVICOS", legendaNome: "ESTACIONAMENTO", area: "Vaga garantida e seu carro assegurado!", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>🪫 Vagas para Carros Eletrificados<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 40, left: 28 },
-            { id: "serv_sav", nome: "SAV", tipo: "SERVICOS", legendaNome: "SAV - ATENDIMENTO AO VISITANTE", area: "Reclamações, elogios ou retirada de duvidas", desc: "💻 SAV (Serviço de Atendimento ao Visitante)", icone: "icons/recepcao.png", categoria: "servicos", top: 27, left: 48 },
+            { id: "serv_ambulatorio", nome: "AMBULATÓRIO", tipo: "SERVIÇOS", legendaNome: "AMBULATÓRIO MÉDICO", area: "Ambulatório teste Animália Park", desc: "Localizado na Vila Animália.", icone: "icons/ambulatorio.png", categoria: "servicos", top: 26, left: 53 },
+            { id: "serv_estacionamento2", nome: "ESTACIONAMENTO EXTERNO", tipo: "SERVIÇOS", legendaNome: "ESTACIONAMENTO", area: "Estacionamento seguro e com Transfer", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 76, left: 46 },
+            { id: "serv_estacionamento1", nome: "ESTACIONAMENTO INTERNO", tipo: "SERVIÇOS", legendaNome: "ESTACIONAMENTO", area: "Vaga garantida e seu carro assegurado!", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>🪫 Vagas para Carros Eletrificados<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 40, left: 28 },
+            { id: "serv_sav", nome: "SAV", tipo: "SERVIÇOS", legendaNome: "SAV - ATENDIMENTO AO VISITANTE", area: "Reclamações, elogios ou retirada de duvidas", desc: "💻 SAV (Serviço de Atendimento ao Visitante)", icone: "icons/recepcao.png", categoria: "servicos", top: 27, left: 48 },
 
             // Atrações
-            { id: "atracao_indoor", nome: "🎡 ANIMALIA DIVERSÃO", tipo: "ATRAÇÕES", legendaNome: "ANIMALIA DIVERSÃO", area: "Atrações Mágicas e divertidas!", desc: "🐸 Vitória Régia<br>🛩️ Eagle Flight (Aviãozinho)<br>🎈 Balão Mexicano<br>👒 Forte Apache (Trenzinho)<br>🦘 Kanguroo Joy<br>🦒 Giraffe Cool<br>🎠 Bella Giostra (Carrossel)<br>🩻 Joe Caveira<br>🧗 Kite Dragon<br>🍭 Mundo Doce<br>⛵ Rise of Rome<br>🥶 Bear Mountain<br>🏎️ Big Chock (bate-bate)<br>🧩 Cantinho do Silêncio (Para pessoas neurodivergentes)<br>", icone: "icons/divindoor.png", categoria: "atracao", top: 21, left: 38 },
+            { id: "atracao_indoor", nome: "🎡 ANIMALIA DIVERSÃO", tipo: "ATRAÇÕES", legendaNome: "ANIMALIA DIVERSÃO", area: "Atrações Mágicas e divertidas!", desc: "🐸 Vitória Régia<br>🛩️ Eagle Flight (Aviãozinho)<br>🎈 Balão Mexicano<br>👒 Forte Apache (Trenzinho)<br>🦘 Kanguroo Joy<br>🦒 Giraffe Cool<br>🎠 Bella Giostra (Carrossel)<br>🩻 Joe Caveira<br>🧗 Kite Dragon<br>🍭 Mundo Doce<br>⛵ Rise of Rome<br>🥶 Bear Mountain<br>🏎️️ Big Chock (bate-bate)<br>🧩 Cantinho do Silêncio (Para pessoas neurodivergentes)<br>", icone: "icons/divindoor.png", categoria: "atracao", top: 21, left: 38 },
             { id: "atracao_aventura", nome: "🎢 ANIMALIA AVENTURA", tipo: "ATRAÇÕES", legendaNome: "ANIMALIA AVENTURA", area: "Atrações Radicaaaaais!", desc: "⛵ Barco Viking (Aqui tem que gritar)<br>💧 Splash (Águaaaa)<br>🥶 Cyber Hawk (De ponta cabeça)<br>🎢 Cyclone (Intensidade e aventura)<br>🐀 Big Air Coaster (Essa é leve)<br>🔫 Aqua Combat (Combate aquático)<br>", icone: "icons/divoutdoor.png", categoria: "atracao", top: 10, left: 40 },
             { id: "atracao_tel_est2", nome: "EST.2 FAZENDINHA", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 82, left: 65 },
             { id: "atracao_tel_est1", nome: "EST.1 VILA ANIMALIA", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 20, left: 53 },
 
             // Zoológico / Animais
-            { id: "zoo_leao", nome: "LEÃO", tipo: "RESERVA", legendaNome: "RECINTO DE LEÃO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ema.png", categoria: "animais", top: 47.5, left: 42  },
-            { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "RESERVA", legendaNome: "RECINTO oONÇA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ema.png", categoria: "animais", top: 60, left: 33 }
+            { id: "zoo_leao", nome: "LEÃO", tipo: "RESERVA", legendaNome: "RECINTO DE LEÃO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ema.png", categoria: "animais", top: 47.5, left: 42 },
+            { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "RESERVA", legendaNome: "RECINTO ONÇA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ema.png", categoria: "animais", top: 60, left: 33 }
         ]
     }
 };
 
 let scale = 1, pointX = 0, pointY = 0, startX = 0, startY = 0, isDragging = false;
-let initialDistance = null; // Para futuro suporte a pinça (pinch-to-zoom)
 
 // ==========================================
 // FUNÇÕES DE MAPA E INTERFACE
@@ -162,7 +161,8 @@ function resetZoom() {
     const container = document.getElementById("mapaContainer");
     const imgMapa = document.getElementById("imagemMapa");
     const mapaWrapper = document.getElementById("mapa");
-    if (!container || !imgMapa || imgMapa.naturalWidth === 0) return;
+    
+    if (!container || !imgMapa || !imgMapa.naturalWidth || imgMapa.naturalWidth === 0) return;
 
     const realWidth = imgMapa.naturalWidth;
     const realHeight = imgMapa.naturalHeight;
@@ -171,8 +171,10 @@ function resetZoom() {
 
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
-    scale = Math.min(containerWidth / realWidth, containerHeight / realHeight);
+    
+    if (containerWidth === 0 || containerHeight === 0) return;
 
+    scale = Math.min(containerWidth / realWidth, containerHeight / realHeight);
     pointX = (containerWidth - realWidth * scale) / 2;
     pointY = (containerHeight - realHeight * scale) / 2;
     atualizarTransformacao();
@@ -265,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = false;
     });
 
-    // Prevenção de reset indesejado no mobile ao redimensionar (barra de navegação do browser)
+    // Prevenção de reset indesejado no mobile ao rolar a página (barra de navegação)
     let lastWidth = window.innerWidth;
     window.addEventListener("resize", () => {
         if (window.innerWidth !== lastWidth) {
