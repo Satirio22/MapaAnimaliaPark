@@ -97,6 +97,16 @@ const dadosPark = {
             { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 90, left: 0  },
             { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 100, left: 0 },
 
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 10  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 20  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 30  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 40  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 50  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 60  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 70  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 80  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 90  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 100 },            
             
             { id: "zoo_zebra", nome: "ZEBRA", tipo: "RESERVA", legendaNome: "ZEBRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/zebra.png", categoria: "animais", top: 35, left: 52  },
             { id: "zoo_girafa", nome: "GIRAFA", tipo: "RESERVA", legendaNome: "GIRAFA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/girafa.png", categoria: "animais", top: 35, left: 55  },
