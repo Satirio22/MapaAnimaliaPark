@@ -157,8 +157,8 @@
         }
 
         .icone-marcador {
-            width: 32px;
-            height: 32px;
+            width: 60px;
+            height: 60px;
             object-fit: contain;
             filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
         }
@@ -308,12 +308,14 @@
     <main class="layout-principal">
         <div id="mapaContainer" class="mapa-container">
             
-            <!-- CAIXINHA DE LEGENDA LATERAL FLUTUANTE -->
+          <!-- CAIXINHA DE LEGENDA SUSPENSA (ACORDEÃO) -->
             <div class="painel-legenda-lateral">
-                <h4>Legenda</h4>
-                <div id="conteudoLegendaLateral">
-                    <!-- Atualizado dinamicamente via JS -->
-                </div>
+                <details class="legenda-detalhes">
+                    <summary>LEGENDA</summary>
+                    <div id="conteudoLegendaLateral" class="legenda-corpo-conteudo">
+                        <!-- Atualizado dinamicamente via JS -->
+                    </div>
+                </details>
             </div>
 
             <div id="mapa" class="mapa">
