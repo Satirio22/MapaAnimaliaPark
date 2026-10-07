@@ -7,10 +7,10 @@ const dadosPark = {
         categoriasLegenda: [
             { id: 'animais', texto: 'RESERVA' },
             { id: 'alimentacao', texto: 'ALIMENTAÇÃO' },
-            { id: 'banheiros', texto: 'BANHEIROS' },
-            { id: 'servicos', texto: 'SERVIÇOS' },
+            { id: 'atracao', texto: 'ATRAÇÕES' },
             { id: 'souvenir', texto: 'SOUVENIR' },
-            { id: 'atracao', texto: 'ATRAÇÕES' }
+            { id: 'banheiros', texto: 'BANHEIROS' },
+            { id: 'servicos', texto: 'SERVIÇOS' }
         ],
         pontos: [
             // Alimentação
@@ -86,28 +86,7 @@ const dadosPark = {
             { id: "atracao_tel_est1", nome: "EST.1 VILA ANIMALIA", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 20, left: 53 },
 
             // Zoológico / Animais
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 10, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 20, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 30, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 40, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 50, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 60, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 70, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 80, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 90, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 100, left: 0 },
 
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 10  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 20  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 30  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 40  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 50  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 60  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 70  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 80  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 90  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 100 },            
-            
             { id: "zoo_zebra", nome: "ZEBRA", tipo: "RESERVA", legendaNome: "ZEBRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/zebra.png", categoria: "animais", top: 35, left: 52  },
             { id: "zoo_girafa", nome: "GIRAFA", tipo: "RESERVA", legendaNome: "GIRAFA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/girafa.png", categoria: "animais", top: 35, left: 55  },
             { id: "zoo_ema", nome: "EMA", tipo: "RESERVA", legendaNome: "EMA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ema.png", categoria: "animais", top: 38, left: 50  },
@@ -118,15 +97,17 @@ const dadosPark = {
             { id: "zoo_sucuarana", nome: "SUÇUARANA", tipo: "RESERVA", legendaNome: "SUÇUARANA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/sucuarana.png", categoria: "animais", top: 64, left: 43 },
             { id: "zoo_urso", nome: "URSO-DE-ÓCULOS", tipo: "RESERVA", legendaNome: "URSO-DE-ÓCULOS", area: "Animalia Reserva", desc: "Recinto", icone: "icons/urso.png", categoria: "animais", top: 67, left: 43 },
             { id: "zoo_tamandua", nome: "TAMANDUA", tipo: "RESERVA", legendaNome: "TAMANDUA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/tamandua.png", categoria: "animais", top: 60, left: 50 },
-            { id: "zoo_cahvinagre", nome: "CACHORRO-VINAGRE", tipo: "RESERVA", legendaNome: "CACHORRO-VINAGRE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/cachorrovinagre.png", categoria: "animais", top: 59, left: 48 },
+            { id: "zoo_cahvinagre", nome: "CACHORRO-VINAGRE", tipo: "RESERVA", legendaNome: "CACHORRO-VINAGRE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/cachorrovinagre.png", categoria: "animais", top: 75, left: 57  },
             { id: "zoo_fazenda", nome: "FAZENDINHA", tipo: "RESERVA", legendaNome: "FAZENDINHA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/fazenda.png", categoria: "animais", top: 83, left: 57 },
             { id: "zoo_cabramontes", nome: "CABRA-DA-MONTANHA", tipo: "RESERVA", legendaNome: "CABRA-DA-MONTANHA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/cabramontes.png", categoria: "animais", top: 80, left: 70 },
             { id: "zoo_gorila", nome: "GORILA", tipo: "RESERVA", legendaNome: "GORILA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/gorila.png", categoria: "animais", top: 83, left: 73 },
             { id: "zoo_hipo", nome: "HIPOPOTAMO", tipo: "RESERVA", legendaNome: "HIPOPOTAMO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/hipopotamo.png", categoria: "animais", top: 42, left: 63 },
-
-            
+            { id: "zoo_mandril", nome: "MANDRIL", tipo: "RESERVA", legendaNome: "MANDRIL", area: "Animalia Reserva", desc: "Recinto", icone: "icons/mandril.png", categoria: "animais", top: 70, left: 78 },
             { id: "zoo_lobo", nome: "LOBO-MARINHO", tipo: "RESERVA", legendaNome: "LOBO-MARINHO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/lobo.png", categoria: "animais", top: 80, left: 78 },
-            { id: "zoo_rino", nome: "RINOCERONTE", tipo: "RESERVA", legendaNome: "RINOCERONTE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/rino.png", categoria: "animais", top: 72, left: 74 }
+            { id: "zoo_rino", nome: "RINOCERONTE", tipo: "RESERVA", legendaNome: "RINOCERONTE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/rino.png", categoria: "animais", top: 72, left: 74 },
+            { id: "zoo_drome", nome: "DROMEDARIO", tipo: "RESERVA", legendaNome: "DROMEDARIO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/dromedario.png", categoria: "animais", top: 45, left: 70 },
+            { id: "zoo_canguru", nome: "CANGURU", tipo: "RESERVA", legendaNome: "CANGURU", area: "Animalia Reserva", desc: "Recinto", icone: "icons/canguru.png", categoria: "animais", top: 43, left: 75 },
+            { id: "zoo_aviario2", nome: "AVIARIO 2", tipo: "RESERVA", legendaNome: "AVIARIO 2", area: "Animalia Reserva", desc: "Recinto", icone: "icons/aviario2.png", categoria: "animais",  top: 23, left: 59 } 
 
 
 
