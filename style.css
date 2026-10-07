@@ -106,7 +106,6 @@ body, html {
     width: 18px !important;
     height: 18px !important;
     object-fit: contain;
-    /* Faz o ícone acompanhar a cor do texto (opcional, se forem PNGs coloridos mantém original) */
 }
 
 /* Layout principal preenchendo o resto da tela (ajustado para a nova altura: header 75px + filtros 60px = 135px) */
@@ -165,8 +164,8 @@ body, html {
 }
 
 .icone-marcador {
-    width: 32px;
-    height: 32px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
     filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
 }
@@ -196,6 +195,80 @@ body, html {
     0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
     100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
 }
+
+/* ========================================================
+   NOVO: CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (ACORDEÃO)
+   ======================================================== */
+.painel-legenda-lateral {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 60;
+    max-width: 250px;
+    min-width: 180px;
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+}
+
+.legenda-detalhes summary {
+    font-family: inherit;              /* Garante que herda a mesma fonte do restante do layout */    font-size: 11px;
+    color: #4A154B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    padding: 12px;
+    cursor: pointer;
+    user-select: none;
+    list-style: none; /* Remove a setinha feia padrão do navegador */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Setinha personalizada que gira ao abrir/fechar */
+.legenda-detalhes summary::after {
+    content: '▼ ';
+    font-size: 8px;
+    transition: transform 0.2s ease;
+    color: #4A154B;
+}
+
+.legenda-detalhes[open] summary::after {
+    transform: rotate(180deg);
+}
+
+.legenda-detalhes summary::-webkit-details-marker {
+    display: none; /* Compatibilidade extra para sumir com setas nativas */
+}
+
+.legenda-corpo-conteudo {
+    padding: 0 12px 12px 12px;
+    border-top: 1px solid #ddd;
+    margin-top: 2px;
+}
+
+/* Estilo para alinhar os itens que o seu script JS injeta na legenda */
+.legenda-corpo-conteudo .item-legenda-visual {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 11px;
+    color: #333;
+    font-weight: bold;
+}
+
+.legenda-corpo-conteudo .item-legenda-visual img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
 
 /* Controles Flutuantes de Zoom */
 .zoom-controls {
