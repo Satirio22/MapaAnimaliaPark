@@ -3,115 +3,127 @@
 // ==========================================
 const dadosPark = {
     reserva: {
-        imagem: "mapa.zoo.png",
+        imagem: "mapa.zoo.webp",
         categoriasLegenda: [
-            { id: 'animais', texto: 'RESERVA' },
-            { id: 'alimentacao', texto: 'ALIMENTAÇÃO' },
-            { id: 'atracao', texto: 'ATRAÇÕES' },
-            { id: 'souvenir', texto: 'SOUVENIR' },
-            { id: 'banheiros', texto: 'BANHEIROS' },
-            { id: 'servicos', texto: 'SERVIÇOS' }
+            { id: 'alimentacao',texto: 'ALIMENTAÇÃO'},
+            { id: 'animais',    texto: 'ZOOLOGICO'  },
+            { id: 'atracao',    texto: 'ATRAÇÕES'   },
+            { id: 'souvenir',   texto: 'SOUVENIR'   },
+            { id: 'banheiros',  texto: 'BANHEIROS'  },
+            { id: 'servicos',   texto: 'SERVIÇOS'   }
         ],
         pontos: [
             // Alimentação
-            { id: "alim_recepcao", nome: "CAFÉ RECEPÇÃO", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Onde tudo começa e aonde damos um até breve!", desc: "☕ Cafeteria (Cafés e salgados)", icone: "icons/ponto.png", categoria: "alimentacao", top: 27, left: 48 },
-            { id: "alim_leao", nome: "QUIOSQUE LEÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Café, Salgados e pipocas", desc: "Logo após o recinto do Leão.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 48, left: 41 },
-            { id: "alim_sucuarana", nome: "QUIOSQUE SUÇUARANA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Salgados e pipocas", desc: "Em frente ao recinto Suçuarana.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 64, left: 43 },
-            { id: "alim_tamandua", nome: "QUIOSQUE TAMANDUÁ", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Café, Salgados e pipocas", desc: "Localizado em frente ao recinto tamanduá.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 60, left: 50 },
-            { id: "alim_fazendinha", nome: "QUIOSQUE FAZENDINHA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "Doces e Pipocas", desc: "🍿 Quiosque Fazendinha (Doces e Bebidas)", icone: "icons/quiosque.png", categoria: "alimentacao", top: 78, left: 64 },  
-            { id: "alim_hamb_est2", nome: "HAMBURGUERIA EST.2", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍔 Hamburgueria Teleférico (Burgers e bebidas)<br>", icone: "icons/ponto.png", categoria: "alimentacao", top: 80, left: 65 },
-            { id: "alim_lobo_marinho", nome: "QUIOSQUE LOBO MARINHO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 80, left: 80 },
-            { id: "alim_pastelaria", nome: "FOOD PARK PASTELARIA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🥟 Pastelaria", icone: "icons/ponto.png", categoria: "alimentacao", top: 60, left: 71 },
-            { id: "alim_yakisoba", nome: "FOOD PARK YAKISOBA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍜 Yakissoba", icone: "icons/ponto.png", categoria: "alimentacao", top: 63, left: 71 },
-            { id: "alim_chickenfries", nome: "FOOD PARK CHICKEN & FRIES", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍗 Chicken & Fries", icone: "icons/ponto.png", categoria: "alimentacao", top: 60, left: 69 },
-            { id: "alim_espetaria", nome: "FOOD PARK ESPETARIA/LINGUIÇARIA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Natureza e uma boa alimentação", desc: "🍖 Espetaria/Linguiçaria", icone: "icons/ponto.png", categoria: "alimentacao", top: 63, left: 69 },
-            { id: "alim_rest_central", nome: "RESTAURANTE CENTRAL", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Buffet a Vontade", desc: "🍽️ Restaurante Baboá (Buffet por Pessoa)", icone: "icons/ponto.png", categoria: "alimentacao", top: 45.5, left: 55.5 },
-            { id: "alim_iglu", nome: "MOBILE IGLU", tipo: "ALIMENTAÇÃO", legendaNome: "MOBILE", area: "Sorvete para resfrescar!", desc: "Localizado na Reserva.", icone: "icons/mobile.png", categoria: "alimentacao", top: 40, left: 70 },
-            { id: "alim_canguru", nome: "QUIOSQUE CANGURU", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/quiosque.png", categoria: "alimentacao", top: 40, left: 74.5 },
-            { id: "alim_hambvila", nome: "HAMBURGUERIA DA VILA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍔Hamburgueria da Vila (Burgues e bebidas)", icone: "icons/ponto.png", categoria: "alimentacao", top: 21, left: 51 },
-            { id: "alim_cafevila", nome: "CAFETERIA DA VILA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "☕Vila Cafeteria (Cafés e salgados)", icone: "icons/ponto.png", categoria: "alimentacao", top: 20.1, left: 53 },
-            { id: "alim_shakedobin", nome: "SHAKE DO BIN", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🥤 Shake do Bin (Sorvetes e Shakes)", icone: "icons/ponto.png", categoria: "alimentacao", top: 19.1, left: 55 },
-            { id: "alim_savana", nome: "RESTAURANTE SAVANA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🥩 Restaurante Savana (Carnes nobres)", icone: "icons/ponto.png", categoria: "alimentacao", top: 18.5, left: 57 },
-            { id: "alim_selva", nome: "SELVA DOS SABORES", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍕 Selva de Sabores (Pizzas e Crepes)<br>", icone: "icons/ponto.png", categoria: "alimentacao", top: 23.5, left: 52 },
-            { id: "alim_hotdog", nome: "HOTDOG DO KIRAN", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🌭Hot Dog do Kiran (Hot Dog's)", icone: "icons/ponto.png", categoria: "alimentacao", top: 23, left: 54 },
-            { id: "alim_tratoria", nome: "VILA TRATORIA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍝Vila Tratoria (Massas e Carnes)", icone: "icons/ponto.png", categoria: "alimentacao", top: 22, left: 56 },
-            { id: "alim_cantgira", nome: "CANTINHO DA GIRAFA", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍨 Cantinho da Girafa (Picoles e massas)", icone: "icons/ponto.png", categoria: "alimentacao", top: 26, left: 53 },
-            
-            { id: "alim_cesta", nome: "CESTA PICNIC", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍔 Cesta Pic Nic (Burgers e bebidas)", icone: "icons/ponto.png", categoria: "alimentacao", top: 15, left: 32 },
-            { id: "alim_carrinho", nome: "CARRINHO DOCE e PIPOCA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIOSQUE", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍿 Carrinho de Doce e Pipoca", icone: "icons/quiosque.png", categoria: "alimentacao", top: 18, left: 32 },
-
-            { id: "alim_carrosel", nome: "CESTA CARROSEL", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Diversão e refeição, tudo em um só lugar!", desc: "☕ Carrossel (Porções e Cafés)", icone: "icons/ponto.png", categoria: "alimentacao", top: 17.5, left: 35 },
-            { id: "alim_deck", nome: "DECK PIC NIC", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍿 Deck Pic nic (Doce e Pipoca)", icone: "icons/ponto.png", categoria: "alimentacao", top: 20.5, left: 35 },
-
-            { id: "alim_mundodoce", nome: "MUNDO DOCE", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Mundo Doce (Doces e Bebidas)", icone: "icons/ponto.png", categoria: "alimentacao", top: 20, left: 38 },
-            { id: "alim_lego", nome: "LEGO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIOSQUE", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Lego (Doces e Bebidas)", icone: "icons/quiosque.png", categoria: "alimentacao", top: 23, left: 38 },
-
-            
-            { id: "alim_splash", nome: "QUIOSQUE SPLASH", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Café, Salgados e pipocas", desc: "Localizado próximo ao vulcão.", icone: "icons/ponto.png", categoria: "alimentacao", top: 7, left: 41 },
-            { id: "alim_viking", nome: "QUIOSQUE VIKING", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na entrada do Outdoor.", icone: "icons/ponto.png", categoria: "alimentacao", top: 14, left: 39 },
-            { id: "alim_aviario", nome: "CAFÉ AVIÁRIO", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Um dos Maiores Aviários da América Latina", desc: "☕ Café Caverna (Cafés e salgados)", icone: "icons/ponto.png", categoria: "alimentacao", top: 60, left: 35 },
+            { id: "alim_recepcao", nome: "CAFÉ RECEPÇÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CAFÉ RECEPÇÃO<br>Kiosk Cafe Reception", area: "Onde tudo começa e aonde damos um até breve!", desc: "☕ Cafeteria (Cafés e salgados.)", icone: "icons/caferecepcao.png", categoria: "alimentacao", top: 27, left: 48 },
+            { id: "alim_leao", nome: "QUIOSQUE LEÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LEÃO<br>Kiosk Lion", area: "🍿 Café, Salgados e pipocas", desc: "Logo após o recinto do Leão.", icone: "icons/pontoleao.png", categoria: "alimentacao", top: 48, left: 41 },
+            { id: "alim_sucuarana", nome: "QUIOSQUE SUÇUARANA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE SUÇUARANA<br>Kiosk Puma", area: "🍿 Salgados e pipocas", desc: "Em frente ao recinto Suçuarana.", icone: "icons/pontosucuarana.png", categoria: "alimentacao", top: 64, left: 43 },
+            { id: "alim_tamandua", nome: "QUIOSQUE TAMANDUÁ", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE TAMANDUA<br>Kiosk Anteater", area: "🍿 Café, Salgados e pipocas", desc: "Localizado em frente ao recinto tamanduá.", icone: "icons/pontotamandua.png", categoria: "alimentacao", top: 60, left: 50 },
+            { id: "alim_fazendinha", nome: "QUIOSQUE FAZENDINHA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE FAZENDINHA", area: "Doces e Pipocas", desc: "🍿 Quiosque Fazendinha (Doces e Bebidas)", icone: "icons/pontofazendinha.png", categoria: "alimentacao", top: 78, left: 64 },  
+            { id: "alim_hamb_est2", nome: "HAMBURGUERIA EST.2", tipo: "ALIMENTAÇÃO", legendaNome: "HAMBURGUERIA EST.2", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍔 Hamburgueria Teleférico (Burgers e bebidas)<br>", icone: "icons/hambestacao.png", categoria: "alimentacao", top: 80, left: 65 },
+            { id: "alim_lobo_marinho", nome: "QUIOSQUE LOBO MARINHO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LOBO MARINHO", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/pontolobomarinho.png", categoria: "alimentacao", top: 80, left: 80 },
+            { id: "alim_pastelaria", nome: "FOOD PARK PASTELARIA", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK PASTEL", area: "Natureza e uma boa alimentação", desc: "🥟 Pastelaria", icone: "icons/foodpastel.png", categoria: "alimentacao", top: 60, left: 71 },
+            { id: "alim_yakisoba", nome: "FOOD PARK YAKISOBA", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK YAKISOBRA", area: "Natureza e uma boa alimentação", desc: "🍜 Yakissoba", icone: "icons/foodyakisoba.png", categoria: "alimentacao", top: 63, left: 71 },
+            { id: "alim_chickenfries", nome: "FOOD PARK CHICKEN & FRIES", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK CHICKEN & FRIES", area: "Natureza e uma boa alimentação", desc: "🍗 Chicken & Fries", icone: "icons/foodchicken.png", categoria: "alimentacao", top: 60, left: 69 },
+            { id: "alim_espetaria", nome: "FOOD PARK ESPETARIA/LINGUIÇARIA", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK ESPETO/LINGUIÇA", area: "Natureza e uma boa alimentação", desc: "🍖 Espetaria/Linguiçaria", icone: "icons/foodespeto.png", categoria: "alimentacao", top: 63, left: 69 },
+            { id: "alim_rest_central", nome: "RESTAURANTE CENTRAL", tipo: "ALIMENTAÇÃO", legendaNome: "RESTAURANTE BAOBÁ", area: "Buffet a Vontade", desc: "🍽️ Restaurante Baboá (Buffet por Pessoa)", icone: "icons/restbaoba.png", categoria: "alimentacao", top: 45.5, left: 55.5 },
+            { id: "alim_iglu", nome: "MOBILE IGLU", tipo: "ALIMENTAÇÃO", legendaNome: "MOBILE KIBON IGLU", area: "Sorvete para resfrescar!", desc: "Localizado na Reserva.", icone: "icons/mobileiglu.png", categoria: "alimentacao", top: 40, left: 70 },
+            { id: "alim_canguru", nome: "QUIOSQUE CANGURU", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CANGURU", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/pontocanguru.png", categoria: "alimentacao", top: 40, left: 74.5 },
+            { id: "alim_hambvila", nome: "HAMBURGUERIA DA VILA", tipo: "ALIMENTAÇÃO", legendaNome: "HAMBURGUERIA DA VILA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍔Hamburgueria da Vila (Burgues e bebidas)", icone: "icons/hambvila.png", categoria: "alimentacao", top: 21, left: 51 },
+            { id: "alim_cafevila", nome: "CAFETERIA DA VILA", tipo: "ALIMENTAÇÃO", legendaNome: "CAFETERIA DA VILA", area: "Ambiente aconchegante para refeições e lembranças", desc: "☕Vila Cafeteria (Cafés e salgados)", icone: "icons/cafevila.png", categoria: "alimentacao", top: 20.1, left: 53 },
+            { id: "alim_shakedobin", nome: "SHAKE DO BIN", tipo: "ALIMENTAÇÃO", legendaNome: "SHAKE DO BIN", area: "Ambiente aconchegante para refeições e lembranças", desc: "🥤 Shake do Bin (Sorvetes e Shakes)", icone: "icons/pontoshake.png", categoria: "alimentacao", top: 19.1, left: 55 },
+            { id: "alim_savana", nome: "RESTAURANTE SAVANA", tipo: "ALIMENTAÇÃO", legendaNome: "RESTAURANTE SAVANA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🥩 Restaurante Savana (Carnes nobres)", icone: "icons/restsavana.png", categoria: "alimentacao", top: 18.5, left: 57 },
+            { id: "alim_selva", nome: "SELVA DOS SABORES", tipo: "ALIMENTAÇÃO", legendaNome: "SELVA DOS SABORES", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍕 Selva de Sabores (Pizzas e Crepes)<br>", icone: "icons/selvasabores.png", categoria: "alimentacao", top: 23.5, left: 52 },
+            { id: "alim_hotdog", nome: "HOTDOG DO KIRAN", tipo: "ALIMENTAÇÃO", legendaNome: "HOT DOG DO KIRAN", area: "Ambiente aconchegante para refeições e lembranças", desc: "🌭Hot Dog do Kiran (Hot Dog's)", icone: "icons/hotdog.png", categoria: "alimentacao", top: 23, left: 54 },
+            { id: "alim_tratoria", nome: "VILA TRATORIA", tipo: "ALIMENTAÇÃO", legendaNome: "VILA TRATORIA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍝Vila Tratoria (Massas e Carnes)", icone: "icons/tratoria.png", categoria: "alimentacao", top: 22, left: 56 },
+            { id: "alim_cantgira", nome: "CANTINHO DA GIRAFA", tipo: "ALIMENTAÇÃO", legendaNome: "CANTINHO DA GIRAFA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍨 Cantinho da Girafa (Picoles e massas)", icone: "icons/pontocantinho.png", categoria: "alimentacao", top: 26, left: 53 },
+            { id: "alim_cesta", nome: "CESTA PICNIC", tipo: "ALIMENTAÇÃO", legendaNome: "CESTA PIC NIC", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍔 Cesta Pic Nic (Burgers e bebidas)", icone: "icons/cesta.png", categoria: "alimentacao", top: 15, left: 32 },
+            { id: "alim_carrinho", nome: "CARRINHO DOCE e PIPOCA", tipo: "ALIMENTAÇÃO", legendaNome: "CARRINHO DE DOCE/PIPOCA", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍿 Carrinho de Doce e Pipoca", icone: "icons/carrinho.png", categoria: "alimentacao", top: 18, left: 32 },
+            { id: "alim_carrosel", nome: "CESTA CARROSEL", tipo: "ALIMENTAÇÃO", legendaNome: "CESTA CARROSEL", area: "Diversão e refeição, tudo em um só lugar!", desc: "☕ Carrossel (Porções e Cafés)", icone: "icons/carrosel.png", categoria: "alimentacao", top: 17.5, left: 35 },
+            { id: "alim_deck", nome: "DECK PIC NIC", tipo: "ALIMENTAÇÃO", legendaNome: "DECK PIC NIC", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍿 Deck Pic nic (Doce e Pipoca)", icone: "icons/deck.png", categoria: "alimentacao", top: 20.5, left: 35 },
+            { id: "alim_mundodoce", nome: "MUNDO DOCE", tipo: "ALIMENTAÇÃO", legendaNome: "MUNDO DOCE", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Mundo Doce (Doces e Bebidas)", icone: "icons/mundodoce.png", categoria: "alimentacao", top: 20, left: 38 },
+            { id: "alim_lego", nome: "LEGO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LEGO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Lego (Doces e Bebidas)", icone: "icons/lego.png", categoria: "alimentacao", top: 23, left: 38 },
+            { id: "alim_splash", nome: "QUIOSQUE SPLASH", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE SPLASH", area: "🍿 Café, Salgados e pipocas", desc: "Localizado próximo ao vulcão.", icone: "icons/splash.png", categoria: "alimentacao", top: 7, left: 41 },
+            { id: "alim_viking", nome: "QUIOSQUE VIKING", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE VIKING", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na entrada do Outdoor.", icone: "icons/viking.png", categoria: "alimentacao", top: 14, left: 39 },
+            { id: "alim_aviario", nome: "CAFÉ AVIÁRIO", tipo: "ALIMENTAÇÃO", legendaNome: "CAFÉ CAVERNA/AVIÁRIO", area: "Um dos Maiores Aviários da América Latina", desc: "☕ Café Caverna (Cafés e salgados)", icone: "icons/cafecaverna.png", categoria: "alimentacao", top: 60, left: 35 },
 
             // Banheiros
-            { id: "wc_recepcao", nome: "WC RECEPÇÃO", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado na Recepção", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 27, left: 48 },
-            { id: "wc_leao", nome: "WC LEÃO", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado logo após o recinto do leão", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 47.5, left: 42 },
-            { id: "wc_aviario", nome: "WC AVIÁRIO", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado dentro do Aviário", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 60, left: 35 },
-            { id: "wc_baoba", nome: "WC RESTAURANTE BAOBÁ", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado na parte externa do Buffet", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 53, left: 52 },
-            { id: "wc_fazendinha", nome: "WC FAZENDINHA", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado perto do desembarque Estação 2.", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 80, left: 60 },
-            { id: "wc_food_park", nome: "WC FOOD PARK", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado no Food Park", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 60.5, left: 74.5 },
-            { id: "wc_vila_animalia", nome: "WC VILA ANIMÁLIA", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado na Saída do Zoológico", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 21, left: 56 },
-            { id: "wc_div_indoor", nome: "WC DIV INDOOR", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado dentro do Animália Diversão", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 20, left: 38 },
-            { id: "wc_div_outdoor", nome: "WC DIV OUTDOOR", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado ao redor do Diversão Aventura", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 15, left: 48 },
-            { id: "wc_borboletario", nome: "WC BORBOLETÁRIO", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado na parte externa do Buffet", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 55, left: 55.5 },
-            { id: "wc_hipopotamo", nome: "WC HIPOPOTAMO", tipo: "BANHEIROS", legendaNome: "BANHEIRO", area: "Localizado em frente ao recinto do Hipopotamo", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 43, left: 68 },
+            { id: "wc_recepcao", nome: "WC RECEPÇÃO", tipo: "BANHEIROS", legendaNome: "RECEPÇÃO", area: "Localizado na Recepção", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 27, left: 48 },
+            { id: "wc_leao", nome: "WC LEÃO", tipo: "BANHEIROS", legendaNome: "LEÃO", area: "Localizado logo após o recinto do leão", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 47.5, left: 42 },
+            { id: "wc_aviario", nome: "WC AVIÁRIO", tipo: "BANHEIROS", legendaNome: "AVIÁRIO", area: "Localizado dentro do Aviário", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 60, left: 35 },
+            { id: "wc_baoba", nome: "WC RESTAURANTE BAOBÁ", tipo: "BANHEIROS", legendaNome: "RESTAURANTE BAOBÁ", area: "Localizado na parte externa do Buffet", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 53, left: 52 },
+            { id: "wc_fazendinha", nome: "WC FAZENDINHA", tipo: "BANHEIROS", legendaNome: "FAZENDINHA", area: "Localizado perto do desembarque Estação 2.", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 80, left: 60 },
+            { id: "wc_food_park", nome: "WC FOOD PARK", tipo: "BANHEIROS", legendaNome: "FOOD PARK", area: "Localizado no Food Park", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 60.5, left: 74.5 },
+            { id: "wc_vila_animalia", nome: "WC VILA ANIMÁLIA", tipo: "BANHEIROS", legendaNome: "VILA ANIMALIA", area: "Localizado na Saída do Zoológico", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 21, left: 56 },
+            { id: "wc_div_indoor", nome: "WC DIV INDOOR", tipo: "BANHEIROS", legendaNome: "ANIMALIA DIVERSÃO", area: "Localizado dentro do Animália Diversão", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 20, left: 38 },
+            { id: "wc_div_outdoor", nome: "WC DIV OUTDOOR", tipo: "BANHEIROS", legendaNome: "ANIMALIA AVENTURA", area: "Localizado ao redor do Diversão Aventura", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 15, left: 48 },
+            { id: "wc_borboletario", nome: "WC BORBOLETÁRIO", tipo: "BANHEIROS", legendaNome: "JARDIM DAS BORBOLETAS", area: "Localizado na parte externa do Buffet", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 55, left: 55.5 },
+            { id: "wc_hipopotamo", nome: "WC HIPOPOTAMO", tipo: "BANHEIROS", legendaNome: "HIPOPOTAMO", area: "Localizado em frente ao recinto do Hipopotamo", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 43, left: 68 },
 
             // Souvenirs
-            { id: "souv_adventure", nome: "ANIMALIA ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Onde tudo começa e aonde damos um até breve!", desc: "🧸 Animalia Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 27, left: 47 },
-            { id: "souv_vilas_baby", nome: "VILAS ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e garantir uma lembrança", desc: "🧸 Vila Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 19.1, left: 55 },
-            { id: "souv_baby", nome: "BABY ZOO", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e garantir uma lembrança", desc: "🧸 Baby Zoo (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 20.1, left: 53 },
-            { id: "souv_est.fazenda", nome: "ESTAÇÃO SOUVENIR", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Ambiente aconchegante para refeições e lembranças", desc: "🧸 Estação Souvenir (Ursinhos e lembrancinhas)", icone: "icons/souvenir.png", categoria: "souvenir", top: 78, left: 64 },
-            { id: "foto_aviario", nome: "FOTO OFICIAL AVIÁRIO", tipo: "SOUVENIR", legendaNome: "FOTO OFICIAL", area: "Leve uma recordação para casa!", desc: "📸 Fotografia Oficial", icone: "icons/foto.png", categoria: "souvenir", top: 56, left: 38 },            
-            { id: "foto_recepcao", nome: "FOTO OFICIAL RECEPÇÃO", tipo: "SOUVENIR", legendaNome: "FOTO OFICIAL", area: "Leve uma recordação para casa!", desc: "📸 Fotografia Oficial", icone: "icons/foto.png", categoria: "souvenir", top: 27, left: 49 },  
-            { id: "souv_divavd", nome: "DIVERSÂO ADVENTURE", tipo: "SOUVENIR", legendaNome: "LOJA SOUVENIR", area: "Diversão e Pelucia!", desc: "🧸 Diversão Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 20, left: 37},
+            { id: "souv_adventure", nome: "ANIMALIA ADVENTURE", tipo: "SOUVENIR", legendaNome: "ANIMALIA ADVENTURE<br>Loja de souvenier", area: "Onde tudo começa e aonde damos um até breve!", desc: "🧸 Animalia Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 27, left: 47 },
+            { id: "souv_vilas", nome: "VILAS ADVENTURE", tipo: "SOUVENIR", legendaNome: "VILA ANIMALIA<br>Loja de souvenier", area: "Ambiente aconchegante para refeições e garantir uma lembrança", desc: "🧸 Vila Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 19.1, left: 55 },
+            { id: "souv_baby", nome: "BABY ZOO", tipo: "SOUVENIR", legendaNome: "BABY ZOO<br>Loja de souvenier", area: "Ambiente aconchegante para refeições e garantir uma lembrança", desc: "🧸 Baby Zoo (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 20.1, left: 53 },
+            { id: "souv_est.fazenda", nome: "ESTAÇÃO SOUVENIR", tipo: "SOUVENIR", legendaNome: "ESTAÇÃO. FAZENDINHA<br>Loja de souvenier", area: "Ambiente aconchegante para refeições e lembranças", desc: "🧸 Estação Souvenir (Ursinhos e lembrancinhas)", icone: "icons/souvenir.png", categoria: "souvenir", top: 78, left: 64 },
+            { id: "souv_divavd", nome: "DIVERSÂO ADVENTURE", tipo: "SOUVENIR", legendaNome: "DIVERSÃO ADVENTURE<br>Loja de souvenier", area: "Diversão e Pelucia!", desc: "🧸 Diversão Adventure (Souvenir)", icone: "icons/souvenir.png", categoria: "souvenir", top: 20, left: 37},
+            { id: "foto_aviario", nome: "FOTO OFICIAL AVIÁRIO", tipo: "SOUVENIR", legendaNome: "FOTO OFICIAL<br>Ponto Tira foto", area: "Leve uma recordação para casa!", desc: "📸 Fotografia Oficial", icone: "icons/foto.png", categoria: "souvenir", top: 56, left: 38 },            
+            { id: "foto_recepcao", nome: "FOTO OFICIAL RECEPÇÃO", tipo: "SOUVENIR", legendaNome: "FOTO OFICIAL<br>Ponto Compra foto", area: "Leve uma recordação para casa!", desc: "📸 Fotografia Oficial", icone: "icons/foto.png", categoria: "souvenir", top: 27, left: 49 },  
 
             // Serviços
-            { id: "serv_ambulatorio", nome: "AMBULATÓRIO", tipo: "SERVIÇOS", legendaNome: "AMBULATÓRIO MÉDICO", area: "Ambulatório teste Animália Park", desc: "Localizado na Vila Animália.", icone: "icons/ambulatorio.png", categoria: "servicos", top: 26, left: 53 },
-            { id: "serv_estacionamento2", nome: "ESTACIONAMENTO EXTERNO", tipo: "SERVIÇOS", legendaNome: "ESTACIONAMENTO", area: "Estacionamento seguro e com Transfer", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 76, left: 46 },
-            { id: "serv_estacionamento1", nome: "ESTACIONAMENTO INTERNO", tipo: "SERVIÇOS", legendaNome: "ESTACIONAMENTO", area: "Vaga garantida e seu carro assegurado!", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>🪫 Vagas para Carros Eletrificados<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 40, left: 28 },
             { id: "serv_sav", nome: "SAV", tipo: "SERVIÇOS", legendaNome: "SAV - ATENDIMENTO AO VISITANTE", area: "Reclamações, elogios ou retirada de duvidas", desc: "💻 SAV (Serviço de Atendimento ao Visitante)", icone: "icons/recepcao.png", categoria: "servicos", top: 27, left: 48 },
+            { id: "serv_ambulatorio", nome: "AMBULATÓRIO", tipo: "SERVIÇOS", legendaNome: "AMBULATÓRIO MÉDICO", area: "Ambulatório teste Animália Park", desc: "Localizado na Vila Animália.", icone: "icons/ambulatorio.png", categoria: "servicos", top: 26, left: 53 },
+            { id: "serv_estacionamento2", nome: "ESTACIONAMENTO EXTERNO", tipo: "SERVIÇOS", legendaNome: "ESTACIONAMENTO EXTERNO", area: "Estacionamento seguro e com Transfer", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 76, left: 46 },
+            { id: "serv_estacionamento1", nome: "ESTACIONAMENTO INTERNO", tipo: "SERVIÇOS", legendaNome: "ESTACIONAMENTO INTERNO", area: "Vaga garantida e seu carro assegurado!", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>🪫 Vagas para Carros Eletrificados<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 40, left: 28 },
 
             // Atrações
-            { id: "atracao_indoor", nome: "🎡 ANIMALIA DIVERSÃO", tipo: "ATRAÇÕES", legendaNome: "ANIMALIA DIVERSÃO", area: "Atrações Mágicas e divertidas!", desc: "🐸 Vitória Régia<br>🛩️ Eagle Flight (Aviãozinho)<br>🎈 Balão Mexicano<br>👒 Forte Apache (Trenzinho)<br>🦘 Kanguroo Joy<br>🦒 Giraffe Cool<br>🎠 Bella Giostra (Carrossel)<br>🩻 Joe Caveira<br>🧗 Kite Dragon<br>🍭 Mundo Doce<br>⛵ Rise of Rome<br>🥶 Bear Mountain<br>🏎 Big Chock (bate-bate)<br>🧩 Cantinho do Silêncio (Para pessoas neurodivergentes)<br>", icone: "icons/divindoor.png", categoria: "atracao", top: 21, left: 38 },
-            { id: "atracao_aventura", nome: "🎢 ANIMALIA AVENTURA", tipo: "ATRAÇÕES", legendaNome: "ANIMALIA AVENTURA", area: "Atrações Radicaaaaais!", desc: "⛵ Barco Viking (Aqui tem que gritar)<br>💧 Splash (Águaaaa)<br>🥶 Cyber Hawk (De ponta cabeça)<br>🎢 Cyclone (Intensidade e aventura)<br>🐀 Big Air Coaster (Essa é leve)<br>🔫 Aqua Combat (Combate aquático)<br>", icone: "icons/divoutdoor.png", categoria: "atracao", top: 10, left: 40 },
-            { id: "atracao_tel_est2", nome: "EST.2 FAZENDINHA", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 82, left: 65 },
-            { id: "atracao_tel_est1", nome: "EST.1 VILA ANIMALIA", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 20, left: 53 },
+            { id: "atracao_indoor", nome: "🎡 ANIMALIA DIVERSÃO", tipo: "ATRAÇÕES", legendaNome: "ANIMALIA DIVERSÃO<br>Galpão indoor", area: "Atrações Mágicas e divertidas!", desc: "🐸 Vitória Régia<br>🛩️ Eagle Flight (Aviãozinho)<br>🎈 Balão Mexicano<br>👒 Forte Apache (Trenzinho)<br>🦘 Kanguroo Joy<br>🦒 Giraffe Cool<br>🎠 Bella Giostra (Carrossel)<br>🩻 Joe Caveira<br>🧗 Kite Dragon<br>🍭 Mundo Doce<br>⛵ Rise of Rome<br>🥶 Bear Mountain<br>🏎 Big Chock (bate-bate)<br>🧩 Cantinho do Silêncio (Para pessoas neurodivergentes)<br>", icone: "icons/divindoor.png", categoria: "atracao", top: 21, left: 38 },
+            { id: "atracao_aventura", nome: "🎢 ANIMALIA AVENTURA", tipo: "ATRAÇÕES", legendaNome: "ANIMALIA AVENTURA<br>Area Externa", area: "Atrações Radicaaaaais!", desc: "⛵ Barco Viking (Aqui tem que gritar)<br>💧 Splash (Águaaaa)<br>🥶 Cyber Hawk (De ponta cabeça)<br>🎢 Cyclone (Intensidade e aventura)<br>🐀 Big Air Coaster (Essa é leve)<br>🔫 Aqua Combat (Combate aquático)<br>", icone: "icons/divoutdoor.png", categoria: "atracao", top: 10, left: 40 },
+            { id: "atracao_tel_est2", nome: "WALK IN THE FOREST", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO<br>Fazendinha", area: "Estação teleférico Vila Animalia", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 82, left: 65 },
+            { id: "atracao_tel_est1", nome: "WALK IN THE FOREST", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO<br>Vila Animália", area: "Estação teleférico Fazendinha", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 20, left: 53 },
 
-            // Zoológico / Animais
+                 // SAVANA AFRICANA
+            { id: "zoo_savanafricana", nome: "SAVANA AFRICANA", tipo: "ANIMÁLIA SAVANA AFRICANA", legendaNome: "SAVANA AFRICANA<br>African Savanna", area: "African Savanna", desc: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>", icone: "icons/1.png", categoria: "animais", top: 35, left: 52 },
 
-            { id: "zoo_zebra", nome: "ZEBRA", tipo: "RESERVA", legendaNome: "ZEBRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/zebra.png", categoria: "animais", top: 35, left: 52  },
-            { id: "zoo_girafa", nome: "GIRAFA", tipo: "RESERVA", legendaNome: "GIRAFA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/girafa.png", categoria: "animais", top: 35, left: 55  },
-            { id: "zoo_ema", nome: "EMA", tipo: "RESERVA", legendaNome: "EMA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ema.png", categoria: "animais", top: 38, left: 50  },
-            { id: "zoo_leao", nome: "LEÃO", tipo: "RESERVA", legendaNome: "LEÃO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/leao.png", categoria: "animais", top: 44, left: 38.5 },
-            { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "RESERVA", legendaNome: "ONÇA-PINTADA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/onca.png", categoria: "animais", top: 51, left: 29 },
-            { id: "zoo_aviário", nome: "AVIÁRIO", tipo: "RESERVA", legendaNome: "AVIÁRIO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/aviario.png", categoria: "animais", top: 60, left: 35 },
-            { id: "zoo_macaranha", nome: "MACACO-ARANHA", tipo: "RESERVA", legendaNome: "MACACO-ARANHA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/macacoaranha.png", categoria: "animais", top: 57, left: 39 },
-            { id: "zoo_sucuarana", nome: "SUÇUARANA", tipo: "RESERVA", legendaNome: "SUÇUARANA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/sucuarana.png", categoria: "animais", top: 64, left: 43 },
-            { id: "zoo_urso", nome: "URSO-DE-ÓCULOS", tipo: "RESERVA", legendaNome: "URSO-DE-ÓCULOS", area: "Animalia Reserva", desc: "Recinto", icone: "icons/urso.png", categoria: "animais", top: 67, left: 43 },
-            { id: "zoo_tamandua", nome: "TAMANDUA", tipo: "RESERVA", legendaNome: "TAMANDUA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/tamandua.png", categoria: "animais", top: 60, left: 50 },
-            { id: "zoo_cahvinagre", nome: "CACHORRO-VINAGRE", tipo: "RESERVA", legendaNome: "CACHORRO-VINAGRE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/cachorrovinagre.png", categoria: "animais", top: 75, left: 57  },
-            { id: "zoo_fazenda", nome: "FAZENDINHA", tipo: "RESERVA", legendaNome: "FAZENDINHA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/fazenda.png", categoria: "animais", top: 83, left: 57 },
-            { id: "zoo_cabramontes", nome: "CABRA-DA-MONTANHA", tipo: "RESERVA", legendaNome: "CABRA-DA-MONTANHA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/cabramontes.png", categoria: "animais", top: 80, left: 70 },
-            { id: "zoo_gorila", nome: "GORILA", tipo: "RESERVA", legendaNome: "GORILA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/gorila.png", categoria: "animais", top: 83, left: 73 },
-            { id: "zoo_hipo", nome: "HIPOPOTAMO", tipo: "RESERVA", legendaNome: "HIPOPOTAMO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/hipopotamo.png", categoria: "animais", top: 42, left: 63 },
-            { id: "zoo_mandril", nome: "MANDRIL", tipo: "RESERVA", legendaNome: "MANDRIL", area: "Animalia Reserva", desc: "Recinto", icone: "icons/mandril.png", categoria: "animais", top: 70, left: 78 },
-            { id: "zoo_lobo", nome: "LOBO-MARINHO", tipo: "RESERVA", legendaNome: "LOBO-MARINHO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/lobo.png", categoria: "animais", top: 80, left: 78 },
-            { id: "zoo_rino", nome: "RINOCERONTE", tipo: "RESERVA", legendaNome: "RINOCERONTE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/rino.png", categoria: "animais", top: 72, left: 74 },
-            { id: "zoo_drome", nome: "DROMEDARIO", tipo: "RESERVA", legendaNome: "DROMEDARIO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/dromedario.png", categoria: "animais", top: 45, left: 70 },
-            { id: "zoo_canguru", nome: "CANGURU", tipo: "RESERVA", legendaNome: "CANGURU", area: "Animalia Reserva", desc: "Recinto", icone: "icons/canguru.png", categoria: "animais", top: 43, left: 75 },
-            { id: "zoo_aviario2", nome: "AVIARIO 2", tipo: "RESERVA", legendaNome: "AVIARIO 2", area: "Animalia Reserva", desc: "Recinto", icone: "icons/aviario2.png", categoria: "animais",  top: 23, left: 59 } 
+                 // ZOO 1
+            { id: "zoo_leao", nome: "LEÃO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LEÃO<br>Lion", area: "Lion", desc: "Colocar descrição do animal", icone: "icons/2.png", categoria: "animais", top: 44, left: 38.5 },
+            { id: "zoo_Fig", nome: "MIRANTE-FIGUEIRA", tipo: "ANIMÁLIA RESERVA", legendaNome: "MIRANTE-FIGUEIRA<br>Fig tree belvedere", area: "Fig tree belvedere", desc: "Colocar descrição do animal", icone: "icons/3.png", categoria: "animais", top: 48, left: 43 },
+            { id: "zoo_orq", nome: "ORQUIDÁRIO", tipo: "ANIMÁLIA RESERVA", legendaNome: "ORQUIDÁRIO<br>Orchidary", area: "Orchidary", desc: "Colocar descrição do animal", icone: "icons/4.png", categoria: "animais", top: 52, left: 35 },
+            { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "ONÇA-PINTADA<br>Jaguar", area: "Jaguar", desc: "Colocar descrição do animal", icone: "icons/5.png", categoria: "animais", top: 51, left: 29 },
+            { id: "zoo_sai", nome: "SAUIM-DE-COLEIRA", tipo: "ANIMÁLIA RESERVA", legendaNome: "SAUIM-DE-COLEIRA<br>Pied Tamarin", area: "Pied Tamarin", desc: "Colocar descrição do animal", icone: "icons/6.png", categoria: "animais", top: 54, left: 35 },
 
+                 // FOREST
+            { id: "zoo_aviário", nome: "Aviário Animália Park", tipo: "ANIMÁLIA FOREST", legendaNome: "ANIMÁLIA FOREST", area: "Animais que voce encontra aqui:", desc: "AVES / Birds<br>ANTA / Lowland Tapir<br>CUTIA / Azara's Agouti<br>LONTRA / Neotropical Otter<br>VEADO-CATINGUEIRO / Gray brocket<br>CAGADOS - JABUTIS / Chelidae - Tortoise<br>IGUANA<br>JIBOIAS - ARIRANHA / Boa - Giant Otter<br>", icone: "icons/7.png", categoria: "animais", top: 60, left: 35 },
 
-
-            
+                // ZOO 2
+            { id: "zoo_macaranha", nome: "MACACO-ARANHA / BUGIO-RUIVO", tipo: "ANIMÁLIA RESERVA", legendaNome: "MACACO-ARANHA / BUGIO-RUIVO", area: "Guiana Spider Monkey / Southern Brown Howler Monkey", desc: "Colocar descrição do animal", icone: "icons/8.png", categoria: "animais", top: 57, left: 39 },
+            { id: "zoo_sucuarana", nome: "SUÇUARANA", tipo: "ANIMÁLIA RESERVA", legendaNome: "SUÇUARANA<br>Puma", area: "Puma", desc: "Colocar descrição do animal", icone: "icons/9.png", categoria: "animais", top: 65, left: 45 },
+            { id: "zoo_urso", nome: "URSO-DE-ÓCULOS", tipo: "ANIMÁLIA RESERVA", legendaNome: "URSO-DE-ÓCULOS<br>Spectacled Bear", area: "Spectacled Bear", desc: "Colocar descrição do animal", icone: "icons/10.png", categoria: "animais", top: 68, left: 50 },
+            { id: "zoo_tamandua", nome: "TAMANDUÁ-MIRIM", tipo: "ANIMÁLIA RESERVA", legendaNome: "TAMANDUÁ-MIRIM<br>Southern Tamanudá", area: "Southern Tamanudá", desc: "Colocar descrição do animal", icone: "icons/11.png", categoria: "animais", top: 57, left: 45 },
+            { id: "zoo_lobo", nome: "LOBO-GUARÁ", tipo: "ANIMÁLIA RESERVA", legendaNome: "LOBO-GUARÁ<br>Maned Wolf", area: "Maned Wolf", desc: "Colocar descrição do animal", icone: "icons/12.png", categoria: "animais", top: 60, left: 44 },
+            { id: "zoo_raposa", nome: "RAPOSINHA-DO-CAMPO", tipo: "ANIMÁLIA RESERVA", legendaNome: "RAPOSINHA-DO-CAMPO<br>Hoary Fox", area: "Hoary Fox", desc: "Colocar descrição do animal", icone: "icons/13.png", categoria: "animais", top: 40, left: 45 },
+            { id: "zoo_tamandban", nome: "TAMANDUÁ-BANDEIRA", tipo: "ANIMÁLIA RESERVA", legendaNome: "TAMANDUÁ-BANDEIRA<br>Giant Anteater", area: "Giant Anteater", desc: "Colocar descrição do animal", icone: "icons/14.png", categoria: "animais", top: 60, left: 52.5 },
+            { id: "zoo_arara", nome: "ARARAS ESPECIAIS", tipo: "ANIMÁLIA RESERVA", legendaNome: "ARARAS ESPECIAIS<br>Special Macaws", area: "Special Macaws", desc: "Colocar descrição do animal", icone: "icons/15.png", categoria: "animais", top: 65, left: 58 },
+            { id: "zoo_cahvinagre", nome: "CACHORRO-VINAGRE", tipo: "ANIMÁLIA RESERVA", legendaNome: "CACHORRO-VINAGRE<br>Bush Dog", area: "Bush Dog", desc: "Colocar descrição do animal", icone: "icons/16.png", categoria: "animais", top: 75, left: 57 },
+                 
+                   // FAZENDA
+            { id: "zoo_fazenda", nome: "FAZENDA ANIMÁLIA", tipo: "FAZENDA ANIMÁLIA", legendaNome: "FAZENDA ANIMÁLIA", area: "Animais que voce encontra aqui:", desc: "PATO<br>CAVALO<br>", icone: "icons/17.png", categoria: "animais", top: 83, left: 57 },
+            { id: "zoo_chimp", nome: "CHIMPANZÉ", tipo: "ANIMÁLIA RESERVA", legendaNome: "CHIMPANZÉ<br>Chimpanzee", area: "Chimpanzee", desc: "Colocar descrição do animal", icone: "icons/18.png", categoria: "animais", top: 78, left: 67  },
+            { id: "zoo_aoud", nome: "AOUDADS", tipo: "ANIMÁLIA RESERVA", legendaNome: "AOUDADS<br>Barbary Sheep", area: "Barbary Sheep", desc: "Colocar descrição do animal", icone: "icons/19.png", categoria: "animais", top: 78, left: 70 },
+            { id: "zoo_beng", nome: "TIGRE-DE-BENGALA", tipo: "ANIMÁLIA RESERVA", legendaNome: "TIGRE-DE-BENGALA<br>Bengal Tiger", area: "Bengal Tiger", desc: "Colocar descrição do animal", icone: "icons/20.png", categoria: "animais", top: 87.5, left: 70 },
+            { id: "zoo_jaca", nome: "JACARÉ-DE-PAPO-AMARELO", tipo: "ANIMÁLIA RESERVA", legendaNome: "JACARÉ-DE-PAPO-AMARELO<br>Yellow-Snouted Caiman", area: "Yellow-Snouted Caiman", desc: "Colocar descrição do animal", icone: "icons/21.png", categoria: "animais", top: 90, left: 72 },
+            { id: "zoo_hie", nome: "HIENA-LISTRADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-LISTRADA<br>Striped Hyaena", area: "Striped Hyaena", desc: "Colocar descrição do animal", icone: "icons/22.png", categoria: "animais", top: 88, left: 74 },
+            { id: "zoo_lemur", nome: "LÊMURE-NEGRO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-NEGRO<br>lack Lemur", area: "Black Lemur", desc: "Colocar descrição do animal", icone: "icons/23.png", categoria: "animais", top: 89, left: 75 },
+            { id: "zoo_Hien", nome: "HIENA-MALHADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-MALHADA<br>Spotted Hyaenar", area: "Spotted Hyaena", desc: "Colocar descrição do animal", icone: "icons/24.png", categoria: "animais", top: 88, left: 78 },
+            { id: "zoo_sur", nome: "SURICATO", tipo: "ANIMÁLIA RESERVA", legendaNome: "SURICATO<br>Meerkat", area: "Meerkat", desc: "Colocar descrição do animal", icone: "icons/25.png", categoria: "animais", top: 86, left: 77 },
+            { id: "zoo_gorila", nome: "GORILA", tipo: "ANIMÁLIA RESERVA", legendaNome: "GORILA<br>Gorilla", area: "Gorilla", desc: "Colocar descrição do animal", icone: "icons/26.png", categoria: "animais", top: 83, left: 73 },
+            { id: "zoo_lemur", nome: "LÊMURE-PRETO-E-BRANCO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-PRETO-E-BRANCO<br>Black and White Lemur", area: "Black and White Lemur", desc: "Colocar descrição do animal", icone: "icons/27.png", categoria: "animais", top: 83, left: 77 },
+            { id: "zoo_lobo", nome: "LOBO-MARINHO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LOBO-MARINHO<br>Afro-Australian fur Seal", area: "Afro-Australian fur Seal", desc: "Colocar descrição do animal", icone: "icons/28.png", categoria: "animais", top: 80, left: 78 },
+            { id: "zoo_rino", nome: "RINOCERONTE-INDIANO", tipo: "ANIMÁLIA RESERVA", legendaNome: "RINOCERONTE-INDIANO<br>Greater One-Horned Rhino", area: "Greater One-Horned Rhino", desc: "Recinto", icone: "icons/29.png", categoria: "animais", top: 72, left: 74 },
+            { id: "zoo_lemur", nome: "LÊMURE-DE-CAUDA-ANELADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-DE-CAUDA-ANELADA<br>Ring-Tailed Lemur", area: "Ring-Tailed Lemur", desc: "Colocar descrição do animal", icone: "icons/30.png", categoria: "animais",  top: 68, left: 77 },
+            { id: "zoo_mandril", nome: "MANDRIL", tipo: "ANIMÁLIA RESERVA", legendaNome: "MANDRIL<br>Mandrill", area: "Mandrill", desc: "Colocar descrição do animal", icone: "icons/31.png", categoria: "animais", top: 65, left: 75 },
+            { id: "zoo_hipo", nome: "HIPOPOTAMO", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIPOPOTAMO<br>Hippopotamus", area: "Hippopotamus", desc: "Colocar descrição do animal", icone: "icons/32.png", categoria: "animais", top: 42, left: 63 },
+            { id: "zoo_camel", nome: "EMU-CAMELO", tipo: "ANIMÁLIA RESERVA", legendaNome: "EMU-CAMELO<br>Emu-Bactrian Camel", area: "Emu-Bactrian Camel", desc: "Colocar descrição do animal", icone: "icons/33.png", categoria: "animais", top: 45, left: 70 },
+            { id: "zoo_canguru", nome: "CANGURU-VERMELHO", tipo: "ANIMÁLIA RESERVA", legendaNome: "CANGURU-VERMELHO<br>Red Kangaroo", area: "Red Kangaroo", desc: "Colocar descrição do animal", icone: "icons/34.png", categoria: "animais", top: 43, left: 75 },
+            { id: "zoo_viveiro", nome: "VIVEIRO AVES ORNAMENTAIS", tipo: "ANIMÁLIA RESERVA", legendaNome: "VIVEIRO AVES ORNAMENTAIS<br>Ornamental Birds Aviary", area: "Ornamental Birds Aviary", desc: "Colocar descrição do animal", icone: "icons/35.png", categoria: "animais",  top: 23, left: 59 },
         ]
     }
 };
@@ -133,10 +145,11 @@ function renderizarPontos(categoriaFiltro = 'alimentacao') {
     if (!camada) return;
     camada.innerHTML = "";
     
-    const iconesUnicos = new Map();
+    const pontosDaLegenda = [];
 
     dadosPark.reserva.pontos.forEach(ponto => {
         if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
+            // Cria o marcador interativo no mapa
             const el = document.createElement("div");
             el.className = "ponto";
             el.style.top = ponto.top + "%";
@@ -145,26 +158,74 @@ function renderizarPontos(categoriaFiltro = 'alimentacao') {
             el.onclick = (e) => { e.stopPropagation(); abrirLocal(ponto); };
             camada.appendChild(el);
 
-            if (!iconesUnicos.has(ponto.icone)) {
-                iconesUnicos.set(ponto.icone, ponto.legendaNome || ponto.tipo || "Local");
-            }
+            // Adiciona na lista que vai popular a legenda lateral
+            pontosDaLegenda.push(ponto);
         }
     });
 
-    atualizarLegendaLateral(iconesUnicos);
+    atualizarLegendaLateral(pontosDaLegenda);
 }
 
-function atualizarLegendaLateral(iconesMap) {
+function atualizarLegendaLateral(pontos) {
     const containerLegenda = document.getElementById("conteudoLegendaLateral");
     if (!containerLegenda) return;
     containerLegenda.innerHTML = "";
 
-    iconesMap.forEach((texto, icone) => {
+    pontos.forEach(ponto => {
         const item = document.createElement("div");
         item.className = "item-legenda-visual";
-        item.innerHTML = `<img src="${icone}" alt="${texto}"> <span>${texto}</span>`;
+        item.style.cursor = "pointer";
+        item.style.padding = "4px 0";
+        item.style.alignItems = "center";
+        item.style.display = "flex";
+        item.style.gap = "8px";
+        
+        const textoLegenda = ponto.legendaNome || ponto.nome;
+        item.innerHTML = `<img src="${ponto.icone}" alt="${textoLegenda}" style="width: 40px; height: 40px; object-fit: contain;"> <span>${textoLegenda}</span>`;
+
+        // AO CLICAR NO ITEM DA LEGENDA: Dá zoom suave no mapa e abre o card de detalhes do local
+        item.onclick = () => {
+            focarNoPonto(ponto.top, ponto.left);
+            abrirLocal(ponto);
+        };
+
         containerLegenda.appendChild(item);
     });
+}
+
+// NOVA FUNÇÃO: Foca e centraliza suavemente no ponto clicado na legenda
+function focarNoPonto(topPercent, leftPercent) {
+    const container = document.getElementById("mapaContainer");
+    const imgMapa = document.getElementById("imagemMapa");
+    const mapaWrapper = document.getElementById("mapa");
+    
+    if (!container || !imgMapa) return;
+
+    // Define o zoom ideal para focar no ponto (ex: 2.2x)
+    scale = 1.8; 
+    atualizarTransformacao();
+
+    const realWidth = imgMapa.naturalWidth * scale;
+    const realHeight = imgMapa.naturalHeight * scale;
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+
+    // Calcula a posição em pixels correspondente à porcentagem do ponto
+    const pontoXPx = (leftPercent / 100) * realWidth;
+    const pontoYPx = (topPercent / 100) * realHeight;
+
+    // Centraliza o ponto no meio exato da tela
+    pointX = (containerWidth / 2) - pontoXPx;
+    pointY = (containerHeight / 2) - pontoYPx;
+
+    // Aplica animação de transição suave
+    mapaWrapper.style.transition = "transform 0.4s ease-in-out";
+    atualizarTransformacao();
+
+    // Remove a transição após o movimento para o arraste manual continuar livre
+    setTimeout(() => {
+        mapaWrapper.style.transition = "none";
+    }, 400);
 }
 
 function atualizarLegendaHorizontal() {
@@ -269,6 +330,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("mapaContainer");
     if (!container) return;
 
+    // --- COLOQUE AQUI TAMBÉM FUNCIONA PERFEITAMENTE ---
+    const painelLegenda = document.querySelector('.painel-legenda-lateral');
+    if (painelLegenda) {
+        ['touchstart', 'touchmove', 'touchend', 'mousedown', 'mousemove', 'mouseup', 'wheel'].forEach(evento => {
+            painelLegenda.addEventListener(evento, (e) => {
+                e.stopPropagation();
+            }, { passive: false });
+        });
+    }
+
     // Eventos de Mouse
     container.addEventListener("mousedown", (e) => {
         isDragging = true; 
@@ -298,7 +369,6 @@ document.addEventListener("DOMContentLoaded", () => {
             initialDistance = getDistance(e.targetTouches);
             initialScale = scale;
 
-            // Ponto central exato entre os dois dedos em relação ao container
             const rect = container.getBoundingClientRect();
             focalPointX = ((e.targetTouches[0].clientX + e.targetTouches[1].clientX) / 2) - rect.left;
             focalPointY = ((e.targetTouches[0].clientY + e.targetTouches[1].clientY) / 2) - rect.top;
@@ -316,7 +386,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const zoomFactor = currentDistance / initialDistance;
                 let newScale = Math.min(Math.max(initialScale * zoomFactor, 0.2), 3.0);
 
-                // Aplica o zoom mantendo o foco exatamente onde os dedos estão pinçando
                 pointX = focalPointX - (focalPointX - pointX) * (newScale / scale);
                 pointY = focalPointY - (focalPointY - pointY) * (newScale / scale);
                 scale = newScale;
@@ -343,3 +412,111 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+// ponto antigo, padrao google
+//   topLeft:     { lat: -23.619760, lng: -46.970712 }, // Canto superior esquerdo
+//   bottomRight: { lat: -23.626049, lng: -46.962151 }  // Canto inferior direito
+
+
+
+// 1. Defina as coordenadas dos cantos da sua imagem (Seus dados reais)
+const bounds = {
+    topLeft:     { lat: -23.620150, lng: -46.970820 }, // Canto superior esquerdo
+    bottomRight: { lat: -23.626049, lng: -46.962151 }  // Canto inferior direito
+};
+
+// Lista de pontos do trajeto (0% a 100%)
+const rotaTrilha = [
+    { percent: 0,   lat: -23.621430, lng: -46.966515 },
+    { percent: 10,  lat: -23.622426, lng: -46.967513 },
+    { percent: 20,  lat: -23.623628, lng: -46.967509 },
+    { percent: 30,  lat: -23.623916, lng: -46.966510 },
+    { percent: 40,  lat: -23.624614, lng: -46.965261 },
+    { percent: 50,  lat: -23.624768, lng: -46.964401 },
+    { percent: 60,  lat: -23.623350, lng: -46.964988 },
+    { percent: 70,  lat: -23.622503, lng: -46.965436 },
+    { percent: 80,  lat: -23.622142, lng: -46.964953 },
+    { percent: 90,  lat: -23.622121, lng: -46.964939 },
+    { percent: 100, lat: -23.621111, lng: -46.965892 }
+];
+
+function atualizarLocalizacaoUsuario(lat, lng) {
+    const img = document.getElementById("imagemMapa");
+    const marker = document.getElementById("user-marker");
+    
+    if (!img || !marker) return;
+
+    // Pega o tamanho real que a imagem está ocupando na tela (já considerando o zoom)
+    const currentWidth = img.clientWidth;   
+    const currentHeight = img.clientHeight; 
+
+    // Calcula a posição X e Y proporcional em pixels
+    const x = ((lng - bounds.topLeft.lng) / (bounds.bottomRight.lng - bounds.topLeft.lng)) * currentWidth;
+    const y = ((bounds.topLeft.lat - lat) / (bounds.topLeft.lat - bounds.bottomRight.lat)) * currentHeight;
+    
+    // Posiciona o marcador e o torna visível
+    marker.style.left = `${x}px`;
+    marker.style.top = `${y}px`;
+    marker.style.display = "block";
+}
+
+// Função para calcular distância simples entre coordenadas
+function calcularDistancia(lat1, lon1, lat2, lon2) {
+    const x = lat2 - lat1;
+    const y = lon2 - lon1;
+    return Math.sqrt(x * x + y * y);
+}
+
+// Função para descobrir a porcentagem percorrida
+function calcularProgressoTrilha(userLat, userLng) {
+    let menorDistancia = Infinity;
+    let porcentagemAtual = 0;
+
+    for (let i = 0; i < rotaTrilha.length; i++) {
+        const ponto = rotaTrilha[i];
+        const distancia = calcularDistancia(userLat, userLng, ponto.lat, ponto.lng);
+
+        if (distancia < menorDistancia) {
+            menorDistancia = distancia;
+            porcentagemAtual = ponto.percent;
+        }
+    }
+
+    return porcentagemAtual;
+}
+
+// 2. Ativa o GPS do navegador em tempo real
+if ("geolocation" in navigator) {
+    navigator.geolocation.watchPosition(
+        (position) => {
+            const userLat = position.coords.latitude;
+            const userLng = position.coords.longitude;
+
+            // 1. Atualiza o ponto no mapa
+            atualizarLocalizacaoUsuario(userLat, userLng);
+            
+            // 2. Calcula o progresso do trajeto
+            const progresso = calcularProgressoTrilha(userLat, userLng);
+
+            // 3. Exibe os dados no console
+            console.log(`GPS Ativo -> Lat: ${userLat}, Lng: ${userLng} | Progresso: ${progresso}%`);
+
+            // 4. Se você tiver um elemento na tela para exibir a porcentagem (ex: <span id="progressoTexto"></span>)
+            const elementoProgresso = document.getElementById("progressoTexto");
+            if (elementoProgresso) {
+                elementoProgresso.innerText = `${progresso}% concluído`;
+            }
+        },
+        (error) => {
+            console.warn("Aviso de Geolocalização: ", error.message);
+        },
+        {
+            enableHighAccuracy: true, // Força alta precisão (ideal para celular)
+            maximumAge: 0,
+            timeout: 10000
+        }
+    );
+} else {
+    console.warn("Seu navegador não suporta geolocalização.");
+}
