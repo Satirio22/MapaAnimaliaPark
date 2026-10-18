@@ -163,47 +163,147 @@
             filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
         }
 
-        /* Caixa de Legenda Flutuante Dinâmica */
+        /* Marcador de Geolocalização Pulsante */
+        .user-marker-container {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            transform: translate(-50%, -50%);
+            display: none;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .user-marker-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(37, 99, 235, 0.4);
+            border-radius: 50%;
+            animation: user-pulse 1.8s infinite ease-out;
+        }
+
+        .user-marker-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 14px;
+            height: 14px;
+            background-color: #2563eb;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes user-pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.9;
+            }
+            100% {
+                transform: scale(2.8);
+                opacity: 0;
+            }
+        }
+
+        /* CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA */
         .painel-legenda-lateral {
             position: absolute;
             top: 15px;
             left: 15px;
-            background: rgba(255, 255, 255, 0.92);
-            padding: 12px;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             z-index: 60;
-            max-width: 240px;
+            width: 260px;
             backdrop-filter: blur(5px);
+            max-height: calc(100vh - 120px);
+            display: flex;
+            flex-direction: column;
         }
 
-        .painel-legenda-lateral h4 {
-            font-size: 12px;
+        .legenda-detalhes {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-height: 100%;
+            overflow: hidden;
+        }
+
+        .legenda-detalhes summary {
+            font-family: inherit;
+            font-size: 11px;
             color: #4A154B;
-            margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 4px;
+            font-weight: bold;
+            padding: 12px;
+            cursor: pointer;
+            user-select: none;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-shrink: 0;
+            background: transparent;
+        }
+
+        .legenda-detalhes summary::after {
+            content: '▼';
+            font-size: 8px;
+            transition: transform 0.2s ease;
+            color: #4A154B;
+        }
+
+        .legenda-detalhes[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .legenda-detalhes summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .legenda-corpo-conteudo {
+            padding: 0 12px 12px 12px;
+            border-top: 1px solid #ddd;
+            margin-top: 2px;
+            max-height: 170px !important;
+            min-height: 50px;
+            overflow-y: auto !important; 
+            overflow-x: hidden;
+            flex-shrink: 1;
+        }
+
+        .legenda-corpo-conteudo::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .legenda-corpo-conteudo::-webkit-scrollbar-thumb {
+            background: #8C1B91;
+            border-radius: 4px;
+        }
+
+        .legenda-corpo-conteudo::-webkit-scrollbar-track {
+            background: #eee;
         }
 
         .item-legenda-visual {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 6px;
+            margin-top: 8px;
             font-size: 11px;
             color: #333;
             font-weight: bold;
-        }
-
-        .item-legenda-visual:last-child {
-            margin-bottom: 0;
+            cursor: pointer;
+            padding: 4px 0;
         }
 
         .item-legenda-visual img {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             object-fit: contain;
             flex-shrink: 0;
         }
@@ -308,7 +408,7 @@
     <main class="layout-principal">
         <div id="mapaContainer" class="mapa-container">
             
-          <!-- CAIXINHA DE LEGENDA SUSPENSA (ACORDEÃO) -->
+            <!-- CAIXINHA DE LEGENDA SUSPENSA -->
             <div class="painel-legenda-lateral">
                 <details class="legenda-detalhes">
                     <summary>LEGENDA</summary>
@@ -318,16 +418,32 @@
                 </details>
             </div>
 
+            <!-- O MAPA -->
             <div id="mapa" class="mapa">
-                <img id="imagemMapa" src="mapa.zoo.png" alt="Mapa do Parque">
+                <img id="imagemMapa" src="mapa.zoo.webp" alt="Mapa do Parque">
                 <div id="camadaPontos"></div>
+                
+<!-- O marcador de geolocalização ajustado e pulsando -->
+<div id="user-marker" style="position: absolute; width: 45px; height: 45px; transform: translate(-50%, -100%); display: none; z-index: 9999; pointer-events: none;">
+    <!-- Anel que pulsa -->
+    <div style="position: absolute; width: 100%; height: 100%; background-color: rgba(239, 68, 68, 0.4); border-radius: 50%; top: 0; left: 0; animation: user-pulse-red 1.8s infinite ease-out;"></div>
+    <!-- Emoji do Pin centralizado -->
+    <div style="position: absolute; width: 100%0; height: 100%; top: 0; left: 0; display: flex; align-items: center; justify-content: center; font-size: 40px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5);">📍</div>
+</div>
             </div>
 
+            <!-- CONTROLES DE ZOOM -->
             <div class="zoom-controls">
                 <button onclick="zoomIn()" aria-label="Aumentar Zoom">+</button>
                 <button onclick="zoomOut()" aria-label="Diminuir Zoom">−</button>
                 <button onclick="resetZoom()" aria-label="Resetar Zoom">⟲</button>
             </div>
+
+            <!-- Caixinha Flutuante de Progresso do Trajeto -->
+            <div id="painel-progresso" style="position: absolute; bottom: 15px; left: 15px; z-index: 50; padding: 12px 16px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); font-family: sans-serif; font-size: 14px; font-weight: bold; color: #1e293b;">
+                📍 Progresso do Trajeto: <span id="progressoTexto" style="color: #2563eb;">Calculando...</span>
+            </div>
+
         </div>
     </main>
 
@@ -342,6 +458,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js"></script>
 </body>
 </html>
