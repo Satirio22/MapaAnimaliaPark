@@ -16,7 +16,7 @@ body, html {
 /* Cabeçalho roxo escuro idêntico à referência */
 .header-animalia {
     height: 75px;
-    background-color: #4A154B; /* Roxo bem escuro de fundo superior */
+    background-color: #4A154B;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,7 +48,7 @@ body, html {
 /* Barra de filtros superior com a faixa roxa e botões em pílula */
 .filtros-superior-container {
     height: 60px;
-    background-color: #8C1B91; /* Tom de roxo vibrante da referência */
+    background-color: #8C1B91;
     border-bottom: 1px solid #5d1279;
     display: flex;
     align-items: center;
@@ -77,14 +77,14 @@ body, html {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background: transparent; /* Inativo fica transparente na faixa roxa */
+    background: transparent;
     border: 2px solid transparent;
     padding: 8px 20px;
-    border-radius: 30px; /* Formato de pílula idêntico à imagem */
+    border-radius: 30px;
     cursor: pointer;
     font-size: 13px;
     font-weight: bold;
-    color: #ffffff; /* Texto branco quando inativo */
+    color: #ffffff;
     white-space: nowrap;
     letter-spacing: 0.5px;
     transition: all 0.2s ease;
@@ -94,24 +94,24 @@ body, html {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Item Ativo: Fundo totalmente branco com texto e ícone em roxo */
+/* Item Ativo */
 .legenda-lista-horizontal .filtro-item.active {
     background: #ffffff;
     color: #7b1fa2;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Tamanho e adaptação de cor dos ícones nos botões */
+/* Tamanho dos ícones nos botões */
 .legenda-lista-horizontal .filtro-item img {
     width: 18px !important;
     height: 18px !important;
     object-fit: contain;
 }
 
-/* Layout principal preenchendo o resto da tela (ajustado para a nova altura: header 75px + filtros 60px = 135px) */
+/* Layout principal */
 .layout-principal {
     width: 100%;
-    height: calc(100vh - 135px); 
+    height: calc(100vh - 135px);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -170,34 +170,53 @@ body, html {
     filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
 }
 
-/* Posição do usuário no mapa */
-.user-marker {
+/* Marcador de Geolocalização com Pin e Pulso Vermelho */
+.user-marker-container {
     position: absolute;
-    transform: translate(-50%, -50%);
-    z-index: 6;
-    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%, -95%); /* Alinha a ponta do pin na coordenada exata */
+    display: none;
+    z-index: 9999;ke
     pointer-events: none;
 }
 
-.pulsar {
+/* Anel Pulsante Vermelho */
+.user-marker-pulse {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background: rgba(0, 123, 255, 0.4);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(239, 68, 68, 0.4); /* Vermelho com transparência */
     border-radius: 50%;
+    top: 0;
+    left: 0;
+    animation: user-pulse-red 1.8s infinite ease-out;
+}
+
+/* Emoji do Pin centralizado */
+.user-marker-emoji {
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: pulsarAnim 1.5s infinite;
+    font-size: 80px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
-@keyframes pulsarAnim {
-    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+/* Animação do pulso */
+@keyframes user-pulse-red {
+    0% {
+        transform: scale(0.6);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(2.3);
+        opacity: 0;
+    }
 }
 
 /* ========================================================
-   NOVO: CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (ACORDEÃO)
+   CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (CORRIGIDO)
    ======================================================== */
 .painel-legenda-lateral {
     position: absolute;
@@ -207,14 +226,26 @@ body, html {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     z-index: 60;
-    max-width: 250px;
-    min-width: 180px;
+    width: 260px;
     backdrop-filter: blur(5px);
+    
+    /* Trava a altura máxima total que o painel pode ocupar na tela do celular */
+    max-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+}
+
+.legenda-detalhes {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 100%;
     overflow: hidden;
 }
 
 .legenda-detalhes summary {
-    font-family: inherit;              /* Garante que herda a mesma fonte do restante do layout */    font-size: 11px;
+    font-family: inherit;
+    font-size: 11px;
     color: #4A154B;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -222,16 +253,18 @@ body, html {
     padding: 12px;
     cursor: pointer;
     user-select: none;
-    list-style: none; /* Remove a setinha feia padrão do navegador */
+    list-style: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+    flex-shrink: 0;
+    background: transparent;
 }
 
 /* Setinha personalizada que gira ao abrir/fechar */
 .legenda-detalhes summary::after {
-    content: '▼ ';
+    content: '▼';
     font-size: 8px;
     transition: transform 0.2s ease;
     color: #4A154B;
@@ -242,17 +275,42 @@ body, html {
 }
 
 .legenda-detalhes summary::-webkit-details-marker {
-    display: none; /* Compatibilidade extra para sumir com setas nativas */
+    display: none;
 }
 
+/* Corpo da legenda com rolagem vertical rígida e limite de ~5 itens */
 .legenda-corpo-conteudo {
     padding: 0 12px 12px 12px;
     border-top: 1px solid #ddd;
     margin-top: 2px;
+    
+    /* Altura exata para exibir cerca de 5 itens (aproximadamente 170px) */
+    max-height: 170px !important;
+    min-height: 50px;
+    
+    overflow-y: auto !important; 
+    overflow-x: hidden;
+    flex-shrink: 1;
 }
 
-/* Estilo para alinhar os itens que o seu script JS injeta na legenda */
-.legenda-corpo-conteudo .item-legenda-visual {
+.legenda-corpo-conteudo::-webkit-scrollbar {
+    width: 5px;
+}
+
+.legenda-corpo-conteudo::-webkit-scrollbar-thumb {
+    background: #8C1B91;
+    border-radius: 4px;
+}
+
+.legenda-corpo-conteudo::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+/* ================================
+   ITENS DA LEGENDA
+   ================================ */
+
+.item-legenda-visual {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -260,15 +318,16 @@ body, html {
     font-size: 11px;
     color: #333;
     font-weight: bold;
+    cursor: pointer;
+    padding: 4px 0;
 }
 
-.legenda-corpo-conteudo .item-legenda-visual img {
+.item-legenda-visual img {
     width: 20px;
     height: 20px;
     object-fit: contain;
     flex-shrink: 0;
 }
-
 
 /* Controles Flutuantes de Zoom */
 .zoom-controls {
